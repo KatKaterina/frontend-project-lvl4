@@ -13,13 +13,13 @@ const Login = () => {
    /* onSubmit: values => {
       alert(JSON.stringify(values, null, 2));
     },*/
-    onSubmit: console.log(values),
+    onSubmit: values => (console.log(values)),
   });
 
   console.log("login");
   return (
-    <Form onSubmit={formik.handleSubmit}>
-      <Form.Group className="mb-3" controlId="username">
+    <Form className="p-3" onSubmit={formik.handleSubmit}>
+      <Form.Group>
         <Form.Label htmlfor="username">User name</Form.Label>
         <Form.Control
           name="username"
