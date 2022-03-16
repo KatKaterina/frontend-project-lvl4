@@ -6,7 +6,7 @@ import schema from '../validateSchema.js';
 const Login = () => {
   const formik = useFormik({
     initialValues: {
-      userName: '',
+      username: '',
       password: '',
     },
     validationSchema: schema,
@@ -29,7 +29,7 @@ const Login = () => {
           required
           placeholder="Enter user name" 
           onChange={formik.handleChange}
-          value={formik.values.userName}
+          value={formik.values.username}
         />
       </Form.Group>
       <Form.Group className="mb-3" controlId="password">
