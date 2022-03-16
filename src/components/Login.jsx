@@ -8,13 +8,14 @@ const Login = () => {
     initialValues: {
       userName: '',
       password: '',
-  },
-  validationSchema: schema,
-  onSubmit: values => {
-    alert(JSON.stringify(values, null, 2));
-  },
- });
+    },
+    validationSchema: schema,
+    onSubmit: values => {
+      alert(JSON.stringify(values, null, 2));
+    },
+  });
 
+  console.log("login");
   return (
     <Form onSubmit={formik.handleSubmit}>
       <Form.Group className="mb-3">

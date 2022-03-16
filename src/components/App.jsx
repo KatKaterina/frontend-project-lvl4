@@ -8,6 +8,7 @@ import Login from './Login.jsx';
 import NotFound from './NotFound.jsx';
 
 const App = () => {
+    console.log("!!!");
     return (
         <Router>
           <div className="d-flex flex-column h-100">
