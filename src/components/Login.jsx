@@ -18,7 +18,7 @@ const Login = () => {
   console.log("login");
   return (
     <Form onSubmit={formik.handleSubmit}>
-      <Form.Group className="mb-3">
+      <Form.Group className="mb-3" controlId="formBasicText">
         <Form.Label htmlfor="username">User name</Form.Label>
         <Form.Control
           name="username"
@@ -31,7 +31,6 @@ const Login = () => {
           value={formik.values.userName}
         />
       </Form.Group>
-  
       <Form.Group className="mb-3" controlId="formBasicPassword">
         <Form.Label htmlfor="password">Password</Form.Label>
         <Form.Control
