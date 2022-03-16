@@ -31,19 +31,7 @@ const Login = () => {
           value={formik.values.userName}
         />
       </Form.Group>
-      <Form.Group className="mb-3">
-        <Form.Label htmlfor="password">Password</Form.Label>
-        <Form.Control
-          name="password"
-          type="password"
-          id="password"
-          autocomplite="current-password"
-          required
-          placeholder="Password"
-          onChange={formik.handleChange}
-          value={formik.values.password}
-        />
-      </Form.Group>
+
     <Button variant="outline-primary" type="submit" className="w-100 mb-3">
       Submit
     </Button>
