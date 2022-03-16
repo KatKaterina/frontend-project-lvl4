@@ -3,11 +3,22 @@
 import 'core-js/stable/index.js';
 import 'regenerator-runtime/runtime.js';
 
+import ReactDom from 'react-dom';
 import '../assets/application.scss';
+import init from './init.jsx';
 
 if (process.env.NODE_ENV !== 'production') {
   localStorage.debug = 'chat:*';
 }
+
+const render = async () => {
+  const vdom = await init();
+  ReactDom.render(vdom, document.getElementById('chat'));
+};
+
+render();
+
+/*
 
 const p = document.createElement('p');
 p.classList.add('card-text');
@@ -29,3 +40,4 @@ const container = document.querySelector('#chat');
 container.append(card);
 
 console.log('it works!');
+*/
