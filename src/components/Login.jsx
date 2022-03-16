@@ -18,7 +18,7 @@ const Login = () => {
   console.log("login");
   return (
     <Form onSubmit={formik.handleSubmit}>
-      <Form.Group className="mb-3" controlId="formBasicText">
+      <Form.Group className="mb-3" controlId="formBasicUserName">
         <Form.Label htmlfor="username">User name</Form.Label>
         <Form.Control
           name="username"
