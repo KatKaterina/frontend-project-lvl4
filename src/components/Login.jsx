@@ -10,16 +10,14 @@ const Login = () => {
       password: '',
     },
     validationSchema: schema,
-   /* onSubmit: values => {
+    onSubmit: values => {
       alert(JSON.stringify(values, null, 2));
-    },*/
-    onSubmit: values => (console.log(values)),
+    },
   });
 
-  console.log("login");
   return (
-    <Form className="p-3" onSubmit={formik.handleSubmit}>
-      <Form.Group>
+    <Form onSubmit={formik.handleSubmit}>
+      <Form.Group className="mb-3">
         <Form.Label htmlfor="username">User name</Form.Label>
         <Form.Control
           name="username"
@@ -32,7 +30,7 @@ const Login = () => {
           value={formik.values.username}
         />
       </Form.Group>
-      <Form.Group className="mb-3" controlId="password">
+      <Form.Group className="mb-3">
         <Form.Label htmlfor="password">Password</Form.Label>
         <Form.Control
           name="password"
