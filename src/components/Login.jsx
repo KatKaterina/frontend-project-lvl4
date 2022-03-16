@@ -10,9 +10,10 @@ const Login = () => {
       password: '',
     },
     validationSchema: schema,
-    onSubmit: values => {
+   /* onSubmit: values => {
       alert(JSON.stringify(values, null, 2));
-    },
+    },*/
+    onSubmit: console.log(values),
   });
 
   console.log("login");
