@@ -32,14 +32,14 @@ const AutorizProvider = ({children}) => {
   )
 }
 
-const UserRoute = ({ exact, path, element }) => {
-  console.log(element);
+const UserRoute = ({ exact, path, children }) => {
+  console.log(children);
   const { loggedIn } = useContext(authorizContext);
   console.log(loggedIn);
   
   return (
     <Route exact={exact} path={path}>
-      {loggedIn ? element : <Navigate to="/login"/>}
+      {loggedIn ? children : <Navigate to="/login"/>}
     </Route>
   )
 };
@@ -50,6 +50,7 @@ const App = () => {
         <Router>
           <div className="d-flex flex-column h-100">
             <Routes>
+              <UserRoute exact path="/"><NotFound /></UserRoute>
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<Login />} />
               <Route path="*" element={<NotFound />} />
