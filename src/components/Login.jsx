@@ -17,7 +17,7 @@ const Login = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const handlerSubmit = async (values) => {
+  const handleSubmit = async (values) => {
     const pathLogin = routes.loginPath();
     setError(null);
     try {
@@ -41,7 +41,7 @@ const Login = () => {
       password: '',
     },
     validationSchema: schema,
-    onSubmit: handlerSubmit
+    onSubmit: handleSubmit
   });
 
   return (
