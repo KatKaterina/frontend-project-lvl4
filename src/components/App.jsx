@@ -24,6 +24,7 @@ const AutorizProvider = ({children}) => {
     setLoggedIn(false);
   }
   console.log(token);
+  console.log(loggedIn);
   return (
       <authorizContext.Provider value={{ loggedIn, logIn, logOut }}>
           {children}
