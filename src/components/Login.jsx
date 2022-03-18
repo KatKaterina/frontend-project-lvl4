@@ -46,7 +46,8 @@ const Login = () => {
     validationSchema: schema,
     onSubmit: handlerSubmit
   });
-  console.log(formik);
+  console.log(formik.handleSubmit);
+  console.log(handlerSubmit);
 
 
   return (
