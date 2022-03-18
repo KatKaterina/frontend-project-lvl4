@@ -63,6 +63,7 @@ const Login = () => {
           placeholder="Enter user name" 
           onChange={handleChange}
           value={values.username}
+          isInvalid={Boolean(error)}
         />
       </Form.Group>
       <Form.Group className="mb-3">
@@ -76,7 +77,9 @@ const Login = () => {
           placeholder="Password"
           onChange={handleChange}
           value={values.password}
+          isInvalid={Boolean(error)}
         />
+        {error&&<Form.Control.Feedback type="invalid">Неверные имя пользователя или пароль</Form.Control.Feedback>}
       </Form.Group>
     <Button variant="outline-primary" type="submit" className="w-100 mb-3">
       Submit
