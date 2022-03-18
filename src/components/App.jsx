@@ -50,7 +50,7 @@ const App = () => {
         <Router>
           <div className="d-flex flex-column h-100">
             <Routes>
-              <UserRoute exact path="/"><NotFound /></UserRoute>
+              <Route exact path="/" element={<UserRoute exact path="/"><NotFound /></UserRoute>} />
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<Login />} />
               <Route path="*" element={<NotFound />} />
