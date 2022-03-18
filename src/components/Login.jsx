@@ -25,7 +25,7 @@ const Login = () => {
         //const { username, password } = values;
         const res =  await axios.get(pathLogin, {...values});
         authorization.logIn(res.data);
-        console.log("data " + res);
+        console.log(res);
         navigate('/');
     } catch (e) {
         if (e.isAxiosError && e.response && e.response.status === 401) {
