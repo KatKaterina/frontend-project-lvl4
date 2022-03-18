@@ -9,12 +9,14 @@ const Chat = () => {
     authorization.logOut();
   }
   return (
-  <div className="text-center">
-    <h1>здесь чат!</h1>
-    <span>
+  <>
+   <div className="text-center">
+     <h1>здесь чат!</h1>
+     <span>
       <Link onClick={handleClick}>LogOut</Link>
-    </span>
-  </div>
+     </span>
+    </div>
+  </>
 );
 }
 
