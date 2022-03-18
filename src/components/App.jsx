@@ -10,7 +10,7 @@ import NotFound from './NotFound.jsx';
 import authorizContext  from '../contexts/index.js';
 
 const AutorizProvider = ({children}) => {
-  console.log(authorizContext);
+  //console.log(authorizContext);
   const token = localStorage.getItem('token');
   const [loggedIn, setLoggedIn] = useState(Boolean(token));
   const logIn = ({ username, token }) => {
@@ -23,8 +23,8 @@ const AutorizProvider = ({children}) => {
     localStorage.removeItem('token');
     setLoggedIn(false);
   }
-  console.log(token);
-  console.log(loggedIn);
+  //console.log(token);
+  //console.log(loggedIn);
   return (
       <authorizContext.Provider value={{ loggedIn, logIn, logOut }}>
           {children}
@@ -33,9 +33,9 @@ const AutorizProvider = ({children}) => {
 }
 
 const UserRoute = ({ children }) => {
-  console.log(children);
+  //console.log(children);
   const { loggedIn } = useContext(authorizContext);
-  console.log(loggedIn);
+  console.log("logedIn" + loggedIn);
 
   return (
     loggedIn ? children : <Navigate to="/login"/>

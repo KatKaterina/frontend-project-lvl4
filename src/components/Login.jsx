@@ -11,8 +11,8 @@ const Login = () => {
   const [error, setError] = useState(null);
   const authorization = useContext(authorizContext);
 
-  console.log(authorizContext);
-  console.log(authorization);
+  //console.log(authorizContext);
+  //console.log(authorization);
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -24,6 +24,7 @@ const Login = () => {
         //const { username, password } = values;
         const { data } =  await axios.get(pathLogin, {...values});
         authorization.logIn(data);
+        console.log(data);
         navigate('/');
     } catch (e) {
         if (e.isAxiosError && e.response && e.response.status === 401) {
