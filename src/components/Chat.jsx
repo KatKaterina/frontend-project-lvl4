@@ -13,7 +13,7 @@ const Chat = () => {
    <div className="text-center">
      <h1>здесь чат!</h1>
      <span>
-      <Link onClick={handleClick}>LogOut</Link>
+      <Link to="/login" onClick={handleClick}>LogOut</Link>
      </span>
     </div>
   </>
