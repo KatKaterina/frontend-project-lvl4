@@ -51,7 +51,7 @@ const Login = () => {
 
 
   return (
-    <Form onSubmit={formik.handleSubmit}>
+    <Form onSubmit={formik.onSubmit}>
       <Form.Group className="mb-3">
         <Form.Label htmlfor="username">User name</Form.Label>
         <Form.Control
