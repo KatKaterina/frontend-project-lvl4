@@ -17,15 +17,15 @@ const Login = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const handlerSubmit = async (values) => {
+  const handlerSubmit = async ({ username, password }) => {
     const pathLogin = routes.loginPath();
     setError(null);
     console.log("pathLogin " + pathLogin);
     try {
         //const { username, password } = values;
-        const res =  await axios.get(pathLogin, {...values});
-        authorization.logIn(res.data);
-        console.log(res);
+        const {data} =  await axios.post(pathLogin, { username, password });
+        authorization.logIn(data);
+        console.log(data);
         navigate('/');
     } catch (e) {
         if (e.isAxiosError && e.response && e.response.status === 401) {
