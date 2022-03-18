@@ -4,7 +4,8 @@ import authorizContext  from '../contexts/index.js';
 
 const Chat = () => {
   const authorization = useContext(authorizContext);
-  const handleClick = () => {
+  const handleClick = (e) => {
+    e.preventDefault();
     console.log('1');
     authorization.logOut();
   }
