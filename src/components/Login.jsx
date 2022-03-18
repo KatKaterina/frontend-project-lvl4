@@ -1,18 +1,43 @@
-import React from 'react';
-import { Formik, Field, useFormik, useField, useFormikContext } from 'formik';
+import React, { useState, useContext } from 'react';
+import { useFormik } from 'formik';
 import { Form, Button } from 'react-bootstrap';
 import schema from '../validateSchema.js';
+import authorizContext  from '../contexts/index.js';
+import axios from 'axios';
+import routes from '../routes.js';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const Login = () => {
+  const [error, setError] = useState(null);
+  const authorization = useContext(authorizContext);
+
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const handlerSubmit = async (values) => {
+    const pathLogin = routes.loginPath();
+    setError(null);
+    try {
+        //const { username, password } = values;
+        const { data } =  await axios.get(pathLogin, {...values});
+        authorization.logIn(data);
+        navigate('/');
+    } catch (e) {
+        if (e.isAxiosError && e.response && e.response.status === 401) {
+          setError('accessDenial');
+        } else {
+            setError('networkError');
+        }
+    }
+  };
+    
   const formik = useFormik({
     initialValues: {
       username: '',
       password: '',
     },
     validationSchema: schema,
-    onSubmit: values => {
-      alert(JSON.stringify(values, null, 2));
-    },
+    onSubmit: handlerSubmit
   });
 
   return (
