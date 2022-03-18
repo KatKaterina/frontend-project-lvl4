@@ -23,6 +23,7 @@ const AutorizProvider = ({children}) => {
     localStorage.removeItem('token');
     setLoggedIn(false);
   }
+  console.log(token);
   return (
       <authorizContext.Provider value={{ loggedIn, logIn, logOut }}>
           {children}
@@ -32,6 +33,8 @@ const AutorizProvider = ({children}) => {
 
 const UserRoute = ({ exact, path, element }) => {
   const { loggedIn } = () => useContext(authorizContext);
+  console.log(loggedIn);
+  console.log(element);
   return (
     <Route exact={exact} path={path}>
       {loggedIn ? element : <Navigate to="/login"/>}
