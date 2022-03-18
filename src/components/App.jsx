@@ -31,7 +31,7 @@ const AutorizProvider = ({children}) => {
 }
 
 const UserRoute = ({ exact, path, element }) => {
-  const { loggedIn } = useContext(authorizContext);
+  const { loggedIn } = () => useContext(authorizContext);
   return (
     <Route exact={exact} path={path}>
       {loggedIn ? element : <Navigate to="/login"/>}
