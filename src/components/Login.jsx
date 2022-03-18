@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { useFormik } from 'formik';
 import { Form, Button } from 'react-bootstrap';
 import schema from '../validateSchema.js';
@@ -23,9 +23,9 @@ const Login = () => {
     console.log("pathLogin " + pathLogin);
     try {
         //const { username, password } = values;
-        const { data } =  await axios.get(pathLogin, {...values});
-        authorization.logIn(data);
-        console.log("data " + data);
+        const res =  await axios.get(pathLogin, {...values});
+        authorization.logIn(res.data);
+        console.log("data " + res);
         navigate('/');
     } catch (e) {
         if (e.isAxiosError && e.response && e.response.status === 401) {
