@@ -1,3 +1,5 @@
 import { createContext } from 'react';
 
-export default authorizContext = createContext({});
+const authorizContext = createContext({});
+
+export default authorizContext;
