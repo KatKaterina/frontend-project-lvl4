@@ -43,8 +43,8 @@ const Login = () => {
       username: '',
       password: '',
     },
-    validationSchema: schema,
-    onSubmit: handlerSubmit
+    /*validationSchema: schema,*/
+    onSubmit: handlerSubmit,
   });
  // console.log(formik.handleSubmit);
  // console.log(handlerSubmit);
