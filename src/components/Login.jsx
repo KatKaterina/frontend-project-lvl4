@@ -20,12 +20,12 @@ const Login = () => {
   const handlerSubmit = async (values) => {
     const pathLogin = routes.loginPath();
     setError(null);
-    console.log(pathLogin);
+    console.log("pathLogin " + pathLogin);
     try {
         //const { username, password } = values;
         const { data } =  await axios.get(pathLogin, {...values});
         authorization.logIn(data);
-        console.log(data);
+        console.log("data " + data);
         navigate('/');
     } catch (e) {
         if (e.isAxiosError && e.response && e.response.status === 401) {

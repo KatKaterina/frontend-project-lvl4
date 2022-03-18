@@ -7,6 +7,7 @@ import {
 } from 'react-router-dom';
 import Login from './Login.jsx';
 import NotFound from './NotFound.jsx';
+import Chat from './Chat.jsx';
 import authorizContext  from '../contexts/index.js';
 
 const AutorizProvider = ({children}) => {
@@ -35,7 +36,7 @@ const AutorizProvider = ({children}) => {
 const UserRoute = ({ children }) => {
   //console.log(children);
   const { loggedIn } = useContext(authorizContext);
-  console.log("logedIn" + loggedIn);
+  console.log("logedIn " + loggedIn);
 
   return (
     loggedIn ? children : <Navigate to="/login"/>
@@ -54,7 +55,7 @@ const App = () => {
         <Router>
           <div className="d-flex flex-column h-100">
             <Routes>
-              <Route exact path="/" element={<UserRoute><NotFound /></UserRoute>} />
+              <Route exact path="/" element={<UserRoute><Chat /></UserRoute>} />
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<Login />} />
               <Route path="*" element={<NotFound />} />
