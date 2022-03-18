@@ -20,6 +20,7 @@ const Login = () => {
   const handleSubmit = async (values) => {
     const pathLogin = routes.loginPath();
     setError(null);
+    console.log(pathLogin);
     try {
         //const { username, password } = values;
         const { data } =  await axios.get(pathLogin, {...values});
@@ -29,8 +30,10 @@ const Login = () => {
     } catch (e) {
         if (e.isAxiosError && e.response && e.response.status === 401) {
           setError('accessDenial');
+          console.log('accessDenial');
         } else {
             setError('networkError');
+            console.log('networkError');
         }
     }
   };
