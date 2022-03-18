@@ -11,6 +11,9 @@ const Login = () => {
   const [error, setError] = useState(null);
   const authorization = useContext(authorizContext);
 
+  console.log(authorizContext);
+  console.log(authorization);
+
   const location = useLocation();
   const navigate = useNavigate();
 

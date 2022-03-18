@@ -10,6 +10,7 @@ import NotFound from './NotFound.jsx';
 import authorizContext  from '../contexts/index.js';
 
 const AutorizProvider = ({children}) => {
+  console.log(authorizContext);
   const token = localStorage.getItem('token');
   const [loggedIn, setLoggedIn] = useState(Boolean(token));
   const logIn = ({ username, token }) => {
