@@ -8,7 +8,7 @@ const Chat = () => {
   <div className="text-center">
     <h1>здесь чат!</h1>
     <span>
-      <Link onClick={authorization.logOut}>LogOut</Link>
+      Выход
     </span>
   </div>
 );
