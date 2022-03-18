@@ -17,7 +17,7 @@ const Login = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const handleSubmit = async (values) => {
+  const handlerSubmit = async (values) => {
     const pathLogin = routes.loginPath();
     setError(null);
     console.log(pathLogin);
@@ -44,7 +44,7 @@ const Login = () => {
       password: '',
     },
     validationSchema: schema,
-    onSubmit: handleSubmit
+    onSubmit: handlerSubmit
   });
   console.log(formik);
 
