@@ -48,10 +48,10 @@ const Login = () => {
   });
  // console.log(formik.handleSubmit);
  // console.log(handlerSubmit);
-
+  const { values, handleSubmit, handleChange } = formik;
 
   return (
-    <Form onSubmit={formik.onSubmit}>
+    <Form onSubmit={handleSubmit}>
       <Form.Group className="mb-3">
         <Form.Label htmlfor="username">User name</Form.Label>
         <Form.Control
@@ -61,8 +61,8 @@ const Login = () => {
           autocomplite="username"
           required
           placeholder="Enter user name" 
-          onChange={formik.handleChange}
-          value={formik.values.username}
+          onChange={handleChange}
+          value={values.username}
         />
       </Form.Group>
       <Form.Group className="mb-3">
@@ -74,8 +74,8 @@ const Login = () => {
           autocomplite="current-password"
           required
           placeholder="Password"
-          onChange={formik.handleChange}
-          value={formik.values.password}
+          onChange={handleChange}
+          value={values.password}
         />
       </Form.Group>
     <Button variant="outline-primary" type="submit" className="w-100 mb-3">
