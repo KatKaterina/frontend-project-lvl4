@@ -32,9 +32,10 @@ const AutorizProvider = ({children}) => {
 }
 
 const UserRoute = ({ exact, path, element }) => {
+  console.log(element);
   const { loggedIn } = () => useContext(authorizContext);
   console.log(loggedIn);
-  console.log(element);
+  
   return (
     <Route exact={exact} path={path}>
       {loggedIn ? element : <Navigate to="/login"/>}
