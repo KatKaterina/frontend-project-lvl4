@@ -8,16 +8,19 @@ const Channels = () => {
   const {currentChannelsId} = useSelector((state) => state.channels);
   const dispatch = useDispatch();
 
-  useEffect(() => {
+  console.log(channels);
+  console.log(currentChannelsId);
+
+  /*useEffect(() => {
       dispatch(fetchData());
-  }, [dispatch]);
+  }, [dispatch]);*/
 
   const handleAddChannel = () => {
 
   };
 
   const handleClick = (id) => {
-    dispatch(channelsActions.changeCurrentChannel({ id }));
+    /* dispatch(channelsActions.changeCurrentChannel({ id })); */
   };
 
   const handleRemove = (id) => {
