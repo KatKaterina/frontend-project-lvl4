@@ -4,7 +4,9 @@ import { useSelector, useDispatch } from 'react-redux';
 import { actions as channelsActions, fetchData, selectorChannels } from '../slices/ChannelsSlice.js';
 
 const Channels = () => {
-  const channels = useSelector(selectorChannels.selectAll);
+  //const channels = useSelector(selectorChannels.selectAll);
+
+  const {channels} = useSelector((state) => state.channels);
   const {currentChannelId} = useSelector((state) => state.channels);
   const dispatch = useDispatch();
 

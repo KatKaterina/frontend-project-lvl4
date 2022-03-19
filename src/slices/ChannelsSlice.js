@@ -15,7 +15,11 @@ const getAuthorizationHeader = () => {
   console.log('token:');
   console.log(token);
   console.log(routes.dataPath());
-  return token ? { Authorization: `Bearer ${token}` } : {}
+  //return token ? { Authorization: `Bearer ${token}` } : {}
+  if (token) {
+    return { Authorization: `Bearer ${token}` };
+  }
+  return {};
 };
 
 export const fetchData = createAsyncThunk(
