@@ -32,7 +32,7 @@ export const fetchData = createAsyncThunk(
 );
 
 const channelsSlice = createSlice ({
-    name: "channels",
+    name: 'channels',
     initialState,
     reducers: {
         changeCurrentChannel: (state, { payload }) => {
