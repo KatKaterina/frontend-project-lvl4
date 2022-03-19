@@ -26,14 +26,12 @@ const Channels = () => {
     return {};
   };
   
-  export const fetchData = createAsyncThunk(
-      'channel/fetchData',
+  export const fetchData = 
       async () => {
         const {data} = await axios.get(routes.dataPath(), { headers: getAuthorizationHeader() });
         console.log(data);
         return data;
-      }
-  );
+      };
 
   fetchData();
 
