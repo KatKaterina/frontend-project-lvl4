@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { Row } from 'react-bootstrap';
 import authorizContext  from '../contexts/index.js';
 
 const Chat = () => {
@@ -11,6 +12,9 @@ const Chat = () => {
   }
   return (
   <>
+   <Row className="flex-grow flex-column h-70">
+     <Channels />
+   </Row>
    <div className="text-center">
      <h1>здесь чат!</h1>
      <span>
