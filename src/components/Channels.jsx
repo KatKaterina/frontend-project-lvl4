@@ -8,6 +8,8 @@ const Channels = () => {
   const {currentChannelId} = useSelector((state) => state.channels);
   const dispatch = useDispatch();
 
+  console.log(localStorage.getItem('token'));
+
   console.log('channels:');
   console.log(channels);
   console.log(currentChannelId);

@@ -8,7 +8,7 @@ const Chat = () => {
   const authorization = useContext(authorizContext);
   const handleClick = (e) => {
     e.preventDefault();
-    console.log('1');
+    //console.log('1');
     authorization.logOut();
   }
   return (
