@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Col, Nav, Button } from 'react-bootstrap';
 import { useSelector, useDispatch } from 'react-redux';
-import { actions as channelsActions, selectorChannels } from '../slices/ChannelsSlice.js';
+import { selectorChannels } from '../slices/ChannelsSlice.js';
 import routes from '../routes.js';
 import axios from 'axios';
 
