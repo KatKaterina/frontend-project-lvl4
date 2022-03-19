@@ -1,18 +1,18 @@
 import React, { useEffect } from 'react';
 import { Col, Nav, Button } from 'react-bootstrap';
 import { useSelector, useDispatch } from 'react-redux';
-import { selectAllChannels } from '../slices/ChannelsSlice.js';
-import routes from '../routes.js';
-import axios from 'axios';
+import { selectorChannels } from '../slices/ChannelsSlice.js';
+//import routes from '../routes.js';
+//import axios from 'axios';
 
 const Channels = () => {
   const dispatch = useDispatch();
   //const channels = useSelector(selectorChannels.selectAll);
   //const channels = useSelector(selectAllChannels);
-  const channels = useSelector(selectAllChannels.selectAll);
+  const channels = useSelector(selectorChannels.selectAll);
 
   //const {channels} = useSelector((state) => state.channels);
-  //const {currentChannelId} = useSelector((state) => state.channels);
+  const {currentChannelId} = useSelector((state) => state.channels);
   
 
   //console.log(localStorage.getItem('token'));
@@ -42,7 +42,7 @@ const Channels = () => {
 
   console.log('channels:');
   console.log(channels);
-  //console.log(currentChannelId);
+  console.log(currentChannelId);
 
   /*useEffect(() => {
       dispatch(fetchData());
