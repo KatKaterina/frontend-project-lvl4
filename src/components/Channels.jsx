@@ -1,12 +1,13 @@
 import React, { useEffect } from 'react';
 import { Col, Nav, Button } from 'react-bootstrap';
 import { useSelector, useDispatch } from 'react-redux';
-import { selectorChannels } from '../slices/ChannelsSlice.js';
+import { selectAllChannels } from '../slices/ChannelsSlice.js';
 import routes from '../routes.js';
 import axios from 'axios';
 
 const Channels = () => {
-  const channels = useSelector(selectorChannels.selectAll);
+  //const channels = useSelector(selectorChannels.selectAll);
+  const channels = useSelector(selectAllChannels);
 
   //const {channels} = useSelector((state) => state.channels);
   const {currentChannelId} = useSelector((state) => state.channels);
@@ -14,7 +15,7 @@ const Channels = () => {
 
   //console.log(localStorage.getItem('token'));
 
-  const getAuthorizationHeader = () => {
+  /*const getAuthorizationHeader = () => {
     const token = localStorage.getItem('token');
     console.log('token:');
     console.log(token);
@@ -33,12 +34,12 @@ const Channels = () => {
         return data;
       };
 
-  fetchData();
+  fetchData();*/
 
 
 
-  //console.log('channels:');
-  //console.log(channels);
+  console.log('channels:');
+  console.log(channels);
   console.log(currentChannelId);
 
   /*useEffect(() => {

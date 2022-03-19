@@ -38,8 +38,8 @@ const channelsSlice = createSlice ({
     },
     extraReducers: (builder) => {
         builder
-          .addCase(fetchData.fulfilled, (state, {payload})=> {
-              const { channels, currentChannelId } = payload;
+          .addCase(fetchData.fulfilled, (state, action)=> {
+              const { channels, currentChannelId } = action.payload;
               channelsAdapter.setAll(state, channels);
               state.currentChannelId = currentChannelId;
               state.loading = 'succes';
@@ -53,5 +53,6 @@ const channelsSlice = createSlice ({
 });
 
 export const {actions} = channelsSlice;
-export const selectorChannels = channelsAdapter.getSelectors((state) => state.channels);
+//export const {selectAll: selectAllChannels, selectorChannels = channelsAdapter.getSelectors((state) => state.channels);
+export const { selectAll: selectAllChannels } = channelsAdapter.getSelectors((state) => state.channels);
 export default channelsSlice.reducer;
