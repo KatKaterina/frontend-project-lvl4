@@ -5,6 +5,7 @@ import axios from 'axios';
 const channelsAdapter = createEntityAdapter();
 
 const initialState = channelsAdapter.getInitialState({
+    channels: [],
     currentChannelId: '',
     loading: '',
     error: null,
@@ -53,4 +54,4 @@ const channelsSlice = createSlice ({
 
 export const {actions} = channelsSlice;
 export const selectorChannels = channelsAdapter.getSelectors((state) => state.channels);
-export default channelsAdapter.reducer;
+export default channelsSlice.reducer;
