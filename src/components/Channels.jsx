@@ -6,12 +6,13 @@ import routes from '../routes.js';
 import axios from 'axios';
 
 const Channels = () => {
+  const dispatch = useDispatch();
   //const channels = useSelector(selectorChannels.selectAll);
   const channels = useSelector(selectAllChannels);
 
   //const {channels} = useSelector((state) => state.channels);
   const {currentChannelId} = useSelector((state) => state.channels);
-  const dispatch = useDispatch();
+  
 
   //console.log(localStorage.getItem('token'));
 

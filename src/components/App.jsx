@@ -36,7 +36,7 @@ const AutorizProvider = ({children}) => {
 const UserRoute = ({ children }) => {
   //console.log(children);
   const { loggedIn } = useContext(authorizContext);
-  console.log("logedIn " + loggedIn);
+  //console.log("logedIn " + loggedIn);
 
   return (
     loggedIn ? children : <Navigate to="/login"/>

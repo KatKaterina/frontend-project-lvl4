@@ -40,7 +40,8 @@ const channelsSlice = createSlice ({
         builder
           .addCase(fetchData.fulfilled, (state, action)=> {
               const { channels, currentChannelId } = action.payload;
-              channelsAdapter.setAll(state, channels);
+              //channelsAdapter.setAll(state, channels);
+              state.channels = channels;
               state.currentChannelId = currentChannelId;
               state.loading = 'succes';
               state.error = null;
