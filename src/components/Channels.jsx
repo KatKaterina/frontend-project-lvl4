@@ -37,8 +37,8 @@ const Channels = () => {
 
 
 
-  console.log('channels:');
-  console.log(channels);
+  //console.log('channels:');
+  //console.log(channels);
   console.log(currentChannelId);
 
   /*useEffect(() => {

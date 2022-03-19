@@ -15,11 +15,7 @@ const getAuthorizationHeader = () => {
   console.log('token:');
   console.log(token);
   console.log(routes.dataPath());
-  //return token ? { Authorization: `Bearer ${token}` } : {}
-  if (token) {
-    return { Authorization: `Bearer ${token}` };
-  }
-  return {};
+  return token ? { Authorization: `Bearer ${token}` } : {}
 };
 
 export const fetchData = createAsyncThunk(
@@ -42,8 +38,8 @@ const channelsSlice = createSlice ({
     },
     extraReducers: (builder) => {
         builder
-          .addCase(fetchData.fulfilled, (state, action)=> {
-              const { channels, currentChannelId } = action.payload;
+          .addCase(fetchData.fulfilled, (state, {payload})=> {
+              const { channels, currentChannelId } = payload;
               channelsAdapter.setAll(state, channels);
               state.currentChannelId = currentChannelId;
               state.loading = 'succes';
