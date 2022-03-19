@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { Row } from 'react-bootstrap';
 import authorizContext  from '../contexts/index.js';
+import Channels from './Channels.js';
 
 const Chat = () => {
   const authorization = useContext(authorizContext);
