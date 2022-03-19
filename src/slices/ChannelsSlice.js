@@ -3,14 +3,17 @@ import routes from '../routes.js';
 import axios from 'axios';
 
 const channelsAdapter = createEntityAdapter();
+
 const initialState = channelsAdapter.getInitialState({
-    currentChannelsId: '',
+    currentChannelId: '',
     loading: '',
     error: null,
 });
 
 const getAuthorizationHeader = () => {
   const token = localStorage.getItem('token');
+  console.log(token);
+  console.log(routes.dataPath());
   return token ? { Authorization: `Bearer ${token}` } : {}
 };
 
@@ -18,6 +21,7 @@ export const fetchData = createAsyncThunk(
     'channel/fetchData',
     async () => {
       const {data} = await axios.get(routes.dataPath(), { headers: getAuthorizationHeader() });
+      console.log(data);
       return data;
     }
 );
@@ -28,15 +32,15 @@ const channelsSlice = createSlice ({
     reducers: {
         changeCurrentChannel: (state, { payload }) => {
             const {id} = payload;
-            state.currentChannelsId = id;
+            state.currentChannelId = id;
         },
     },
     extraReducers: (builder) => {
         builder
           .addCase(fetchData.fulfilled, (state, action)=> {
-              const { channels, currentChannelsId } = action.payload;
+              const { channels, currentChannelId } = action.payload;
               channelsAdapter.setAll(state, channels);
-              state.currentChannelsId = currentChannelsId;
+              state.currentChannelId = currentChannelId;
               state.loading = 'succes';
               state.error = null;
           })

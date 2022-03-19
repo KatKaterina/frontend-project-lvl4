@@ -5,11 +5,11 @@ import { actions as channelsActions, fetchData, selectorChannels } from '../slic
 
 const Channels = () => {
   const channels = useSelector(selectorChannels.selectAll);
-  const {currentChannelsId} = useSelector((state) => state.channels);
+  const {currentChannelId} = useSelector((state) => state.channels);
   const dispatch = useDispatch();
 
   console.log(channels);
-  console.log(currentChannelsId);
+  console.log(currentChannelId);
 
   /*useEffect(() => {
       dispatch(fetchData());
@@ -49,7 +49,7 @@ const Channels = () => {
             <Nav.Item key={id}>
               <Channel
                 name={name}
-                buttonVariant={id === currentChannelsId ? 'primary': 'light'}
+                buttonVariant={id === currentChannelId ? 'primary': 'light'}
                 onClick={handleClick(id)}
                 onRemove={handleRemove(id)}
                 onRename={handleRename(id, name)}
