@@ -5,7 +5,6 @@ import axios from 'axios';
 const channelsAdapter = createEntityAdapter();
 
 const initialState = channelsAdapter.getInitialState({
-    channels: [],
     currentChannelId: '',
     loading: '',
     error: null,
@@ -13,6 +12,7 @@ const initialState = channelsAdapter.getInitialState({
 
 const getAuthorizationHeader = () => {
   const token = localStorage.getItem('token');
+  console.log('token:');
   console.log(token);
   console.log(routes.dataPath());
   return token ? { Authorization: `Bearer ${token}` } : {}
