@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Col, Nav, Button } from 'react-bootstrap';
 import { useSelector, useDispatch } from 'react-redux';
-import { actions as channelsActions, fetchData, selectorChannels } from '../slices/ChannelsSlice.js';
+import { actions as channelsActions, selectorChannels } from '../slices/ChannelsSlice.js';
 import routes from '../routes.js';
 import axios from 'axios';
 
@@ -26,7 +26,7 @@ const Channels = () => {
     return {};
   };
   
-  export const fetchData = 
+  const fetchData = 
       async () => {
         const {data} = await axios.get(routes.dataPath(), { headers: getAuthorizationHeader() });
         console.log(data);
