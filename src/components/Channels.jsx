@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 import { Col, Nav, Button } from 'react-bootstrap';
 import { useSelector, useDispatch } from 'react-redux';
 import { actions as channelsActions, fetchData, selectorChannels } from '../slices/ChannelsSlice.js';
+import routes from '../routes.js';
+import axios from 'axios';
 
 const Channels = () => {
   const channels = useSelector(selectorChannels.selectAll);
@@ -10,7 +12,32 @@ const Channels = () => {
   const {currentChannelId} = useSelector((state) => state.channels);
   const dispatch = useDispatch();
 
-  console.log(localStorage.getItem('token'));
+  //console.log(localStorage.getItem('token'));
+
+  const getAuthorizationHeader = () => {
+    const token = localStorage.getItem('token');
+    console.log('token:');
+    console.log(token);
+    console.log(routes.dataPath());
+    //return token ? { Authorization: `Bearer ${token}` } : {}
+    if (token) {
+      return { Authorization: `Bearer ${token}` };
+    }
+    return {};
+  };
+  
+  export const fetchData = createAsyncThunk(
+      'channel/fetchData',
+      async () => {
+        const {data} = await axios.get(routes.dataPath(), { headers: getAuthorizationHeader() });
+        console.log(data);
+        return data;
+      }
+  );
+
+  fetchData();
+
+
 
   console.log('channels:');
   console.log(channels);
