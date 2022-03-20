@@ -48,7 +48,7 @@ const Channels = () => {
   //buttonVariant={id === currentChannelId ? 'outline-success': 'light'}
   const renderChannels = () => {
       return (
-        <Nav variant="pills" className="flex-column" activeKey={currentChannelId}>
+        <Nav variant="tabs" className="flex-column" activeKey={currentChannelId}>
           {channels.map(({ id, name, removable }) => {
           const Channel = removable ? channelFixed : channelFixed;
           return (
