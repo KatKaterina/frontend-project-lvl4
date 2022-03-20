@@ -25,14 +25,20 @@ const FormMessage = ({ currentChannelId }) => {
 
   const handlerSubmit = ({message}, {resetForm}) => {
     const newMessage =  { message, channelId: currentChannelId, username };
-    if (socket.connected) {
+    socket.emit('newMessage', newMessage, (response) => {
+      if (response.status === 'ok') {
+        resetForm();
+      }
+    });
+    /*if (socket.connected) {
       socket.emit('newMessage', newMessage);
       resetForm();
     } else {
       console.log('ошибка отправки сообщения');
-    }
-    console.log(socket);
-    console.log(newMessage);
+      console.log(socket.connected);
+      console.log(newMessage);
+    }*/
+
   };
 
   const formik = useFormik({
