@@ -40,7 +40,7 @@ const Channels = () => {
 
   const channelFixed = ({ id, name, onClick}) => {
       return (
-        <Nav.Link key={id} className="w-100 rounded-0 text-start btn btn-success">
+        <Nav.Link key={id} className="w-100 rounded-0 text-start btn btn-success" onClick={onClick}>
           {name}
         </Nav.Link>
       );
@@ -49,7 +49,7 @@ const Channels = () => {
   //buttonVariant={id === currentChannelId ? 'outline-success': 'light'}
   const renderChannels = () => {
       return (
-        <Nav variant="tabs" className="flex-column" activeKey={currentChannelId}>
+        <Nav className="flex-column" activeKey={currentChannelId}>
           {channels.map(({ id, name, removable }) => {
           const Channel = removable ? channelFixed : channelFixed;
           return (
