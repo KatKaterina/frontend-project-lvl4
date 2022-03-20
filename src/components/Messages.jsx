@@ -30,7 +30,7 @@ const FormMessage = ({ currentChannelId }) => {
     } else {
       console.log('ошибка отправки сообщения');
     }*/
-    console.log(socket);
+    //console.log(socket);
     console.log(newMessage);
   };
 
