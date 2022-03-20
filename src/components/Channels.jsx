@@ -25,7 +25,6 @@ const Channels = () => {
 
   const handleClick = (id) => () => {
      dispatch(changeCurrentChannel({ id }));
-     console.log(id);
      console.log(currentChannelId);
   };
 
