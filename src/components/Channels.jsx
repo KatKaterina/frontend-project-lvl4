@@ -23,7 +23,8 @@ const Channels = () => {
 
   };
 
-  const handleClick = (id) => () => {
+  const handleClick = (id) => (e) => {
+    e.preventDefault();
      dispatch(changeCurrentChannel({ id }));
      console.log(currentChannelId);
   };
@@ -39,7 +40,7 @@ const Channels = () => {
 
   const channelFixed = ({ id, name, onClick}) => {
       return (
-        <Nav.Link key={id} className="w-100 rounded-0 text-start btn btn-outline-success w-100"  onClick={onClick}>
+        <Nav.Link key={id} className="w-100 rounded-0 text-start btn btn-outline-success">
           {name}
         </Nav.Link>
       );
