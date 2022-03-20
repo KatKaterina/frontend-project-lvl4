@@ -39,7 +39,7 @@ const Channels = () => {
 
   const channelFixed = ({ id, name, buttonVariant, onClick}) => {
       return (
-        <Nav.Link key={id} as={Button} variant={buttonVariant} block className="mb-2 text-left" onClick={onClick}>
+        <Nav.Link key={id} className="w-100 rounded-0 text-start btn btn-secondary w-100" variant={buttonVariant} block onClick={onClick}>
           {name}
         </Nav.Link>
       );
