@@ -34,7 +34,7 @@ const FormMessage = () => {
   return (
     <div className="mt-auto px-5 py-3">
       <Form onSubmit={formik.handleSubmit} className="py-1">
-        <Form.Group className="mb-3">
+        <InputGroup className="mb-3">
           <Form.Control 
             name="message"
             id="message"
@@ -48,7 +48,7 @@ const FormMessage = () => {
           <Button type="submit">
             Send
           </Button>
-        </Form.Group>
+        </InputGroup>
       </Form>
     </div>
   )
