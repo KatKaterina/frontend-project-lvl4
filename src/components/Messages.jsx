@@ -74,7 +74,7 @@ const Messages = () => {
           <p className="m-0">{currentChannelName}</p>
         </div>
         <ChannelMessages />
-        <FormMessage />
+        
       </div>
   </Col>
   );
