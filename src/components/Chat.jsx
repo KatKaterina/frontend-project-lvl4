@@ -21,11 +21,12 @@ const Chat = () => {
   }
   return (
   <>
-   <Row className="flex-grow flex-column h-70">
+   <div className = "container h-100 my-4 overflow-hidden rounded shadow">
+   <Row className="flex-grow flex-column h-70 pb-3">
      <Channels />
    </Row>
+   </div>
    <div className="text-center">
-     <h1>здесь чат!</h1>
      <span>
       <Link to="/login" onClick={handleClick}>LogOut</Link>
      </span>

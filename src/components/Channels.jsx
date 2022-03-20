@@ -2,42 +2,13 @@ import React, { useEffect } from 'react';
 import { Col, Nav, Button } from 'react-bootstrap';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectorChannels } from '../slices/ChannelsSlice.js';
-//import routes from '../routes.js';
-//import axios from 'axios';
 
 const Channels = () => {
   const dispatch = useDispatch();
-  //const channels = useSelector(selectorChannels.selectAll);
-  //const channels = useSelector(selectAllChannels);
+
   const channels = useSelector(selectorChannels.selectAll);
 
-  //const {channels} = useSelector((state) => state.channels);
   const {currentChannelId} = useSelector((state) => state.channels);
-  
-
-  //console.log(localStorage.getItem('token'));
-
-  /*const getAuthorizationHeader = () => {
-    const token = localStorage.getItem('token');
-    console.log('token:');
-    console.log(token);
-    console.log(routes.dataPath());
-    //return token ? { Authorization: `Bearer ${token}` } : {}
-    if (token) {
-      return { Authorization: `Bearer ${token}` };
-    }
-    return {};
-  };
-  
-  const fetchData = 
-      async () => {
-        const {data} = await axios.get(routes.dataPath(), { headers: getAuthorizationHeader() });
-        console.log(data);
-        return data;
-      };
-
-  fetchData();*/
-
 
 
   console.log('channels:');
@@ -95,7 +66,7 @@ const Channels = () => {
   }
 
     return (
-      <div className = "container h-100 my-4 overflow-hidden rounded shadow">
+     
         <Col className="border-right">
           <div className="d-flex mb-2">
             <span>Channels</span>
@@ -103,7 +74,7 @@ const Channels = () => {
           </div>
           {renderChannels()}
         </Col>
-      </div>
+    
     )
 };
 
