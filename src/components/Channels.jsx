@@ -20,7 +20,7 @@ const Channels = () => {
   
   const handleClick = (id) => () => {
     dispatch(changeCurrentChannel({ id }));
-    console.log(currentChannelId);
+    //console.log(currentChannelId);
   };
 
   const handleAdd = () => {

@@ -12,9 +12,9 @@ const initialState = channelsAdapter.getInitialState({
 
 const getAuthorizationHeader = () => {
   const token = localStorage.getItem('token');
-  console.log('token:');
-  console.log(token);
-  console.log(routes.dataPath());
+  //console.log('token:');
+  //console.log(token);
+  //console.log(routes.dataPath());
   return token ? { Authorization: `Bearer ${token}` } : {}
 };
 

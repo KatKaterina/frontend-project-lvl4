@@ -18,20 +18,20 @@ const ChannelMessages = () => {
     )
 };
 
-//const FormMessage = ({ currentChannelId }) => {
+
 const FormMessage = ({ currentChannelId }) => {
-  //const socket = useContext(socketContext);
-  //username = localStorage.getItem('username');
+  const socket = useContext(socketContext);
+  username = localStorage.getItem('username');
 
   const handlerSubmit = ({message}, {resetForm}) => {
-    //const newMessage =  { message, channelId: currentChannelId, username };
-   /* if (socket.connected) {
+    const newMessage =  { message, channelId: currentChannelId, username };
+    if (socket.connected) {
       socket.emit('newMessage', newMessage);
       resetForm();
     } else {
       console.log('ошибка отправки сообщения');
-    }*/
-    //console.log(socket);
+    }
+    console.log(socket);
     console.log(newMessage);
   };
 
