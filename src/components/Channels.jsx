@@ -67,7 +67,7 @@ import { selectorChannels, changeCurrentChannel } from '../slices/ChannelsSlice.
         </Nav>
       );
   }*/
-  const IrremovableChannel = ({ name, buttonVariant, onClick }) => (
+  const fixedChannel = ({ name, buttonVariant, onClick }) => (
     <Nav.Link
       as={Button}
       variant={buttonVariant}
@@ -111,12 +111,12 @@ import { selectorChannels, changeCurrentChannel } from '../slices/ChannelsSlice.
   const renderChannels = () => (
     <Nav variant="pills" fill className="flex-column">
       {channels.map(({ id, name, removable }) => {
-        const Channel = removable ? IrremovableChannel : IrremovableChannel;
+        const Channel = removable ? fixedChannel : fixedChannel;
         return (
           <Nav.Item key={id}>
             <Channel
               name={name}
-              buttonVariant={getButtonVariant(id)}
+              buttonVariant={id === currentChannelId ? 'primary' : 'light'}
               onClick={handleClickChannel(id)}
               onRemove={handleRemoveChannel(id)}
               onRename={handleRenameChannel(id, name)}
