@@ -1,6 +1,6 @@
-import { Form, useFormik } from 'formik';
+import { useFormik } from 'formik';
 import React, { useEffect } from 'react';
-import { Col, Nav, Button, InputGroup } from 'react-bootstrap';
+import { Col, Form, Button, InputGroup } from 'react-bootstrap';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectorChannels } from '../slices/ChannelsSlice.js';
 
@@ -18,7 +18,7 @@ const ChannelMessages = () => {
 };
 
 const FormMessage = () => {
-  const handlerSubmit = () => {
+  const handleSubmit = () => {
 
   }
 
@@ -27,7 +27,7 @@ const FormMessage = () => {
       message: '',
     },
     /*validationSchema: schema,*/
-    onSubmit: handlerSubmit,
+    onSubmit: handleSubmit,
   });
 
   return (
