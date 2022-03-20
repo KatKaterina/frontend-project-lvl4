@@ -22,7 +22,7 @@ export const fetchData = createAsyncThunk(
     'channel/fetchData',
     async () => {
       const {data} = await axios.get(routes.dataPath(), { headers: getAuthorizationHeader() });
-      console.log(data);
+      //console.log(data);
       return data;
     }
 );
@@ -40,7 +40,7 @@ const channelsSlice = createSlice ({
         builder
           .addCase(fetchData.fulfilled, (state, action)=> {
               const { channels, currentChannelId } = action.payload;
-              console.log(channels);
+              //console.log(channels);
               channelsAdapter.setAll(state, channels);
               state.currentChannelId = currentChannelId;
               state.loading = 'succes';

@@ -24,7 +24,7 @@ const Channels = () => {
   };
 
   const handleClick = (id) => {
-     dispatch(channelsActions.changeCurrentChannel({ id }));
+     /*dispatch(channelsActions.changeCurrentChannel({ id }));*/
   };
 
   const handleRemove = (id) => {
