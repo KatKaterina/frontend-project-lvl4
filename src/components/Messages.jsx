@@ -14,7 +14,7 @@ const Messages = () => {
   return (
   <Col className="h-100">
       <div className="d-flex flex-column h-100">
-          <Message />
+        <h1>messages</h1>
       </div>
   </Col>
   );
