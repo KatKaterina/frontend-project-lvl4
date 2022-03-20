@@ -28,9 +28,9 @@ const FormMessage = ({ currentChannelId }) => {
     socket.emit('newMessage', newMessage, (response) => {
       console.log(response);
       console.log(response.status);
-      //if (response.status === 'ok') {
-      //  resetForm();
-      //}
+      if (response.status === 'ok') {
+        resetForm();
+      }
     });
     /*if (socket.connected) {
       socket.emit('newMessage', newMessage);
