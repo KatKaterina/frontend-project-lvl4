@@ -11,11 +11,13 @@ const Message = () => {
 }
 
 const Messages = () => {
+  return (
   <Col className="h-100">
       <div className="d-flex flex-column h-100">
           <Message />
       </div>
   </Col>
+  );
 }
 
 export default Messages;
