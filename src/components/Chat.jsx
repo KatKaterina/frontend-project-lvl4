@@ -22,7 +22,7 @@ const Chat = () => {
   return (
   <>
    <div className = "container h-100 my-4 overflow-hidden rounded shadow">
-   <Row className="flex-grow flex-column h-70 pb-3">
+   <Row className="flex-grow-1 h-70 pb-3">
      <Channels />
    </Row>
    </div>
