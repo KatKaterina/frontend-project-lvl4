@@ -3,7 +3,7 @@ import { Col, Nav, Button } from 'react-bootstrap';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectorChannels, changeCurrentChannel } from '../slices/ChannelsSlice.js';
 
-const Channels = () => {
+/*const Channels = () => {
   const dispatch = useDispatch();
 
   const channels = useSelector(selectorChannels.selectAll);
@@ -19,7 +19,7 @@ const Channels = () => {
       dispatch(fetchData());
   }, [dispatch]);*/
 
-  const handleAddChannel = () => {
+ /* const handleAddChannel = () => {
 
   };
 
@@ -49,7 +49,7 @@ const Channels = () => {
   //buttonVariant={id === currentChannelId ? 'outline-success': 'light'}
   const renderChannels = () => {
       return (
-        <Nav className="flex-column" activeKey={currentChannelId}>
+        <Nav variant="pills" className="flex-column" >
           {channels.map(({ id, name, removable }) => {
           const Channel = removable ? channelFixed : channelFixed;
           return (
@@ -66,8 +66,65 @@ const Channels = () => {
         })}
         </Nav>
       );
-  }
+  }*/
+  const IrremovableChannel = ({ name, buttonVariant, onClick }) => (
+    <Nav.Link
+      as={Button}
+      variant={buttonVariant}
+      block
+      className="mb-2 text-left"
+      onClick={onClick}
+    >
+      {name}
+    </Nav.Link>
+  );
 
+
+  const Channels = () => {
+    const channels = useSelector(selectorChannels.selectAll);
+
+    const {currentChannelId} = useSelector((state) => state.channels);
+
+  const dispatch = useDispatch();
+
+
+  const getButtonVariant = (id) => (id === currentChannelId ? 'primary' : 'light');
+
+  const handleAddChannel = () => {
+    
+  };
+
+  const handleRemoveChannel = (id) => () => {
+  
+  };
+
+  const handleRenameChannel = (id, name) => () => {
+   
+  };
+
+  const handleClickChannel = (id) => () => {
+    //dispatch(setCurrentChannelId({ id }));
+    dispatch(changeCurrentChannel({ id }));
+  };
+
+  const renderChannels = () => (
+    <Nav variant="pills" fill className="flex-column">
+      {channels.map(({ id, name, removable }) => {
+        const Channel = removable ? IrremovableChannel : IrremovableChannel;
+        return (
+          <Nav.Item key={id}>
+            <Channel
+              name={name}
+              buttonVariant={getButtonVariant(id)}
+              onClick={handleClickChannel(id)}
+              onRemove={handleRemoveChannel(id)}
+              onRename={handleRenameChannel(id, name)}
+            />
+          </Nav.Item>
+        );
+      })}
+    </Nav>
+  );
     return (
      
         <Col className="border-right">
