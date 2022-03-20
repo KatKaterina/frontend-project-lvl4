@@ -19,8 +19,8 @@ const ChannelMessages = () => {
 };
 
 const FormMessage = ({ currentChannelId }) => {
-  const socket = useContext(socketContext);
-  username = localStorage.getItem('username');
+  //const socket = useContext(socketContext);
+  //username = localStorage.getItem('username');
 
   const handlerSubmit = ({message}, {resetForm}) => {
     const newMessage =  { message, channelId: currentChannelId, username };
