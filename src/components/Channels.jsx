@@ -23,8 +23,7 @@ const Channels = () => {
 
   };
 
-  const handleClick = (id) => (e) => {
-    e.preventDefault();
+  const handleClick = (id) => {
      dispatch(changeCurrentChannel({ id }));
      console.log(id);
      console.log(currentChannelId);
@@ -49,14 +48,14 @@ const Channels = () => {
 
   const renderChannels = () => {
       return (
-        <Nav variant="pills" fill className="flex-column">
+        <Nav variant="pills" className="flex-column">
           {channels.map(({ id, name, removable }) => {
           const Channel = removable ? channelFixed : channelFixed;
           return (
             <Nav.Item key={id}>
               <Channel
                 name={name}
-                buttonVariant={id === currentChannelId ? 'primary': 'light'}
+                buttonVariant={id === currentChannelId ? 'outline-success': 'light'}
                 onClick={handleClick(id)}
                 onRemove={handleRemove(id)}
                 onRename={handleRename(id, name)}
