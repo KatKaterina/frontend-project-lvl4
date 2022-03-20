@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Col, Nav, Button } from 'react-bootstrap';
 import { useSelector, useDispatch } from 'react-redux';
-import { selectorChannels } from '../slices/ChannelsSlice.js';
+import { selectorChannels, actions as channelsActions } from '../slices/ChannelsSlice.js';
 
 const Channels = () => {
   const dispatch = useDispatch();
@@ -24,7 +24,7 @@ const Channels = () => {
   };
 
   const handleClick = (id) => {
-     /*dispatch(channelsActions.changeCurrentChannel({ id }));*/
+     dispatch(channelsActions.changeCurrentChannel({ id }));
   };
 
   const handleRemove = (id) => {
