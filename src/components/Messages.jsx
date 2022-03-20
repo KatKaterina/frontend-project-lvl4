@@ -26,9 +26,11 @@ const FormMessage = ({ currentChannelId }) => {
   const handlerSubmit = ({message}, {resetForm}) => {
     const newMessage =  { message, channelId: currentChannelId, username };
     socket.emit('newMessage', newMessage, (response) => {
-      if (response.status === 'ok') {
-        resetForm();
-      }
+      console.log(response);
+      console.log(response.status);
+      //if (response.status === 'ok') {
+      //  resetForm();
+      //}
     });
     /*if (socket.connected) {
       socket.emit('newMessage', newMessage);
