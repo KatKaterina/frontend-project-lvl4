@@ -3,6 +3,7 @@ import { Provider } from 'react-redux';
 import App from './components/App.jsx';
 import store from './slices/index.js';
 import { io } from "socket.io-client";
+import { addMessage } from './slices/messagesSlice.js';
 
 export default async (socketClient = io()) => {
   socketClient.on('newMessge', (message) => {
