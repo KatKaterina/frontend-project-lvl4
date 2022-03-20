@@ -23,7 +23,7 @@ const Channels = () => {
 
   };
 
-  const handleClick = (id) => {
+  const handleClick = (id) => () => {
      dispatch(changeCurrentChannel({ id }));
      console.log(id);
      console.log(currentChannelId);
@@ -48,7 +48,7 @@ const Channels = () => {
 
   const renderChannels = () => {
       return (
-        <Nav variant="pills" className="flex-column">
+        <Nav variant="pills" className="flex-column" activeKey={currentChannelId}>
           {channels.map(({ id, name, removable }) => {
           const Channel = removable ? channelFixed : channelFixed;
           return (
