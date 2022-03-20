@@ -34,28 +34,28 @@ const FormMessage = () => {
   return (
     <div className="mt-auto px-5 py-3">
       <Form onSubmit={formik.handleSubmit} className="py-1 border rounded-2">
-        <InputGroup>
+        <Form.Group className="mb-3">
           <Form.Control 
             name="message"
-            id="message" 
-            aria-label="body"
+            id="message"
+            type="text"
+            aria-label="message"
             className="border-0 p-0 ps-2"
             onChange={formik.handleChange}
             value={formik.values.message}
             placeholder="Enter message" 
           />
-          <InputGroup.Append>
-            <Button type="submit">
-              Send
-            </Button>
-          </InputGroup.Append>
-        </InputGroup>
+        </Form.Group>
       </Form>
     </div>
   )
 };
 
-
+/*<InputGroup.Append>
+<Button type="submit">
+  Send
+</Button>
+</InputGroup.Append>*/
 
 
 /*const MessageHeader = () => {
