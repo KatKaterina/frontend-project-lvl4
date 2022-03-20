@@ -3,12 +3,8 @@ import { Col, Nav, Button } from 'react-bootstrap';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectorChannels } from '../slices/ChannelsSlice.js';
 
-const channels = useSelector(selectorChannels.selectAll);
-const {currentChannelId} = useSelector((state) => state.channels);
-
-const currentChannelName = channels.filter(({id}) => id === currentChannelId).map((channel) => channel.name);
-
 const Message = () => {
+
     return (
         <div className="chat-message overflow-auto px-5">
             <h1>messages</h1>
@@ -17,6 +13,10 @@ const Message = () => {
 }
 
 const MessageHeader = () => {
+  const channels = useSelector(selectorChannels.selectAll);
+  const {currentChannelId} = useSelector((state) => state.channels);
+
+  const currentChannelName = channels.filter(({id}) => id === currentChannelId).map((channel) => channel.name);
   return (
     <div className="bg-light mb-4 p-3 shadow-sm small">
       <p className="m-0">{currentChannelName}</p>
