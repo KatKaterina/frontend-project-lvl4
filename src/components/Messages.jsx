@@ -40,7 +40,7 @@ const FormMessage = () => {
             id="message"
             type="text"
             aria-label="message"
-            className="border-0 p-0 ps-2"
+            className="p-0 ps-2"
             onChange={formik.handleChange}
             value={formik.values.message}
             placeholder="Enter message" 
