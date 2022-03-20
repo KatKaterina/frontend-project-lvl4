@@ -6,15 +6,17 @@ import { io } from "socket.io-client";
 import { addMessage } from './slices/messagesSlice.js';
 
 export default async (socketClient = io()) => {
-  socketClient.on('newMessge', (message) => {
+  /*socketClient.on('newMessge', (message) => {
     store.dispatch(addMessage({ message }));
-  });
+  });*/
 
   return (
     <div id="test">
       <Provider store={store}>
-        <App socket={socketClient}/>
+        <App socket={}/>
       </Provider>
     </div>
   );
 };
+
+//<App socket={socketClient}/>
