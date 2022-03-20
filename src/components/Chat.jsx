@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Row } from 'react-bootstrap';
-import authorizContext  from '../contexts/index.js';
+import { authorizContext }  from '../contexts/index.js';
 import Channels from './Channels.jsx';
 import Messages from './Messages.jsx';
 import { fetchData } from '../slices/ChannelsSlice.js';
