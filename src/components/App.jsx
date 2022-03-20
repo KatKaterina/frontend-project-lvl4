@@ -52,7 +52,7 @@ const UserRoute = ({ children }) => {
 const App = ({ socket }) => {
     return (
       <AutorizProvider>
-        <socketContext.Provider value={socketContext}>
+        <socketContext.Provider value={socket}>
         <Router>
           <div className="d-flex flex-column h-100">
             <Routes>
