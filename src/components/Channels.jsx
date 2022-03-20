@@ -23,7 +23,8 @@ const Channels = () => {
 
   };
 
-  const handleClick = (id) => () => {
+  const handleClick = (id) => (e) => {
+    e.preventDefault();
      dispatch(changeCurrentChannel({ id }));
      console.log(id);
      console.log(currentChannelId);
@@ -72,7 +73,7 @@ const Channels = () => {
         <Col className="border-right">
           <div className="d-flex mb-2">
             <span>Channels</span>
-            <Button variant="link" className="ml-auto p-0 btn-group-vertical" onClick={handleAddChannel}>+</Button>
+            <Button variant="link" className="ml-auto p-0" onClick={handleAddChannel}>+</Button>
           </div>
           {renderChannels()}
         </Col>
