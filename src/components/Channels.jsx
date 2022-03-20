@@ -72,13 +72,13 @@ import { selectorChannels, changeCurrentChannel } from '../slices/ChannelsSlice.
       as={Button}
       variant={buttonVariant}
       block
-      className="mb-2 text-left"
+      className="w-100 rounded-0 text-start"
       onClick={onClick}
     >
       {name}
     </Nav.Link>
   );
-
+  //className="mb-2 text-left"
 
   const Channels = () => {
     const channels = useSelector(selectorChannels.selectAll);
