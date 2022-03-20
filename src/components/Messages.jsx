@@ -1,8 +1,9 @@
 import { useFormik } from 'formik';
-import React, { useEffect } from 'react';
+import React, { useEffect, useContext } from 'react';
 import { Col, Form, Button, InputGroup } from 'react-bootstrap';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectorChannels } from '../slices/ChannelsSlice.js';
+import { socketContext }  from '../contexts/index.js';
 
 const ChannelMessages = () => {
 
@@ -17,11 +18,19 @@ const ChannelMessages = () => {
     )
 };
 
-const FormMessage = () => {
-  
-  const handlerSubmit = () => {
+const FormMessage = ({ currentChannelId }) => {
+  const socket = useContext(socketContext);
+  username = localStorage.getItem('username');
 
-  }
+  const handlerSubmit = ({message}, {resetForm}) => {
+    const newMessage =  { message, channelId: currentChannelId, username };
+    if (socket.connected) {
+      socket.emit('newMessage', newMessage);
+      resetForm();
+    } else {
+      console.log('ошибка отправки сообщения');
+    }
+  };
 
   const formik = useFormik({
     initialValues: {
@@ -54,22 +63,6 @@ const FormMessage = () => {
   )
 };
 
-/*<InputGroup.Append>
-<Button type="submit">
-  Send
-</Button>
-</InputGroup.Append>*/
-
-
-/*const MessageHeader = () => {
-
-  return (
-    <div className="bg-light mb-4 p-3 shadow-sm small">
-      <p className="m-0">{currentChannelName}</p>
-    </div>
-    <Message/>
-  )
-}*/
 
 const Messages = () => {
   const channels = useSelector(selectorChannels.selectAll);
@@ -83,7 +76,7 @@ const Messages = () => {
           <p className="m-0">{currentChannelName}</p>
         </div>
         <ChannelMessages />
-        <FormMessage />
+        <FormMessage currentChannelId={currentChannelId} />
       </div>
   </Col>
   );

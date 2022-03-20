@@ -8,7 +8,7 @@ import {
 import Login from './Login.jsx';
 import NotFound from './NotFound.jsx';
 import Chat from './Chat.jsx';
-import authorizContext  from '../contexts/index.js';
+import { authorizContext }  from '../contexts/index.js';
 
 const AutorizProvider = ({children}) => {
   //console.log(authorizContext);

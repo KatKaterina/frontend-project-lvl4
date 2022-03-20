@@ -2,7 +2,7 @@ import React, { useState, useContext, useEffect } from 'react';
 import { useFormik } from 'formik';
 import { Form, Button } from 'react-bootstrap';
 import schema from '../validateSchema.js';
-import authorizContext  from '../contexts/index.js';
+import { authorizContext }  from '../contexts/index.js';
 import axios from 'axios';
 import routes from '../routes.js';
 import { useLocation, useNavigate } from 'react-router-dom';
