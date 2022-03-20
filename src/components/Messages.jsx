@@ -1,20 +1,56 @@
+import { Form, useFormik } from 'formik';
 import React, { useEffect } from 'react';
-import { Col, Nav, Button } from 'react-bootstrap';
+import { Col, Nav, Button, InputGroup } from 'react-bootstrap';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectorChannels } from '../slices/ChannelsSlice.js';
 
-const Message = () => {
+const ChannelMessages = () => {
 
     return (
-        <div className="chat-message overflow-auto px-5">
+        <div className="chat-messages overflow-auto px-5">
             <div className="text-break mb-2">
-              <b>Имя</b>
+              <b>Name</b>
               ": "
-              "сообщение"
+              "message"
             </div>
         </div>
     )
-}
+};
+
+const FormMessage = () => {
+  const handlerSubmit = () => {
+
+  }
+
+  const formik = useFormik({
+    initialValues: {
+      message: '',
+    },
+    /*validationSchema: schema,*/
+    onSubmit: handlerSubmit,
+  });
+
+  return (
+    <div className="mt-auto px-5 py-3">
+      <Form onSubmit={formik.handleSubmit} className="py-1 border rounded-2">
+        <InputGroup>
+          <Form.Control 
+            name="body" 
+            aria-label="body"
+            className="border-0 p-0 ps-2"
+            onChange={formik.handleChange}
+            value={formik.values.message}
+          />
+          <InputGroup.Append>
+            <Button type="submit">
+              Send
+            </Button>
+          </InputGroup.Append>
+        </InputGroup>
+      </Form>
+    </div>
+  )
+};
 
 /*const MessageHeader = () => {
 
@@ -37,8 +73,8 @@ const Messages = () => {
         <div className="bg-light mb-4 p-3 shadow-sm small">
           <p className="m-0">{currentChannelName}</p>
         </div>
-        <Message />
-        <h1>messages</h1>
+        <ChannelMessages />
+        <FormMessage />
       </div>
   </Col>
   );
