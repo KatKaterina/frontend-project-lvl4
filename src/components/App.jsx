@@ -8,7 +8,7 @@ import {
 import Login from './Login.jsx';
 import NotFound from './NotFound.jsx';
 import Chat from './Chat.jsx';
-import { authorizContext }  from '../contexts/index.js';
+import { authorizContext, socketContext }  from '../contexts/index.js';
 
 const AutorizProvider = ({children}) => {
   //console.log(authorizContext);
@@ -49,9 +49,10 @@ const UserRoute = ({ children }) => {
   )*/
 };
 
-const App = () => {
+const App = ({ socket }) => {
     return (
       <AutorizProvider>
+        <socketContext.Provider value={socketContext}>
         <Router>
           <div className="d-flex flex-column h-100">
             <Routes>
@@ -62,6 +63,7 @@ const App = () => {
             </Routes>
           </div>
         </Router>
+        </socketContext.Provider>
       </AutorizProvider>
     );
 };
