@@ -46,6 +46,7 @@ const Channels = () => {
       );
   }
 
+  //buttonVariant={id === currentChannelId ? 'outline-success': 'light'}
   const renderChannels = () => {
       return (
         <Nav variant="pills" className="flex-column" activeKey={currentChannelId}>
@@ -56,7 +57,7 @@ const Channels = () => {
               <Channel
                 key={id}
                 name={name}
-                buttonVariant={id === currentChannelId ? 'outline-success': 'light'}
+                buttonVariant={'outline-success'}
                 onClick={handleClick(id)}
                 onRemove={handleRemove(id)}
                 onRename={handleRename(id, name)}
