@@ -37,9 +37,9 @@ const Channels = () => {
   };
 
 
-  const channelFixed = ({ id, name, buttonVariant, onClick}) => {
+  const channelFixed = ({ id, name, onClick}) => {
       return (
-        <Nav.Link key={id} className="w-100 rounded-0 text-start btn btn-secondary w-100" variant={buttonVariant} block onClick={onClick}>
+        <Nav.Link key={id} className="w-100 rounded-0 text-start btn btn-outline-success w-100"  onClick={onClick}>
           {name}
         </Nav.Link>
       );
@@ -48,7 +48,7 @@ const Channels = () => {
   //buttonVariant={id === currentChannelId ? 'outline-success': 'light'}
   const renderChannels = () => {
       return (
-        <Nav variant="tabs" className="flex-column" activeKey={currentChannelId}>
+        <Nav variant="pills" className="flex-column" activeKey={currentChannelId}>
           {channels.map(({ id, name, removable }) => {
           const Channel = removable ? channelFixed : channelFixed;
           return (
@@ -56,7 +56,6 @@ const Channels = () => {
               <Channel
                 key={id}
                 name={name}
-                buttonVariant={'outline-success'}
                 onClick={handleClick(id)}
                 onRemove={handleRemove(id)}
                 onRename={handleRename(id, name)}
