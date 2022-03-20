@@ -105,6 +105,7 @@ import { selectorChannels, changeCurrentChannel } from '../slices/ChannelsSlice.
   const handleClickChannel = (id) => () => {
     //dispatch(setCurrentChannelId({ id }));
     dispatch(changeCurrentChannel({ id }));
+    console.log(currentChannelId);
   };
 
   const renderChannels = () => (
@@ -127,10 +128,10 @@ import { selectorChannels, changeCurrentChannel } from '../slices/ChannelsSlice.
   );
     return (
      
-        <Col className="border-right">
-          <div className="d-flex mb-2">
+        <Col className="border-end pt-5 px-0 bg-light">
+          <div className="d-flex mb-2 ps-4 pe-2 justify-content-between">
             <span>Channels</span>
-            <Button variant="link" className="ml-auto p-0" onClick={handleAddChannel}>+</Button>
+            <Button variant="link" className="text-primary p-0" onClick={handleAddChannel}>+</Button>
           </div>
           {renderChannels()}
         </Col>

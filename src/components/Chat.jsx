@@ -22,12 +22,12 @@ const Chat = () => {
   }
   return (
   <>
-   <div className = "container h-100 my-4 overflow-hidden rounded shadow">
-   <Row className="flex-grow-1 h-70 pb-3">
-     <Channels />
-     <Messages />
-   </Row>
-   </div>
+    <div className = "container h-100 my-4 overflow-hidden rounded shadow">
+        <Row className="h-100 bg-white flex-md-row">
+          <Channels />
+          <Messages />
+        </Row>
+    </div>
    <div className="text-center">
      <span>
       <Link to="/login" onClick={handleClick}>LogOut</Link>
@@ -36,5 +36,5 @@ const Chat = () => {
   </>
 );
 }
-
+//<Row className="flex-grow-1 h-70 pb-3"></Row>
 export default Chat;
