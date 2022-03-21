@@ -41,7 +41,7 @@ const FormMessage = ({ currentChannelId, setUploaded }) => {
   const username = localStorage.getItem('username');
   const dispatch = useDispatch();
 
-  const handlerSubmit = ({message}, {resetForm, setSubmiting}) => {
+  const handlerSubmit = ({message}, {resetForm, setSubmitting}) => {
     setSubmitting(true);
     const newMessage =  { message, channelId: currentChannelId, username };
     socket.emit('newMessage', newMessage, (response) => {
@@ -53,7 +53,6 @@ const FormMessage = ({ currentChannelId, setUploaded }) => {
         refInput.current.focus();
         setUploaded(true);
         dispatch(fetchData());
-        dispatch(changeCurrentChannel({ currentChannelId }));
       }
     });
     /*if (socket.connected) {
