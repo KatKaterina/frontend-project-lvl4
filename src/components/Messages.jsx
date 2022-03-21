@@ -39,7 +39,6 @@ const FormMessage = ({ currentChannelId, setUploaded }) => {
   const username = localStorage.getItem('username');
   const dispatch = useDispatch();
 
-
   const handlerSubmit = ({message}, {resetForm}) => {
     const newMessage =  { message, channelId: currentChannelId, username };
     socket.emit('newMessage', newMessage, (response) => {
