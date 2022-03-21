@@ -97,8 +97,8 @@ const FormMessage = ({ currentChannelId }) => {
 const Messages = () => {
   const channels = useSelector(selectorChannels.selectAll);
   const {currentChannelId} = useSelector((state) => state.channels);
-  const [uploaded, setUploaded] = useState(false);
-  console.log(uploaded);
+  //const [uploaded, setUploaded] = useState(false);
+  //console.log(uploaded);
   
   const currentChannelName = channels.filter(({id}) => id === currentChannelId).map((channel) => channel.name);
   return (
@@ -109,8 +109,6 @@ const Messages = () => {
         </div>
         <ChannelMessages currentChannelId={currentChannelId} />
         <FormMessage currentChannelId={currentChannelId}/>
-        {setUploaded(true)}
-        {console.log(uploaded)}
       </div>
   </Col>
   );
