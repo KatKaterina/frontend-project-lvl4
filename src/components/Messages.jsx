@@ -41,12 +41,14 @@ const FormMessage = ({ currentChannelId, setUploaded }) => {
   const username = localStorage.getItem('username');
   const dispatch = useDispatch();
 
-  const handlerSubmit = ({message}, {resetForm}) => {
+  const handlerSubmit = ({message}, {resetForm, setSubmiting}) => {
+    setSubmitting(true);
     const newMessage =  { message, channelId: currentChannelId, username };
     socket.emit('newMessage', newMessage, (response) => {
       //console.log(response);
       //console.log(response.status);
       if (response.status === 'ok') {
+        setSubmitting(false);
         resetForm();
         refInput.current.focus();
         setUploaded(true);
