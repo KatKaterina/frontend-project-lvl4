@@ -1,5 +1,5 @@
 import { useFormik } from 'formik';
-import React, { useEffect, useContext, useRef } from 'react';
+import React, { useEffect, useContext, useRef, useState } from 'react';
 import { Col, Form, Button, InputGroup } from 'react-bootstrap';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectorChannels } from '../slices/ChannelsSlice.js';
@@ -30,7 +30,7 @@ const ChannelMessages = ({ currentChannelId }) => {
 };
 
 
-const FormMessage = ({ currentChannelId }) => {
+const FormMessage = ({ currentChannelId, setUploaded }) => {
   const refInput = useRef();
   const socket = useContext(socketContext);
   const username = localStorage.getItem('username');
@@ -43,6 +43,7 @@ const FormMessage = ({ currentChannelId }) => {
       if (response.status === 'ok') {
         resetForm();
         refInput.current.focus();
+        setUploaded(true);
       }
     });
     /*if (socket.connected) {
@@ -96,7 +97,8 @@ const FormMessage = ({ currentChannelId }) => {
 const Messages = () => {
   const channels = useSelector(selectorChannels.selectAll);
   const {currentChannelId} = useSelector((state) => state.channels);
-
+  const [uploaded, setUploaded] = useState(false);
+  
   const currentChannelName = channels.filter(({id}) => id === currentChannelId).map((channel) => channel.name);
   return (
   <Col className="h-100 p-0">
@@ -105,7 +107,7 @@ const Messages = () => {
           <p className="m-0">{currentChannelName}</p>
         </div>
         <ChannelMessages currentChannelId={currentChannelId} />
-        <FormMessage currentChannelId={currentChannelId} />
+        <FormMessage currentChannelId={currentChannelId} setUploaded={setUploaded}/>
       </div>
   </Col>
   );
