@@ -6,9 +6,11 @@ import { selectorChannels } from '../slices/ChannelsSlice.js';
 import { socketContext }  from '../contexts/index.js';
 import { selectorMessages } from '../slices/messagesSlice.js'
 
-const ChannelMessages = ({ currentChannelId }) => {
+const ChannelMessages = ({ currentChannelId, uploaded }) => {
   const messages = useSelector(selectorMessages.selectAll);
   const refChat = useRef();
+  const [update, setUpdate] = useState(false);
+  setUpdate(uploaded);
 
   useEffect(()=> {
     refChat.current.scrollTop = refChat.current.scrollHeight
@@ -30,7 +32,7 @@ const ChannelMessages = ({ currentChannelId }) => {
 };
 
 
-const FormMessage = ({ currentChannelId }) => {
+const FormMessage = ({ currentChannelId, setUploaded }) => {
   const refInput = useRef();
   const socket = useContext(socketContext);
   const username = localStorage.getItem('username');
@@ -43,7 +45,7 @@ const FormMessage = ({ currentChannelId }) => {
       if (response.status === 'ok') {
         resetForm();
         refInput.current.focus();
-        //setUploaded(true);
+        setUploaded(true);
       }
     });
     /*if (socket.connected) {
@@ -97,7 +99,7 @@ const FormMessage = ({ currentChannelId }) => {
 const Messages = () => {
   const channels = useSelector(selectorChannels.selectAll);
   const {currentChannelId} = useSelector((state) => state.channels);
-  //const [uploaded, setUploaded] = useState(false);
+  const [uploaded, setUploaded] = useState(false);
   //console.log(uploaded);
   
   const currentChannelName = channels.filter(({id}) => id === currentChannelId).map((channel) => channel.name);
@@ -107,8 +109,8 @@ const Messages = () => {
         <div className="bg-light mb-4 p-3 shadow-sm small">
           <p className="m-0">{currentChannelName}</p>
         </div>
-        <ChannelMessages currentChannelId={currentChannelId} />
-        <FormMessage currentChannelId={currentChannelId}/>
+        <ChannelMessages currentChannelId={currentChannelId} uploaded={uploaded} />
+        <FormMessage currentChannelId={currentChannelId} setUploaded={setUploaded}/>
       </div>
   </Col>
   );

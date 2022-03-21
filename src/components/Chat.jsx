@@ -10,11 +10,11 @@ import { useDispatch } from 'react-redux';
 const Chat = () => {
   const authorization = useContext(authorizContext);
   const dispatch = useDispatch();
-  const [uploaded, setUploaded] = useState(false);
+  //const [uploaded, setUploaded] = useState(false);
   
   useEffect(() => {
       dispatch(fetchData());
-      setUploaded(true);
+      //setUploaded(true);
   });
 
   const handleClick = (e) => {
