@@ -12,10 +12,8 @@ const ChannelMessages = ({ currentChannelId, messages }) => {
   const refChat = useRef();
   //const [update, setUpdate] = useState(false);
   //setUpdate(uploaded);
-  const dispatch = useDispatch();
-
+  
   useEffect(()=> {
-    dispatch(fetchData());
     refChat.current.scrollTop = refChat.current.scrollHeight
   }, [messages]);
   
@@ -39,6 +37,8 @@ const FormMessage = ({ currentChannelId, setUploaded }) => {
   const refInput = useRef();
   const socket = useContext(socketContext);
   const username = localStorage.getItem('username');
+  const dispatch = useDispatch();
+
 
   const handlerSubmit = ({message}, {resetForm}) => {
     const newMessage =  { message, channelId: currentChannelId, username };
@@ -49,6 +49,7 @@ const FormMessage = ({ currentChannelId, setUploaded }) => {
         resetForm();
         refInput.current.focus();
         setUploaded(true);
+        dispatch(fetchData());
       }
     });
     /*if (socket.connected) {
