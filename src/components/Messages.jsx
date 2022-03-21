@@ -109,6 +109,7 @@ const Messages = () => {
         </div>
         <ChannelMessages currentChannelId={currentChannelId} />
         <FormMessage currentChannelId={currentChannelId} setUploaded={setUploaded}/>
+        {setUploaded(true)}
         {console.log(uploaded)}
       </div>
   </Col>
