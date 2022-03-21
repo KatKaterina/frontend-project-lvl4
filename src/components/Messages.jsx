@@ -5,7 +5,9 @@ import { useSelector, useDispatch } from 'react-redux';
 import { selectorChannels } from '../slices/ChannelsSlice.js';
 import { socketContext }  from '../contexts/index.js';
 import { selectorMessages } from '../slices/messagesSlice.js';
-import { fetchData } from '../slices/ChannelsSlice.js';
+import { fetchData, changeCurrentChannel } from '../slices/ChannelsSlice.js';
+//import { selectorChannels, changeCurrentChannel } from '../slices/ChannelsSlice.js';
+
 
 const ChannelMessages = ({ currentChannelId, messages }) => {
   //const messages = useSelector(selectorMessages.selectAll);
@@ -49,6 +51,7 @@ const FormMessage = ({ currentChannelId, setUploaded }) => {
         refInput.current.focus();
         setUploaded(true);
         dispatch(fetchData());
+        dispatch(changeCurrentChannel({ currentChannelId }));
       }
     });
     /*if (socket.connected) {
@@ -64,7 +67,7 @@ const FormMessage = ({ currentChannelId, setUploaded }) => {
 
   useEffect(() => {
     refInput.current.focus();
-  })
+  }, []);
 
   const formik = useFormik({
     initialValues: {
