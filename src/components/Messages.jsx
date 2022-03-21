@@ -4,16 +4,21 @@ import { Col, Form, Button, InputGroup } from 'react-bootstrap';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectorChannels } from '../slices/ChannelsSlice.js';
 import { socketContext }  from '../contexts/index.js';
+import { selectorMessages } from '../slices/messagesSlice.js'
 
-const ChannelMessages = () => {
-
+const ChannelMessages = ({ currentChannelId }) => {
+  const messages = useSelector(selectorMessages.selectAll);
     return (
         <div className="chat-messages overflow-auto px-5">
-            <div className="text-break mb-2">
-              <b>Name</b>
-              ": "
-              "message"
-            </div>
+          {messages.filter(({channelId}) => Number(channelId) === currentChannelId)
+            .map(({ id, username, message }) => (
+              <div className="text-break mb-2">
+                <b>{username}</b>
+                ": "
+                {message}
+              </div> 
+            ))
+          }
         </div>
     )
 };
@@ -86,7 +91,7 @@ const Messages = () => {
         <div className="bg-light mb-4 p-3 shadow-sm small">
           <p className="m-0">{currentChannelName}</p>
         </div>
-        <ChannelMessages />
+        <ChannelMessages currentChannelId={currentChannelId} />
         <FormMessage currentChannelId={currentChannelId} />
       </div>
   </Col>
