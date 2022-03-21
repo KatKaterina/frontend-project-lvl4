@@ -30,7 +30,7 @@ const ChannelMessages = ({ currentChannelId }) => {
 };
 
 
-const FormMessage = ({ currentChannelId, setUploaded }) => {
+const FormMessage = ({ currentChannelId }) => {
   const refInput = useRef();
   const socket = useContext(socketContext);
   const username = localStorage.getItem('username');
@@ -43,7 +43,7 @@ const FormMessage = ({ currentChannelId, setUploaded }) => {
       if (response.status === 'ok') {
         resetForm();
         refInput.current.focus();
-        setUploaded(true);
+        //setUploaded(true);
       }
     });
     /*if (socket.connected) {
@@ -108,7 +108,7 @@ const Messages = () => {
           <p className="m-0">{currentChannelName}</p>
         </div>
         <ChannelMessages currentChannelId={currentChannelId} />
-        <FormMessage currentChannelId={currentChannelId} setUploaded={setUploaded}/>
+        <FormMessage currentChannelId={currentChannelId}/>
         {setUploaded(true)}
         {console.log(uploaded)}
       </div>
