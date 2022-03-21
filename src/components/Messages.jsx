@@ -44,8 +44,8 @@ const FormMessage = ({ currentChannelId, setUploaded }) => {
   const handlerSubmit = ({message}, {resetForm}) => {
     const newMessage =  { message, channelId: currentChannelId, username };
     socket.emit('newMessage', newMessage, (response) => {
-      console.log(response);
-      console.log(response.status);
+      //console.log(response);
+      //console.log(response.status);
       if (response.status === 'ok') {
         resetForm();
         refInput.current.focus();
@@ -107,7 +107,7 @@ const Messages = () => {
   const {currentChannelId} = useSelector((state) => state.channels);
   const [uploaded, setUploaded] = useState(false);
   const messages = useSelector(selectorMessages.selectAll);
-  console.log(messages);
+  //console.log(messages);
   //console.log(uploaded);
   
   const currentChannelName = channels.filter(({id}) => id === currentChannelId).map((channel) => channel.name);
@@ -119,7 +119,6 @@ const Messages = () => {
         </div>
         <ChannelMessages currentChannelId={currentChannelId} messages={messages}/>
         <FormMessage currentChannelId={currentChannelId} setUploaded={setUploaded} />
-        {console.log(messages)}
       </div>
   </Col>
   );
