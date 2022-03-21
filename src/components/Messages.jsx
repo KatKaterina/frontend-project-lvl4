@@ -12,7 +12,7 @@ import { fetchData, changeCurrentChannel } from '../slices/ChannelsSlice.js';
 const ChannelMessages = ({ currentChannelId, messages }) => {
   //const messages = useSelector(selectorMessages.selectAll);
   const refChat = useRef();
-  //const [update, setUpdate] = useState(false);
+  const [messagesM, setMessages] = useState(messages);
   //setUpdate(uploaded);
   
   useEffect(()=> {
@@ -21,7 +21,7 @@ const ChannelMessages = ({ currentChannelId, messages }) => {
   
     return (
         <div className="chat-messages overflow-auto px-5" ref={refChat}>
-          {messages.filter(({channelId}) => Number(channelId) === currentChannelId)
+          {messagesM.filter(({channelId}) => Number(channelId) === currentChannelId)
             .map(({ id, username, message }) => (
               <div className="text-break mb-2">
                 <b>{username}</b>
