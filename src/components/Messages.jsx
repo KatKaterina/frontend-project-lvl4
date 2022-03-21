@@ -4,15 +4,18 @@ import { Col, Form, Button, InputGroup } from 'react-bootstrap';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectorChannels } from '../slices/ChannelsSlice.js';
 import { socketContext }  from '../contexts/index.js';
-import { selectorMessages } from '../slices/messagesSlice.js'
+import { selectorMessages } from '../slices/messagesSlice.js';
+import { fetchData } from '../slices/ChannelsSlice.js';
 
 const ChannelMessages = ({ currentChannelId, messages }) => {
   //const messages = useSelector(selectorMessages.selectAll);
   const refChat = useRef();
   //const [update, setUpdate] = useState(false);
   //setUpdate(uploaded);
+  const dispatch = useDispatch();
 
   useEffect(()=> {
+    dispatch(fetchData());
     refChat.current.scrollTop = refChat.current.scrollHeight
   }, [messages]);
   
