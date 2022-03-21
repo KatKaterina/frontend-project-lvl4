@@ -8,8 +8,14 @@ import { selectorMessages } from '../slices/messagesSlice.js'
 
 const ChannelMessages = ({ currentChannelId }) => {
   const messages = useSelector(selectorMessages.selectAll);
+  const refChat = useRef();
+
+  useEffect(()=> {
+    refChat.current.scrollTop = refChat.current.scrollHeight
+  }, [messages]);
+  
     return (
-        <div className="chat-messages overflow-auto px-5">
+        <div className="chat-messages overflow-auto px-5" ref={refChat}>
           {messages.filter(({channelId}) => Number(channelId) === currentChannelId)
             .map(({ id, username, message }) => (
               <div className="text-break mb-2">
