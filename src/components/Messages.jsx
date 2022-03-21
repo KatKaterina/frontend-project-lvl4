@@ -111,7 +111,7 @@ const Messages = () => {
         <div className="bg-light mb-4 p-3 shadow-sm small">
           <p className="m-0">{currentChannelName}</p>
         </div>
-        <ChannelMessages currentChannelId={currentChannelId} />
+        <ChannelMessages currentChannelId={currentChannelId} messages={messages}/>
         <FormMessage currentChannelId={currentChannelId} setUploaded={setUploaded} />
         {console.log(messages)}
       </div>
