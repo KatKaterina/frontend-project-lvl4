@@ -5,7 +5,7 @@ import axios from 'axios';
 const channelsAdapter = createEntityAdapter();
 
 const initialState = channelsAdapter.getInitialState({
-    currentChannelId: '',
+    //currentChannelId: '',
     loading: '',
     error: null,
 });
