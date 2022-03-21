@@ -51,8 +51,8 @@ const FormMessage = ({ currentChannelId, setUploaded }) => {
         setSubmitting(false);
         resetForm();
         refInput.current.focus();
-        setUploaded(true);
-        dispatch(fetchData());
+        //setUploaded(true);
+        //dispatch(fetchData());
       }
     });
     /*if (socket.connected) {
