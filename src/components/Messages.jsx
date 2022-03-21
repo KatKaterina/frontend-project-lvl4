@@ -25,7 +25,7 @@ const ChannelMessages = ({ currentChannelId }) => {
 
 
 const FormMessage = ({ currentChannelId }) => {
-  const inputRef = useRef();
+  const refInput = useRef();
   const socket = useContext(socketContext);
   const username = localStorage.getItem('username');
 
