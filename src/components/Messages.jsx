@@ -1,5 +1,5 @@
 import { useFormik } from 'formik';
-import React, { useEffect, useContext } from 'react';
+import React, { useEffect, useContext, useRef } from 'react';
 import { Col, Form, Button, InputGroup } from 'react-bootstrap';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectorChannels } from '../slices/ChannelsSlice.js';
@@ -25,6 +25,7 @@ const ChannelMessages = ({ currentChannelId }) => {
 
 
 const FormMessage = ({ currentChannelId }) => {
+  const inputRef = useRef();
   const socket = useContext(socketContext);
   const username = localStorage.getItem('username');
 
@@ -35,6 +36,7 @@ const FormMessage = ({ currentChannelId }) => {
       console.log(response.status);
       if (response.status === 'ok') {
         resetForm();
+        refInput.current.focus();
       }
     });
     /*if (socket.connected) {
@@ -47,6 +49,10 @@ const FormMessage = ({ currentChannelId }) => {
     }*/
 
   };
+
+  useEffect(() => {
+    refInput.current.focus();
+  })
 
   const formik = useFormik({
     initialValues: {
@@ -69,6 +75,7 @@ const FormMessage = ({ currentChannelId }) => {
             onChange={formik.handleChange}
             value={formik.values.message}
             placeholder="Enter message" 
+            ref={refInput}
           />
           <Button type="submit">
             Send
