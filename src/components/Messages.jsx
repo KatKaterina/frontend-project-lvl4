@@ -63,6 +63,7 @@ const FormMessage = ({ currentChannelId, setUploaded }) => {
   };
 
   useEffect(() => {
+    dispatch(fetchMessages());
     refInput.current.focus();
   }, []);
 
