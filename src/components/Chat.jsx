@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Row } from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
 import { authorizContext }  from '../contexts/index.js';
 import Channels from './Channels.jsx';
 import Messages from './Messages.jsx';
@@ -25,15 +25,15 @@ const Chat = () => {
   return (
   <>
     <div className = "container h-100 my-4 overflow-hidden rounded shadow">
-        <Row className="h-100 bg-white flex-md-row">
+        <Container className="h-100 bg-white flex-md-row">
           <Channels />
           <Messages />
-        </Row>
-    </div>
-   <div className="text-center">
-     <span>
-      <Link to="/login" onClick={handleClick}>LogOut</Link>
-     </span>
+        </Container>
+        <div className="text-center">
+          <span>
+            <Link to="/login" onClick={handleClick}>LogOut</Link>
+          </span>
+        </div>
     </div>
   </>
 );
