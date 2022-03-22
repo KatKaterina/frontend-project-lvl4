@@ -53,7 +53,7 @@ const channelsSlice = createSlice ({
               console.log('до ' + state.currentChannelId);
               //console.log(state.currentChannelId);
               channelsAdapter.setAll(state, channels);
-              state.currentChannelId = currentChannelId;
+              state.currentChannelId = state.currentChannelId === undefined ? currentChannelId : state.currentChannelId;
               console.log('после ' + state.currentChannelId);
               state.loading = 'succes';
               state.error = null;
