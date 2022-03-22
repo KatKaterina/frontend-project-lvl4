@@ -36,6 +36,7 @@ const Channels = () => {
   };
 
   const renderChannels = () => (
+    <div className="border-end pt-5 px-0 bg-light"></>
     <Nav variant="pills" fill className="flex-column">
       {channels.map(({ id, name, removable }) => {
         const Channel = removable ? fixedChannel : fixedChannel;
@@ -52,6 +53,7 @@ const Channels = () => {
         );
       })}
     </Nav>
+    </div>
   );
     return (
      
