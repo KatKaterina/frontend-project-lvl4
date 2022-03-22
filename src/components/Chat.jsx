@@ -15,7 +15,7 @@ const Chat = () => {
   useEffect(() => {
       dispatch(fetchData())
       //setUploaded(true);
-  }, []);
+  }, [dispatch]);
 
   const handleClick = (e) => {
     e.preventDefault();
