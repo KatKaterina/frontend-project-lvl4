@@ -105,7 +105,7 @@ const Messages = () => {
   const {currentChannelId} = useSelector((state) => state.channels);
   const [uploaded, setUploaded] = useState(0);
   const dispatch = useDispatch();
-  
+  const messages = useSelector(selectorMessages.selectAll);
   useEffect(() => {
     dispatch(fetchMessages())
     //setUploaded(true);
@@ -116,7 +116,7 @@ const Messages = () => {
   //console.log(uploaded);
   const handlerclick = () => {
     dispatch(fetchMessages())
-    const messages = useSelector(selectorMessages.selectAll);
+
     console.log(messages)
     setUploaded(uploaded + 1);
     console.log(uploaded);
