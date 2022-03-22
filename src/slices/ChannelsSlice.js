@@ -37,6 +37,7 @@ const channelsSlice = createSlice ({
     extraReducers: (builder) => {
         builder
           .addCase(addMessage, (state, { message }) => {
+            console.log('add ' + message.channelId);
             state.currentChannelId = message.channelId;
           })
           .addCase(fetchData.fulfilled, (state, action)=> {
