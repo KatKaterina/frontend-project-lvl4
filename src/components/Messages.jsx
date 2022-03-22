@@ -52,7 +52,7 @@ const FormMessage = ({ currentChannelId, setUploaded }) => {
         resetForm();
         refInput.current.focus();
         //setUploaded(true);
-        //dispatch(fetchData());
+        dispatch(fetchData());
       }
     });
     /*if (socket.connected) {
