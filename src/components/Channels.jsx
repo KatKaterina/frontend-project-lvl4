@@ -2,9 +2,9 @@ import React, { useEffect } from 'react';
 import { Col, Nav, Button } from 'react-bootstrap';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectorChannels, changeCurrentChannel } from '../slices/ChannelsSlice.js';
-
+//as={Button} variant={buttonVariant} block
 const fixedChannel = ({ name, buttonVariant, onClick }) => (
-  <Nav.Link as={Button} variant={buttonVariant} block className="w-100 rounded-0 text-start btn-succes" onClick={onClick}>
+  <Nav.Link  className="w-100 rounded-0 text-start btn btn-secondary" onClick={onClick}>
       {name}
     </Nav.Link>
   );
