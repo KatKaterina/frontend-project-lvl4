@@ -41,7 +41,7 @@ const channelsSlice = createSlice ({
           })
           .addCase(fetchData.fulfilled, (state, action)=> {
               const { channels, currentChannelId } = action.payload;
-              console.log(state);
+              console.log(state.currentChannelId);
               //console.log(state.currentChannelId);
               channelsAdapter.setAll(state, channels);
               state.currentChannelId = currentChannelId;
