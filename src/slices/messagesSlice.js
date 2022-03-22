@@ -5,7 +5,7 @@ const messagesAdapter = createEntityAdapter();
 
 const initialState = messagesAdapter.getInitialState();
 
-export const fetchMessages = () => fetchData;
+export const fetchMessages = () => fetchData();
 
 const messagesSlice = createSlice ({
     name: 'messages',
