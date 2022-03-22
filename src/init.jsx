@@ -12,11 +12,9 @@ export default async (socketClient = io()) => {
   });
 
   return (
-    <div id="test">
       <Provider store={store}>
         <App socket={socketClient}/>
       </Provider>
-    </div>
   );
 };
 
