@@ -116,6 +116,8 @@ const Messages = () => {
   //console.log(uploaded);
   const handlerclick = () => {
     dispatch(fetchMessages())
+    const messages = useSelector(selectorMessages.selectAll);
+    console.log(messages)
     setUploaded(uploaded + 1);
     console.log(uploaded);
   }
