@@ -40,14 +40,14 @@ const channelsSlice = createSlice ({
               const {message} = payload;
               console.log(message);
             //console.log('add ' + message.channelId);
-            state.currentChannelId = message.channelId;
+            //state.currentChannelId = message.channelId;
           })
           .addCase(fetchData.fulfilled, (state, action)=> {
               const { channels, currentChannelId } = action.payload;
               console.log('до ' + state.currentChannelId);
               //console.log(state.currentChannelId);
               channelsAdapter.setAll(state, channels);
-              //state.currentChannelId = currentChannelId;
+              state.currentChannelId = currentChannelId;
               console.log('после ' + state.currentChannelId);
               state.loading = 'succes';
               state.error = null;
