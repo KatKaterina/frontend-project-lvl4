@@ -26,9 +26,7 @@ const ChannelMessages = ({ currentChannelId }) => {
           {messages.filter(({channelId}) => Number(channelId) === currentChannelId)
             .map(({ id, username, message }) => (
               <div className="text-break mb-2">
-                <b>{username}</b>
-                ": "
-                {message}
+                <b>{username}</b>: {message}
               </div> 
             ))
           }
