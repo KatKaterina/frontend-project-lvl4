@@ -105,10 +105,10 @@ const Messages = () => {
   const [uploaded, setUploaded] = useState(false);
   const dispatch = useDispatch();
   
- /* useEffect(() => {
-    dispatch(fetchData())
+  useEffect(() => {
+    dispatch(fetchMessages())
     //setUploaded(true);
-}, [dispatch]);*/
+}, [dispatch]);
 
   //const messages = useSelector(selectorMessages.selectAll);
   //console.log(messages);
