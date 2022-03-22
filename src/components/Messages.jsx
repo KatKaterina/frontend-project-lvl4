@@ -4,7 +4,7 @@ import { Col, Form, Button, InputGroup } from 'react-bootstrap';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectorChannels } from '../slices/ChannelsSlice.js';
 import { socketContext }  from '../contexts/index.js';
-import { selectorMessages } from '../slices/messagesSlice.js';
+import { selectorMessages, addMessage } from '../slices/messagesSlice.js';
 import { fetchData, changeCurrentChannel } from '../slices/ChannelsSlice.js';
 //import { selectorChannels, changeCurrentChannel } from '../slices/ChannelsSlice.js';
 
@@ -51,6 +51,7 @@ const FormMessage = ({ currentChannelId, setUploaded }) => {
         setSubmitting(false);
         resetForm();
         refInput.current.focus();
+        dispatch(addMessage(newMessage));
         //setUploaded(true);
         //dispatch(fetchData());
         //dispatch(changeCurrentChannel({ currentChannelId }));
