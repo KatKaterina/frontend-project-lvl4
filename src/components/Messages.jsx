@@ -9,10 +9,10 @@ import { fetchData, changeCurrentChannel } from '../slices/ChannelsSlice.js';
 //import { selectorChannels, changeCurrentChannel } from '../slices/ChannelsSlice.js';
 
 
-const ChannelMessages = ({ currentChannelId, messages }) => {
-  //const messages = useSelector(selectorMessages.selectAll);
+const ChannelMessages = ({ currentChannelId }) => {
+  const messages = useSelector(selectorMessages.selectAll);
   const refChat = useRef();
-  const [messagesM, setMessages] = useState(messages);
+  //const [messagesM, setMessages] = useState(messages);
   //setUpdate(uploaded);
   
   useEffect(()=> {
@@ -21,7 +21,7 @@ const ChannelMessages = ({ currentChannelId, messages }) => {
   
     return (
         <div className="chat-messages overflow-auto px-5" ref={refChat}>
-          {messagesM.filter(({channelId}) => Number(channelId) === currentChannelId)
+          {messages.filter(({channelId}) => Number(channelId) === currentChannelId)
             .map(({ id, username, message }) => (
               <div className="text-break mb-2">
                 <b>{username}</b>
@@ -107,7 +107,7 @@ const Messages = () => {
   const channels = useSelector(selectorChannels.selectAll);
   const {currentChannelId} = useSelector((state) => state.channels);
   const [uploaded, setUploaded] = useState(false);
-  const messages = useSelector(selectorMessages.selectAll);
+  //const messages = useSelector(selectorMessages.selectAll);
   //console.log(messages);
   //console.log(uploaded);
   
@@ -118,7 +118,7 @@ const Messages = () => {
         <div className="bg-light mb-4 p-3 shadow-sm small">
           <p className="m-0">{currentChannelName}</p>
         </div>
-        <ChannelMessages currentChannelId={currentChannelId} messages={messages}/>
+        <ChannelMessages currentChannelId={currentChannelId} />
         <FormMessage currentChannelId={currentChannelId} setUploaded={setUploaded} />
       </div>
   </Col>
