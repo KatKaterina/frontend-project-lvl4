@@ -36,7 +36,7 @@ const Channels = () => {
   };
 
   const renderChannels = () => (
-    <div className="border-end pt-5 px-0 bg-light h-100">
+    <div className="border-end pt-5 px-0 bg-light">
     <Nav variant="pills" fill className="flex-column">
       {channels.map(({ id, name, removable }) => {
         const Channel = removable ? fixedChannel : fixedChannel;
@@ -57,7 +57,7 @@ const Channels = () => {
   );
     return (
      
-        <Col className="border-end pt-5 px-0 bg-light">
+        <Col className="border-end pt-5 px-0 bg-light h-100">
           <div className="d-flex mb-2 ps-4 pe-2 justify-content-between">
             <span>Channels</span>
             <Button variant="link" className="p-0 ml-auto" onClick={handleAdd}>+</Button>
