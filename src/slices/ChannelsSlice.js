@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk, createEntityAdapter } from '@reduxjs/toolkit';
 import routes from '../routes.js';
 import axios from 'axios';
+import { addMessage } from './messagesSlice.js';
 
 const channelsAdapter = createEntityAdapter();
 
@@ -38,6 +39,9 @@ const channelsSlice = createSlice ({
     },
     extraReducers: (builder) => {
         builder
+          .addCase(addMessage, (state, { message }) => {
+            state.currentChannelId = message.channelId;
+          })
           .addCase(fetchData.fulfilled, (state, action)=> {
               const { channels, currentChannelId } = action.payload;
               console.log(action);
