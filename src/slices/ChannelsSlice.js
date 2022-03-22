@@ -6,16 +6,13 @@ import { addMessage } from './messagesSlice.js';
 const channelsAdapter = createEntityAdapter();
 
 const initialState = channelsAdapter.getInitialState({
-    //currentChannelId: '',
+    currentChannelId: '',
     loading: '',
     error: null,
 });
 
 const getAuthorizationHeader = () => {
   const token = localStorage.getItem('token');
-  //console.log('token:');
-  //console.log(token);
-  //console.log(routes.dataPath());
   return token ? { Authorization: `Bearer ${token}` } : {}
 };
 
@@ -44,7 +41,7 @@ const channelsSlice = createSlice ({
           })
           .addCase(fetchData.fulfilled, (state, action)=> {
               const { channels, currentChannelId } = action.payload;
-              console.log(action);
+              console.log(state);
               //console.log(state.currentChannelId);
               channelsAdapter.setAll(state, channels);
               state.currentChannelId = currentChannelId;
