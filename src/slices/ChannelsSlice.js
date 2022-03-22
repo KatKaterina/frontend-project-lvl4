@@ -18,7 +18,6 @@ const getAuthorizationHeader = () => {
 
 export const fetch = async () => {
     const {data} = await axios.get(routes.dataPath(), { headers: getAuthorizationHeader() });
-    //console.log(data);
     return data;
 };
 
