@@ -17,9 +17,9 @@ const ChannelMessages = ({ currentChannelId }) => {
   const dispatch = useDispatch();
   
   useEffect(()=> {
-    dispatch(fetchMessages());
+    //dispatch(fetchMessages());
     refChat.current.scrollTop = refChat.current.scrollHeight
-  }, [dispatch]);
+  }, [messages]);
   
     return (
         <div className="chat-messages overflow-auto px-5" ref={refChat}>
@@ -103,24 +103,13 @@ const FormMessage = ({ currentChannelId }) => {
 const Messages = () => {
   const channels = useSelector(selectorChannels.selectAll);
   const {currentChannelId} = useSelector((state) => state.channels);
-  const [uploaded, setUploaded] = useState(0);
-  const dispatch = useDispatch();
-  const messages = useSelector(selectorMessages.selectAll);
-  useEffect(() => {
+ // const [uploaded, setUploaded] = useState(0);
+//  const dispatch = useDispatch();
+ // const messages = useSelector(selectorMessages.selectAll);
+ /* useEffect(() => {
     dispatch(fetchMessages())
     //setUploaded(true);
-}, [dispatch]);
-
-  //const messages = useSelector(selectorMessages.selectAll);
-  //console.log(messages);
-  //console.log(uploaded);
-  const handlerclick = () => {
-    dispatch(fetchMessages())
-
-    console.log(messages)
-    setUploaded(uploaded + 1);
-    console.log(uploaded);
-  }
+}, [dispatch]);*/
 
   const currentChannelName = channels.filter(({id}) => id === currentChannelId).map((channel) => channel.name);
   return (
@@ -131,7 +120,6 @@ const Messages = () => {
         </div>
         <ChannelMessages currentChannelId={currentChannelId} />
         <FormMessage currentChannelId={currentChannelId} />
-        <button onClick={handlerclick}>клик</button>
       </div>
   </Col>
   );
