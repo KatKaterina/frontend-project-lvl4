@@ -12,12 +12,9 @@ import { fetchData, changeCurrentChannel } from '../slices/ChannelsSlice.js';
 const ChannelMessages = ({ currentChannelId }) => {
   const messages = useSelector(selectorMessages.selectAll);
   const refChat = useRef();
-  //const [messagesM, setMessages] = useState(messages);
-  //setUpdate(uploaded);
   const dispatch = useDispatch();
   
   useEffect(()=> {
-    //dispatch(fetchMessages());
     refChat.current.scrollTop = refChat.current.scrollHeight
   }, [messages]);
   
@@ -45,17 +42,12 @@ const FormMessage = ({ currentChannelId }) => {
     setSubmitting(true);
     const newMessage =  { message, channelId: currentChannelId, username };
     socket.emit('newMessage', newMessage, (response) => {
-      //console.log(response);
-      //console.log(response.status);
+
       if (response.status === 'ok') {
         setSubmitting(false);
         resetForm();
         refInput.current.focus();
-        //dispatch(fetchMessages());
-        //dispatch(addMessage({ newMessage }));
-        //setUploaded(true);
         dispatch(fetchData());
-        //dispatch(changeCurrentChannel({ currentChannelId }));
       }
     });
   };
@@ -101,13 +93,6 @@ const FormMessage = ({ currentChannelId }) => {
 const Messages = () => {
   const channels = useSelector(selectorChannels.selectAll);
   const {currentChannelId} = useSelector((state) => state.channels);
- // const [uploaded, setUploaded] = useState(0);
-//  const dispatch = useDispatch();
- // const messages = useSelector(selectorMessages.selectAll);
- /* useEffect(() => {
-    dispatch(fetchMessages())
-    //setUploaded(true);
-}, [dispatch]);*/
 
   const currentChannelName = channels.filter(({id}) => id === currentChannelId).map((channel) => channel.name);
   return (
