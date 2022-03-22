@@ -14,6 +14,7 @@ const ChannelMessages = ({ currentChannelId }) => {
   const refChat = useRef();
   //const [messagesM, setMessages] = useState(messages);
   //setUpdate(uploaded);
+  const dispatch = useDispatch();
   
   useEffect(()=> {
     dispatch(fetchMessages());
@@ -59,15 +60,6 @@ const FormMessage = ({ currentChannelId, setUploaded }) => {
         //dispatch(changeCurrentChannel({ currentChannelId }));
       }
     });
-    /*if (socket.connected) {
-      socket.emit('newMessage', newMessage);
-      resetForm();
-    } else {
-      console.log('ошибка отправки сообщения');
-      console.log(socket.connected);
-      console.log(newMessage);
-    }*/
-
   };
 
   useEffect(() => {
