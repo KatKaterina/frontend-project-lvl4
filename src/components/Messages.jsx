@@ -16,6 +16,7 @@ const ChannelMessages = ({ currentChannelId }) => {
   //setUpdate(uploaded);
   
   useEffect(()=> {
+    dispatch(fetchMessages());
     refChat.current.scrollTop = refChat.current.scrollHeight
   }, [messages]);
   
@@ -51,7 +52,7 @@ const FormMessage = ({ currentChannelId, setUploaded }) => {
         setSubmitting(false);
         resetForm();
         refInput.current.focus();
-        dispatch(fetchMessages());
+        //dispatch(fetchMessages());
         //dispatch(addMessage({ newMessage }));
         //setUploaded(true);
         //dispatch(fetchData());
