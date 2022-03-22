@@ -4,7 +4,7 @@ import { Col, Form, Button, InputGroup } from 'react-bootstrap';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectorChannels } from '../slices/ChannelsSlice.js';
 import { socketContext }  from '../contexts/index.js';
-import { selectorMessages, addMessage } from '../slices/messagesSlice.js';
+import { selectorMessages, addMessage, fetchMessages } from '../slices/messagesSlice.js';
 import { fetchData, changeCurrentChannel } from '../slices/ChannelsSlice.js';
 //import { selectorChannels, changeCurrentChannel } from '../slices/ChannelsSlice.js';
 
@@ -51,6 +51,7 @@ const FormMessage = ({ currentChannelId, setUploaded }) => {
         setSubmitting(false);
         resetForm();
         refInput.current.focus();
+        dispatch(fetchMessages());
         //dispatch(addMessage({ newMessage }));
         //setUploaded(true);
         //dispatch(fetchData());
@@ -111,10 +112,10 @@ const Messages = () => {
   const [uploaded, setUploaded] = useState(false);
   const dispatch = useDispatch();
   
-  useEffect(() => {
+ /* useEffect(() => {
     dispatch(fetchData())
     //setUploaded(true);
-}, [dispatch]);
+}, [dispatch]);*/
 
   //const messages = useSelector(selectorMessages.selectAll);
   //console.log(messages);

@@ -5,6 +5,8 @@ const messagesAdapter = createEntityAdapter();
 
 const initialState = messagesAdapter.getInitialState();
 
+export const fetchMessages = fetchData;
+
 const messagesSlice = createSlice ({
     name: 'messages',
     initialState,
@@ -20,6 +22,10 @@ const messagesSlice = createSlice ({
               const { messages } = action.payload;
               messagesAdapter.setAll(state, messages);
           })
+          .addCase(fetchMessages.fulfilled, (state, action)=> {
+            const { messages } = action.payload;
+            messagesAdapter.setAll(state, messages);
+        })
     },
 });
 
