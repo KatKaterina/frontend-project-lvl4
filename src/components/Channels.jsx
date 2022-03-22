@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { selectorChannels, changeCurrentChannel } from '../slices/ChannelsSlice.js';
 
 const fixedChannel = ({ name, buttonVariant, onClick }) => (
-  <Nav.Link as={Button} variant={buttonVariant} block className="w-100 rounded-0 text-start" onClick={onClick}>
+  <Nav.Link as={Button} variant={buttonVariant} block className="w-100 rounded-0 text-start btn-succes" onClick={onClick}>
       {name}
     </Nav.Link>
   );

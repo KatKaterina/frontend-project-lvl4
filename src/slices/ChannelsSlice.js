@@ -50,11 +50,11 @@ const channelsSlice = createSlice ({
           })
           .addCase(fetchData.fulfilled, (state, action)=> {
               const { channels, currentChannelId } = action.payload;
-              console.log('до ' + state.currentChannelId);
+              //console.log('до ' + state.currentChannelId);
               //console.log(state.currentChannelId);
               channelsAdapter.setAll(state, channels);
               state.currentChannelId = state.currentChannelId === undefined ? currentChannelId : state.currentChannelId;
-              console.log('после ' + state.currentChannelId);
+              //console.log('после ' + state.currentChannelId);
               state.loading = 'succes';
               state.error = null;
           })
