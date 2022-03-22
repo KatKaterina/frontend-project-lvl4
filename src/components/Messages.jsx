@@ -56,7 +56,7 @@ const FormMessage = ({ currentChannelId }) => {
         //dispatch(fetchMessages());
         //dispatch(addMessage({ newMessage }));
         //setUploaded(true);
-        //dispatch(fetchData());
+        dispatch(fetchData());
         //dispatch(changeCurrentChannel({ currentChannelId }));
       }
     });
