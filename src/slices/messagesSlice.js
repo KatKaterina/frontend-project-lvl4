@@ -1,4 +1,4 @@
-import { createSlice, createEntityAdapter } from '@reduxjs/toolkit';
+import { createSlice, createEntityAdapter, createAsyncThunk } from '@reduxjs/toolkit';
 import { fetch } from './ChannelsSlice.js';
 
 const messagesAdapter = createEntityAdapter();
