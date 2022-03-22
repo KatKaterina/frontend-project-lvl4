@@ -19,7 +19,7 @@ const ChannelMessages = ({ currentChannelId }) => {
   useEffect(()=> {
     dispatch(fetchMessages());
     refChat.current.scrollTop = refChat.current.scrollHeight
-  }, [messages]);
+  }, [dispatch]);
   
     return (
         <div className="chat-messages overflow-auto px-5" ref={refChat}>
