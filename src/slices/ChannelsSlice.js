@@ -6,7 +6,7 @@ import { addMessage } from './messagesSlice.js';
 const channelsAdapter = createEntityAdapter();
 
 const initialState = channelsAdapter.getInitialState({
-    currentChannelId: '',
+    //currentChannelId: '',
     loading: '',
     error: null,
 });
@@ -44,7 +44,7 @@ const channelsSlice = createSlice ({
               console.log('до ' + state.currentChannelId);
               //console.log(state.currentChannelId);
               channelsAdapter.setAll(state, channels);
-              state.currentChannelId = currentChannelId;
+              //state.currentChannelId = currentChannelId;
               console.log('после ' + state.currentChannelId);
               state.loading = 'succes';
               state.error = null;
