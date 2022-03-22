@@ -37,7 +37,7 @@ const ChannelMessages = ({ currentChannelId }) => {
 };
 
 
-const FormMessage = ({ currentChannelId, setUploaded }) => {
+const FormMessage = ({ currentChannelId }) => {
   const refInput = useRef();
   const socket = useContext(socketContext);
   const username = localStorage.getItem('username');
@@ -103,7 +103,7 @@ const FormMessage = ({ currentChannelId, setUploaded }) => {
 const Messages = () => {
   const channels = useSelector(selectorChannels.selectAll);
   const {currentChannelId} = useSelector((state) => state.channels);
-  const [uploaded, setUploaded] = useState(false);
+  const [uploaded, setUploaded] = useState(0);
   const dispatch = useDispatch();
   
   useEffect(() => {
@@ -123,7 +123,8 @@ const Messages = () => {
           <p className="m-0">{currentChannelName}</p>
         </div>
         <ChannelMessages currentChannelId={currentChannelId} />
-        <FormMessage currentChannelId={currentChannelId} setUploaded={setUploaded} />
+        <FormMessage currentChannelId={currentChannelId} />
+        <button onClick={() => setUploaded(uploaded + 1)}>клик</button>
       </div>
   </Col>
   );
