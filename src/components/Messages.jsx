@@ -109,6 +109,13 @@ const Messages = () => {
   const channels = useSelector(selectorChannels.selectAll);
   const {currentChannelId} = useSelector((state) => state.channels);
   const [uploaded, setUploaded] = useState(false);
+  const dispatch = useDispatch();
+  
+  useEffect(() => {
+    dispatch(fetchData())
+    //setUploaded(true);
+}, [dispatch]);
+
   //const messages = useSelector(selectorMessages.selectAll);
   //console.log(messages);
   //console.log(uploaded);
