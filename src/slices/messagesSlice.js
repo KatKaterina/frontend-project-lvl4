@@ -6,7 +6,7 @@ const messagesAdapter = createEntityAdapter();
 const initialState = messagesAdapter.getInitialState();
 
 export const fetchMessages = createAsyncThunk(
-    'channel/fetchMessages',
+    'messages/fetchMessages',
     fetch
 );
 

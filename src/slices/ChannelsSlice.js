@@ -22,7 +22,7 @@ export const fetch = async () => {
 };
 
 export const fetchData = createAsyncThunk(
-    'channel/fetchData',
+    'channels/fetchData',
     fetch
     /*async () => {
       const {data} = await axios.get(routes.dataPath(), { headers: getAuthorizationHeader() });
