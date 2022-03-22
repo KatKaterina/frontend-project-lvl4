@@ -114,7 +114,11 @@ const Messages = () => {
   //const messages = useSelector(selectorMessages.selectAll);
   //console.log(messages);
   //console.log(uploaded);
-  
+  const handlerclick = () => {
+    setUploaded(uploaded + 1);
+    console.log(uploaded);
+  }
+
   const currentChannelName = channels.filter(({id}) => id === currentChannelId).map((channel) => channel.name);
   return (
   <Col className="h-100 p-0">
@@ -124,7 +128,7 @@ const Messages = () => {
         </div>
         <ChannelMessages currentChannelId={currentChannelId} />
         <FormMessage currentChannelId={currentChannelId} />
-        <button onClick={() => setUploaded(uploaded + 1)}>клик</button>
+        <button onClick={handlerclick}>клик</button>
       </div>
   </Col>
   );
