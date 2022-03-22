@@ -16,13 +16,20 @@ const getAuthorizationHeader = () => {
   return token ? { Authorization: `Bearer ${token}` } : {}
 };
 
+export const fetch = async () => {
+    const {data} = await axios.get(routes.dataPath(), { headers: getAuthorizationHeader() });
+    //console.log(data);
+    return data;
+};
+
 export const fetchData = createAsyncThunk(
     'channel/fetchData',
-    async () => {
+    fetch
+    /*async () => {
       const {data} = await axios.get(routes.dataPath(), { headers: getAuthorizationHeader() });
       //console.log(data);
       return data;
-    }
+    }*/
 );
 
 const channelsSlice = createSlice ({
