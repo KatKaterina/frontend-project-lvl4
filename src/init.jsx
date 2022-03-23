@@ -4,6 +4,7 @@ import App from './components/App.jsx';
 import store from './slices/index.js';
 import { io } from "socket.io-client";
 import { addMessage } from './slices/messagesSlice.js';
+import { addChannel } from './slices/ChannelsSlice.js';
 
 export default async (socketClient = io()) => {
 //export default async () => {
