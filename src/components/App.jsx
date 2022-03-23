@@ -52,6 +52,7 @@ const UserRoute = ({ children }) => {
 };
 
 const renderModal = ({ type }) => {
+  console.log("type2: " + type);
   switch (type) {
     case 'addChannel': {
       return <ModalAddChannel />
@@ -60,7 +61,7 @@ const renderModal = ({ type }) => {
       return null;
     }
   }
-  return null;
+  //return null;
 }
 
 const App = ({ socket }) => {
