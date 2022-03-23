@@ -52,14 +52,14 @@ const UserRoute = ({ children }) => {
 };
 
 const renderModal = ({ type }) => {
- /* switch (type) {
+  switch (type) {
     case 'addChannel': {
       return <ModalAddChannel />
     }
     default: {
       return null;
     }
-  }*/
+  }
   return null;
 }
 
