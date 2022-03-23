@@ -1,4 +1,5 @@
 import React, { useState, useContext } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import {
   BrowserRouter as Router,
   Routes,
@@ -62,6 +63,7 @@ const renderModal = ({ type }) => {
 }
 
 const App = ({ socket }) => {
+  const { type } = useSelector((state) => state.modal);
     return (
       <AutorizProvider>
         <socketContext.Provider value={socket}>
