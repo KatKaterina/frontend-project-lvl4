@@ -48,7 +48,9 @@ const FormMessage = ({ currentChannelId }) => {
         resetForm();
         refInput.current.focus();
         dispatch(fetchData());
-      } 
+      } else {
+        alert('Ошибка соединения, повторите отправку сообщения.')
+      }
 
     });
   };
