@@ -39,15 +39,13 @@ const channelsSlice = createSlice ({
             const {id} = payload;
             state.currentChannelId = id;
         },
+        addChannel: (state, { payload }) => {
+            const { channel } = payload;
+            channelsAdapter.addOne(state, channel);
+        }
     },
     extraReducers: (builder) => {
         builder
-          .addCase(addMessage, (state, { payload }) => {
-              const {message} = payload;
-              console.log(message);
-            //console.log('add ' + message.channelId);
-            //state.currentChannelId = message.channelId;
-          })
           .addCase(fetchData.fulfilled, (state, action)=> {
               const { channels, currentChannelId } = action.payload;
               //console.log('до ' + state.currentChannelId);
