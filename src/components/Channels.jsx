@@ -25,7 +25,7 @@ const Channels = () => {
   };
 
   const handleAdd = () => {
-    //dispatch(openModal({ type: 'addChannel'}));
+    dispatch(openModal({ type: 'addChannel'}));
   };
 
   const handleRemove = (id) => () => {
@@ -59,7 +59,7 @@ const Channels = () => {
   );
     return (
      
-        <Col className="border-end pt-5 px-0 bg-light h-100 w-25">
+        <Col className="border-end pt-5 px-0 bg-light h-100">
           <div className="d-flex mb-2">
             <span>Channels</span>
             <Button variant="link" className="p-0 ml-auto" onClick={handleAdd}>+</Button>
