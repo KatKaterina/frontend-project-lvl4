@@ -19,6 +19,7 @@ const FormAddChannel = ({ handleClose }) => {
       },
       onSubmit: ({ name }) => {
         const newChannel =  { name };
+        console.log('channel ' + newChannel);
         socket.emit('newChannel', newChannel, (response) => {
           if (response.status === 'ok') {
             handleClose();
