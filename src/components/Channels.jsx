@@ -25,7 +25,7 @@ const Channels = () => {
   };
 
   const handleAdd = () => {
-    dispatch(openModal({ type: 'addChannel'}));
+    //dispatch(openModal({ type: 'addChannel'}));
   };
 
   const handleRemove = (id) => () => {
