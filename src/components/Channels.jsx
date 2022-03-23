@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { Col, Nav, Button } from 'react-bootstrap';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectorChannels, changeCurrentChannel } from '../slices/ChannelsSlice.js';
-import { openModal } from '../slices/modalSlice.js';
+import { openModal, closeModal } from '../slices/modalSlice.js';
 //as={Button} variant={buttonVariant} block
 const fixedChannel = ({ name, buttonVariant, onClick, id }) => (
   <Nav.Link key={id}  eventKey={id}  as="button" variant={buttonVariant}  className="w-100 rounded text-start" onClick={onClick}>

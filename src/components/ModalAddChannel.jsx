@@ -3,6 +3,7 @@ import React, { useEffect, useContext, useRef, useState } from 'react';
 import { Col, Form, Button, InputGroup, Modal } from 'react-bootstrap';
 import { useSelector, useDispatch } from 'react-redux';
 import { socketContext }  from '../contexts/index.js';
+import { closeModal } from '../slices/modalSlice.js';
 
 const FormAddChannel = ({ handleClose }) => {
     const refName = useRef();
@@ -23,6 +24,7 @@ const FormAddChannel = ({ handleClose }) => {
         socket.emit('newChannel', newChannel, (response) => {
           if (response.status === 'ok') {
             handleClose();
+            dispatch(closeModal());
           } else {
             //alert('Ошибка соединения, повторите отправку сообщения.')
           }
@@ -40,9 +42,9 @@ const FormAddChannel = ({ handleClose }) => {
               value={formik.values.name}
               ref={refName}
             />
-            <Button type="button" onClick={handleClose}>Cancel</Button>
-            <Button type="submit">Add</Button>
           </InputGroup>
+          <Button type="button" onClick={handleClose}>Cancel</Button>
+          <Button type="submit">Add</Button>
       </Form>
     );
 };
@@ -54,7 +56,7 @@ const ModalAddChannel = () => {
     const handleClose = () => setShow(false);
     console.log("show: "  + show)
     return (
-      <Modal show={show} onHide={handleClose}>
+      <Modal show={show} onHide={handleClose} centered>
         <Modal.Header closeButton>
           <Modal.Title>Add channel</Modal.Title>
         </Modal.Header>
