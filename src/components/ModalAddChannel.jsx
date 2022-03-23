@@ -8,7 +8,7 @@ import { closeModal } from '../slices/modalSlice.js';
 const FormAddChannel = ({ handleClose }) => {
     const refName = useRef();
     const socket = useContext(socketContext);
-    const dispatch = useDispatch();
+    //const dispatch = useDispatch();
 
     useEffect(() => {
         refName.current.focus();
@@ -23,8 +23,8 @@ const FormAddChannel = ({ handleClose }) => {
         console.log('channel ' + newChannel);
         socket.emit('newChannel', newChannel, (response) => {
           if (response.status === 'ok') {
+            //dispatch(closeModal());
             handleClose();
-            dispatch(closeModal());
           } else {
             //alert('Ошибка соединения, повторите отправку сообщения.')
           }
@@ -43,7 +43,8 @@ const FormAddChannel = ({ handleClose }) => {
               ref={refName}
             />
           </InputGroup>
-          <Button type="button" onClick={handleClose}>Cancel</Button>
+          <Button onClick={handleClose}>Cancel</Button>
+          {' '}
           <Button type="submit">Add</Button>
       </Form>
     );
@@ -51,9 +52,12 @@ const FormAddChannel = ({ handleClose }) => {
 
 
 const ModalAddChannel = () => {
-
+    const dispatch = useDispatch();
     const [show, setShow] = useState(true);
-    const handleClose = () => setShow(false);
+    const handleClose = () => {
+        setShow(false);
+        dispatch(closeModal());
+    };
     console.log("show: "  + show)
     return (
       <Modal show={show} onHide={handleClose} centered>
