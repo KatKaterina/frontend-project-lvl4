@@ -48,6 +48,7 @@ const FormAddChannel = ({ handleClose }) => {
 
 
 const ModalAddChannel = () => {
+    const { type } = useSelector((state) => state.modal);
     const [show, setShow] = useState(true);
     const handleClose = () => setShow(false);
     return (
