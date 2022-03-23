@@ -41,7 +41,7 @@ const Channels = () => {
       {channels.map(({ id, name, removable }) => {
         const Channel = removable ? fixedChannel : fixedChannel;
         return (
-          <Nav.Item key={id}>
+          <Nav.Item key={id}  eventKey={id}>
             <Channel
               name={name}
               buttonVariant={id === currentChannelId ? 'warning' : null}
