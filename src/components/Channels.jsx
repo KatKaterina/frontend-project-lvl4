@@ -24,7 +24,8 @@ const Channels = () => {
     //console.log(currentChannelId);
   };
 
-  const handleAdd = () => {
+  const handleAdd = (e) => {
+    e.preventDefault();
     dispatch(openModal({ type: 'addChannel'}));
   };
 
@@ -59,7 +60,7 @@ const Channels = () => {
   );
     return (
      
-        <Col className="border-end pt-5 px-0 bg-light h-100">
+        <Col md="auto" className="border-end pt-5 px-0 bg-light h-100">
           <div className="d-flex mb-2">
             <span>Channels</span>
             <Button variant="outline-info" size="sm" className="p-0 ml-auto" onClick={handleAdd}>+</Button>
