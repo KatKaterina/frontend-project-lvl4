@@ -48,7 +48,8 @@ const FormMessage = ({ currentChannelId }) => {
         resetForm();
         refInput.current.focus();
         dispatch(fetchData());
-      }
+      } 
+
     });
   };
 
@@ -83,11 +84,15 @@ const FormMessage = ({ currentChannelId }) => {
           <Button type="submit">
             Send
           </Button>
+          {console.log(formik)}
         </InputGroup>
       </Form>
     </div>
   )
 };
+
+//{formik.errors.body
+//&& <Form.Control.Feedback type="invalid">{t(formik.errors.body)}</Form.Control.Feedback>}
 
 
 const Messages = () => {
