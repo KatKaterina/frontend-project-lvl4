@@ -56,7 +56,8 @@ const ModalAddChannel = () => {
     const [show, setShow] = useState(true);
     const handleClose = () => {
         setShow(false);
-        dispatch(closeModal());
+        //dispatch(closeModal());
+        resetForm();
     };
     console.log("show: "  + show)
     return (
