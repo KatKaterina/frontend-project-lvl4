@@ -3,8 +3,8 @@ import { Col, Nav, Button } from 'react-bootstrap';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectorChannels, changeCurrentChannel } from '../slices/ChannelsSlice.js';
 //as={Button} variant={buttonVariant} block
-const fixedChannel = ({ name, buttonVariant, onClick }) => (
-  <Nav.Link as="button" variant={buttonVariant}  className="w-100 rounded text-start btn btn-secondary" onClick={onClick}>
+const fixedChannel = ({ name, buttonVariant, onClick, id }) => (
+  <Nav.Link key={id}  eventKey={id}  as="button" variant={buttonVariant}  className="w-100 rounded text-start btn btn-secondary" onClick={onClick}>
       {name}
     </Nav.Link>
   );
@@ -41,15 +41,16 @@ const Channels = () => {
       {channels.map(({ id, name, removable }) => {
         const Channel = removable ? fixedChannel : fixedChannel;
         return (
-          <Nav.Item key={id}  eventKey={id}>
+          //<Nav.Item key={id}  eventKey={id}>
             <Channel
+              id={id}
               name={name}
               buttonVariant={id === currentChannelId ? 'warning' : null}
               onClick={handleClick(id)}
               onRemove={handleRemove(id)}
               onRename={handleRename(id, name)}
             />
-          </Nav.Item>
+          //</Nav.Item>
         );
       })}
     </Nav>
