@@ -51,7 +51,7 @@ const UserRoute = ({ children }) => {
   )*/
 };
 
-const renderModal = ({ type }) => {
+const renderModal = (type) => {
   console.log("type2: " + type);
   switch (type) {
     case 'addChannel': {
