@@ -4,6 +4,7 @@ import { Col, Form, Button, InputGroup, Modal } from 'react-bootstrap';
 import { useSelector, useDispatch } from 'react-redux';
 import { socketContext }  from '../contexts/index.js';
 import { closeModal } from '../slices/modalSlice.js';
+import { schemaForChannel as schema } from '../validateSchema';
 
 const FormAddChannel = ({ handleClose }) => {
     const refName = useRef();
@@ -18,6 +19,7 @@ const FormAddChannel = ({ handleClose }) => {
       initialValues: {
         name:'',
       },
+      validationSchema: schema,
       onSubmit: ({ name }) => {
         const newChannel =  { name };
         console.log('channel ' + newChannel);
@@ -42,6 +44,7 @@ const FormAddChannel = ({ handleClose }) => {
               value={formik.values.name}
               ref={refName}
             />
+            {console.log(formik.errors)}
           </InputGroup>
           <Button onClick={handleClose}>Cancel</Button>
           {' '}
@@ -63,7 +66,7 @@ const ModalAddChannel = () => {
     return (
       <Modal show={show} onHide={handleClose} centered>
         <Modal.Header closeButton>
-          <Modal.Title>Add channel</Modal.Title>
+          <Modal.Title>Add new channel</Modal.Title>
         </Modal.Header>
 
         <Modal.Body>

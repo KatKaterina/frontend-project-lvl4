@@ -63,7 +63,7 @@ const Channels = () => {
         <Col md="auto" className="border-end pt-5 px-0 bg-light h-100">
           <div className="d-flex justify-content-around">
             <span>Channels: </span>
-            <Button variant="outline-primary"  size="sm" className="p-0 ml-auto" onClick={handleAdd}> + </Button>
+            <Button variant="outline-primary"  size="sm" className="p-0 ml-auto" onClick={handleAdd}>+</Button>
           </div>
           {renderChannels()}
         </Col>
