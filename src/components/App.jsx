@@ -65,7 +65,7 @@ const renderModal = ({ type }) => {
 
 const App = ({ socket }) => {
   const { type } = useSelector((state) => state.modal);
-  console.log(type)
+  console.log('type: ' + type);
     return (
       <AutorizProvider>
         <socketContext.Provider value={socket}>

@@ -52,8 +52,9 @@ const ModalAddChannel = () => {
 
     const [show, setShow] = useState(true);
     const handleClose = () => setShow(false);
+    console.log("show: "  + show)
     return (
-      <Modal.Dialog show={show} onHide={handleClose}>
+      <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Add channel</Modal.Title>
         </Modal.Header>
@@ -61,7 +62,7 @@ const ModalAddChannel = () => {
         <Modal.Body>
           <FormAddChannel handleClose={handleClose}/>
         </Modal.Body>
-      </Modal.Dialog>
+      </Modal>
     )
 };
 
