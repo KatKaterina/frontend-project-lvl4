@@ -9,6 +9,7 @@ import Login from './Login.jsx';
 import NotFound from './NotFound.jsx';
 import Chat from './Chat.jsx';
 import { authorizContext, socketContext }  from '../contexts/index.js';
+import ModalAddChannel from './ModalAddChannel.jsx';
 
 const AutorizProvider = ({children}) => {
   //console.log(authorizContext);
@@ -49,6 +50,17 @@ const UserRoute = ({ children }) => {
   )*/
 };
 
+const renderModal = ({ type }) => {
+  switch (type) {
+    case 'addChannel': {
+      return <ModalAddChannel />
+    }
+    default: {
+      return null;
+    }
+  }
+}
+
 const App = ({ socket }) => {
     return (
       <AutorizProvider>
@@ -63,6 +75,7 @@ const App = ({ socket }) => {
             </Routes>
           </div>
         </Router>
+        {renderModal(type)}
         </socketContext.Provider>
       </AutorizProvider>
     );

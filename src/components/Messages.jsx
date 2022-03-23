@@ -38,7 +38,7 @@ const FormMessage = ({ currentChannelId }) => {
   const username = localStorage.getItem('username');
   const dispatch = useDispatch();
 
-  const handlerSubmit = ({message}, {resetForm, setSubmitting}) => {
+  const handlerSubmit = ({ message }, { resetForm, setSubmitting }) => {
     setSubmitting(true);
     const newMessage =  { message, channelId: currentChannelId, username };
     socket.emit('newMessage', newMessage, (response) => {
@@ -86,7 +86,6 @@ const FormMessage = ({ currentChannelId }) => {
           <Button type="submit">
             Send
           </Button>
-          {console.log(formik)}
         </InputGroup>
       </Form>
     </div>
