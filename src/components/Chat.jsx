@@ -17,7 +17,7 @@ const Chat = () => {
   //const messages = useSelector(selectorMessages.selectAll);
   const channels = useSelector((state) => state.channels);
   console.log(channels);
-  console.log(messages);
+  //console.log(messages);
 
   useEffect(() => {
       dispatch(fetchData())
