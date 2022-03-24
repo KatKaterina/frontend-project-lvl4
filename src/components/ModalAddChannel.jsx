@@ -67,7 +67,7 @@ const ModalAddChannel = () => {
         setShow(false);
         dispatch(closeModal());
         const channels = store.getState();
-        console.log(channels.entities);
+        console.log(channels);
         //resetForm();
     };
     console.log("show: "  + show)
