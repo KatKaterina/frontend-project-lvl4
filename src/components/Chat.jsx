@@ -4,18 +4,20 @@ import { Row } from 'react-bootstrap';
 import { authorizContext }  from '../contexts/index.js';
 import Channels from './Channels.jsx';
 import Messages from './Messages.jsx';
-import { fetchData } from '../slices/ChannelsSlice.js';
+import { fetchData, selectorChannels } from '../slices/ChannelsSlice.js';
 import { useDispatch } from 'react-redux';
 
 const Chat = () => {
   const authorization = useContext(authorizContext);
   const dispatch = useDispatch();
-  //const [uploaded, setUploaded] = useState(false);
+  const [uploaded, setUploaded] = useState(false);
   
+  const channels =  useSelector(selectorChannels.selectAll);
   useEffect(() => {
       dispatch(fetchData())
       //setUploaded(true);
-  }, [dispatch]);
+  }, [channels]);
+
 
   const handleClick = (e) => {
     e.preventDefault();

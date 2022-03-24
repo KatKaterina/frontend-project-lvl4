@@ -32,6 +32,11 @@ const Channels = () => {
 
   const dispatch = useDispatch();
 
+  /*useEffect(() => {
+    //dispatch(fetchMessages());
+    refInput.current.focus();
+  }, []);*/
+
   //const getButtonVariant = (id) => (id === currentChannelId ? 'primary' : 'light');
   
   const handleClick = (id) => () => {

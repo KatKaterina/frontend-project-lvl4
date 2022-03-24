@@ -10,8 +10,8 @@ import { changeCurrentChannel, renameChannel } from '../slices/ChannelsSlice.js'
 const handleRemove = () => {
   const socket = useContext(socketContext);
   const updateData = useSelector((state) => state.modal.updateData);
-  const { channelId } = updateData;
-  const removeChannel =  { id: channelId };
+  const { id } = updateData;
+  const removeChannel =  { id };
  
   socket.emit('removeChannel', removeChannel, (response) => {
     //console.log(response);

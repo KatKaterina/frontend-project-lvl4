@@ -70,6 +70,7 @@ const ModalAddChannel = () => {
     const handleClose = () => {
         setShow(false);
         dispatch(closeModal());
+        //dispatch()
         //resetForm();
     };
     //console.log("show: "  + show)
