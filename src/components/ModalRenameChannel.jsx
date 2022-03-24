@@ -14,6 +14,8 @@ const FormRenameChannel = ({ handleClose }) => {
 
     const updateData = useSelector((state) => state.modal.updateData);
     const { channelId, name } = updateData;
+    console.log(updateData);
+    
 
     useEffect(() => {
         refName.current.focus();
@@ -27,6 +29,7 @@ const FormRenameChannel = ({ handleClose }) => {
       onSubmit: ({ name: newName }) => {
         const updateChannel =  { name: newName, id: channelId };
         console.log(updateChannel);
+        console.log(socket);
         socket.emit('renameChannel', updateChannel, (response) => {
           console.log(response);
           const { status } = response;
@@ -69,7 +72,7 @@ const ModalAddChannel = () => {
         dispatch(closeModal());
         //resetForm();
     };
-    console.log("show: "  + show)
+    //console.log("show: "  + show)
     return (
       <Modal show={show} onHide={handleClose} centered>
         <Modal.Header closeButton>

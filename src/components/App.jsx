@@ -54,7 +54,7 @@ const UserRoute = ({ children }) => {
 };
 
 const renderModal = (type) => {
-  console.log("type2: " + type);
+  //console.log("type2: " + type);
   switch (type) {
     case 'addChannel': {
       return <ModalAddChannel />
@@ -74,7 +74,7 @@ const renderModal = (type) => {
 
 const App = ({ socket }) => {
   const { type } = useSelector((state) => state.modal);
-  console.log('type: ' + type);
+  //console.log('type: ' + type);
     return (
       <AutorizProvider>
         <socketContext.Provider value={socket}>
