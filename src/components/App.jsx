@@ -61,6 +61,9 @@ const renderModal = (type) => {
     case 'renameChannel': {
       return <ModalRenameChannel />
     }
+    case 'removeChannel': {
+      return <ModalRenameChannel />
+    }
     default: {
       return null;
     }

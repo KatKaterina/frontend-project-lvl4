@@ -4,7 +4,7 @@ import App from './components/App.jsx';
 import store from './slices/index.js';
 import { io } from "socket.io-client";
 import { addMessage } from './slices/messagesSlice.js';
-import { addChannel } from './slices/ChannelsSlice.js';
+import { addChannel, renameChannel, removeChannel } from './slices/ChannelsSlice.js';
 
 export default async (socketClient = io()) => {
 //export default async () => {
@@ -17,6 +17,9 @@ export default async (socketClient = io()) => {
   socketClient.on('renameChannel', (channel) => {
     const { id, name } = channel;
     store.dispatch(renameChannel({ id, name }));
+  });
+  socketClient.on('removeChannel', ({ id }) => {
+    store.dispatch(removeChannel({ id }));
   });
 
   return (
