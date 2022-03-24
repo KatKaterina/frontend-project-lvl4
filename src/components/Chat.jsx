@@ -13,10 +13,11 @@ const Chat = () => {
   const [uploaded, setUploaded] = useState(false);
   
   const channels =  useSelector(selectorChannels.selectAll);
-  useEffect(() => {
+
+ /* useEffect(() => {
       dispatch(fetchData())
       //setUploaded(true);
-  }, [channels]);
+  }, [channels]);*/
 
 
   const handleClick = (e) => {
