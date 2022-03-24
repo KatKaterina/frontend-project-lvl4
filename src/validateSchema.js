@@ -20,7 +20,7 @@ const schema = yup.object().shape({
 export const schemaForChannel = yup.object().shape({
   name: yup.string()
   .trim()
-  .notOneOf(channels, 'errors.notГnique')
+  //.notOneOf(channels, 'errors.notГnique')
   .required('errors.fieldEmpty')
   .min(3, 'errors.wrongLength')
   .max(20, 'errors.wrongLength'),
