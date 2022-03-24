@@ -31,8 +31,9 @@ const FormAddChannel = ({ handleClose }) => {
           const { status, id } = response;
           if (status === 'ok') {
             //dispatch(closeModal());
-            handleClose();
             dispatch(changeCurrentChannel({ id }));
+            handleClose();
+           
           } else {
             //alert('Ошибка соединения, повторите отправку сообщения.')
           }
