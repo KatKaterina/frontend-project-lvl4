@@ -17,13 +17,16 @@ const schema = yup.object().shape({
 });
 
 //.notOneOf(channels, 'errors.notГnique')
-export const schemaForChannel = yup.object().shape({
-  name: yup.string()
-  .trim()
-  //.notOneOf(channels, 'errors.notГnique')
-  .required('errors.fieldEmpty')
-  .min(3, 'errors.wrongLength')
-  .max(20, 'errors.wrongLength'),
-});
+export const getSchemaForChannel = (channels) => {
+  const schemaForChannel = yup.object().shape({
+    name: yup.string()
+    .trim()
+    .notOneOf(channels, 'errors.notГnique')
+    .required('errors.fieldEmpty')
+    .min(3, 'errors.wrongLength')
+    .max(20, 'errors.wrongLength'),
+  });
+  return schemaForChannel;
+}
 
 export default schema;

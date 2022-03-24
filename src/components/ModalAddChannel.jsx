@@ -4,14 +4,16 @@ import { Col, Form, Button, InputGroup, Modal } from 'react-bootstrap';
 import { useSelector, useDispatch } from 'react-redux';
 import { socketContext }  from '../contexts/index.js';
 import { closeModal } from '../slices/modalSlice.js';
-import { schemaForChannel as schema } from '../validateSchema';
-import { changeCurrentChannel } from '../slices/ChannelsSlice.js';
+import { getSchemaForChannel } from '../validateSchema';
+import { changeCurrentChannel, selectorChannels } from '../slices/ChannelsSlice.js';
+
 import store from '../slices/index.js';
 
 const FormAddChannel = ({ handleClose }) => {
     const refName = useRef();
     const socket = useContext(socketContext);
     const dispatch = useDispatch();
+    const channels = useSelector(selectorChannels.selectAll).map((channel) => channel.name);
 
     useEffect(() => {
         refName.current.focus();
@@ -21,7 +23,7 @@ const FormAddChannel = ({ handleClose }) => {
       initialValues: {
         name:'',
       },
-      validationSchema: schema,
+      validationSchema: getSchemaForChannel(channels),
       onSubmit: ({ name }) => {
         const newChannel =  { name };
         //console.log('channel ' + newChannel);
@@ -66,8 +68,6 @@ const ModalAddChannel = () => {
     const handleClose = () => {
         setShow(false);
         dispatch(closeModal());
-        const channels = store.getState().channels;
-        console.log(channels.entities);
         //resetForm();
     };
     console.log("show: "  + show)
