@@ -27,7 +27,9 @@ const messagesSlice = createSlice ({
           })
           .addCase(removeChannel, (state, action) => {
             const { id } = action.payload;
-            messagesAdapter.setAll(state, state.messages.filter(({channelId}) => channelId !== id));
+            console.log("state: ");
+            console.log(state);
+            //messagesAdapter.setAll(state, state.messages.filter(({channelId}) => channelId !== id));
           })
           /*.addCase(fetchMessages.fulfilled, (state, action)=> {
             const { messages } = action.payload;
