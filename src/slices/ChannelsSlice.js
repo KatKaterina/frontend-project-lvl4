@@ -1,12 +1,12 @@
 import { createSlice, createAsyncThunk, createEntityAdapter } from '@reduxjs/toolkit';
 import routes from '../routes.js';
 import axios from 'axios';
+import _ from 'lodash';
 import { addMessage } from './messagesSlice.js';
 
 const channelsAdapter = createEntityAdapter();
 
 const initialState = channelsAdapter.getInitialState({
-    //currentChannelId: '',
     loading: '',
     error: null,
 });
@@ -45,8 +45,15 @@ const channelsSlice = createSlice ({
             state.currentChannelId = channel.id;
         },
         renameChannel: (state, { payload }) =>{
-            const { name, id } = payload;
+            //const { name, id } = payload;
             channelsAdapter.updateOne;
+        },
+        removeChannel: (state, { payload }) =>{
+            const { id } = payload;
+            channelsAdapter.removeOne;
+            if (id === state.currentChannelId) {
+                state.currentChannelId = _.first(state.channels).id;
+            }
         }
     },
     extraReducers: (builder) => {
@@ -68,6 +75,6 @@ const channelsSlice = createSlice ({
     },
 });
 
-export const {changeCurrentChannel, addChannel, renameChannel} = channelsSlice.actions;
+export const {changeCurrentChannel, addChannel, renameChannel, removeChannel} = channelsSlice.actions;
 export const selectorChannels = channelsAdapter.getSelectors((state) => state.channels);
 export default channelsSlice.reducer;

@@ -75,7 +75,7 @@ const ModalAddChannel = () => {
         </Modal.Header>
 
         <Modal.Body>
-          <FormAddChannel handleClose={handleClose}/>
+          <FormRenameChannel handleClose={handleClose}/>
         </Modal.Body>
       </Modal>
     )
