@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Col, Nav, Button, Dropdown, ButtonGroup } from 'react-bootstrap';
 import { useSelector, useDispatch } from 'react-redux';
-import { selectorChannels, changeCurrentChannel } from '../slices/ChannelsSlice.js';
+import { selectorChannels, changeCurrentChannel, fetchData } from '../slices/ChannelsSlice.js';
 import { openModal, closeModal } from '../slices/modalSlice.js';
 //as={Button} variant={buttonVariant} block
 const fixedChannel = ({ name, buttonVariant, onClick, id }) => (
@@ -51,6 +51,7 @@ const Channels = () => {
 
   const handleRemove = (id) => () => {
     dispatch(openModal({ type: 'removeChannel', updateData: { id } }));
+    dispatch(fetchData());
   };
 
   const handleRename = (id, name) => () => {
