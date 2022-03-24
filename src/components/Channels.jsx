@@ -11,9 +11,9 @@ const fixedChannel = ({ name, buttonVariant, onClick, id }) => (
   );
   //className="mb-2 text-left"
 
-  const unremovableChannel = ({ name, buttonVariant, onClick, id }) => {
+ /*const unremovableChannel = ({ name, buttonVariant, onClick, id }) => {
 
-  }
+  }*/
 
 const Channels = () => {
   const channels = useSelector(selectorChannels.selectAll);
@@ -41,11 +41,13 @@ const Channels = () => {
    
   };
 
+  //const Channel = removable ? unremovableChannel : fixedChannel;
+
   const renderChannels = () => (
     //<div className="border-end pt-5 px-0 bg-light">
     <Nav variant="pills" fill className="flex-column">
       {channels.map(({ id, name, removable }) => {
-        const Channel = removable ? unremovableChannel : fixedChannel;
+        const Channel = removable ? fixedChannel : fixedChannel;
         return (
           //<Nav.Item key={id}  eventKey={id}>
             <Channel
