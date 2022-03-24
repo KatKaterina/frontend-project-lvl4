@@ -44,7 +44,8 @@ const FormAddChannel = ({ handleClose }) => {
               value={formik.values.name}
               ref={refName}
             />
-            {console.log(formik.errors)}
+             {formik.errors.name && 
+             <Form.Control.Feedback type="invalid">{formik.errors.name}</Form.Control.Feedback>}
           </InputGroup>
           <Button onClick={handleClose}>Cancel</Button>
           {' '}
