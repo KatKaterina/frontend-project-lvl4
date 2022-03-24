@@ -6,6 +6,7 @@ import { socketContext }  from '../contexts/index.js';
 import { closeModal } from '../slices/modalSlice.js';
 import { schemaForChannel as schema } from '../validateSchema';
 import { changeCurrentChannel } from '../slices/ChannelsSlice.js';
+import store from './slices/index.js';
 
 const FormAddChannel = ({ handleClose }) => {
     const refName = useRef();
@@ -65,6 +66,8 @@ const ModalAddChannel = () => {
     const handleClose = () => {
         setShow(false);
         dispatch(closeModal());
+        const channels = store.getState();
+        console.log(channels);
         //resetForm();
     };
     console.log("show: "  + show)
