@@ -34,7 +34,7 @@ const Channels = () => {
 
   useEffect(() => {
     dispatch(fetchData());
-    refInput.current.focus();
+    //refInput.current.focus();
   }, []);
 
 
