@@ -3,7 +3,7 @@ import * as yup from 'yup';
 //import { selectorChannels } from './slices/ChannelsSlice.js';
 import store from './slices/index.js';
 
-const channels = store.getState().channels;
+const channels = store.getState().channels.map((channel) => channel.name);
 console.log(channels);
 
 //const channels = useSelector(selectorChannels.selectAll).map((channel) => channel.name);
