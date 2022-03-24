@@ -21,7 +21,7 @@ const Chat = () => {
   useEffect(() => {
       dispatch(fetchData())
       //setUploaded(true);
-  }, []);
+  }, [dispatch]);
   //[channels, messages]
 
   const handleClick = (e) => {

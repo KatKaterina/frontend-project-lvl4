@@ -37,6 +37,7 @@ const Channels = () => {
     refInput.current.focus();
   }, []);*/
 
+
   //const getButtonVariant = (id) => (id === currentChannelId ? 'primary' : 'light');
   
   const handleClick = (id) => () => {
