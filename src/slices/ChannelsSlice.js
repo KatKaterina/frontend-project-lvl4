@@ -7,6 +7,7 @@ import { addMessage } from './messagesSlice.js';
 const channelsAdapter = createEntityAdapter();
 
 const initialState = channelsAdapter.getInitialState({
+    defaultChannelId: '',
     loading: '',
     error: null,
 });
@@ -50,17 +51,10 @@ const channelsSlice = createSlice ({
             state.currentChannelId = id;
         },
         removeChannel: (state, { payload }) => {
-            console.log("chanelsSlice/payload");
-            console.log(payload);
-            console.log("chanelsSlice/channels");
-            console.log(channels);
-            console.log("chanelsSlice/state.channel.first");
-            console.log(_.first(channels));
-
             const { id } = payload;
             channelsAdapter.removeOne;
             if (id === state.currentChannelId) {
-                state.currentChannelId = _.first(state.channels).id;
+                state.currentChannelId = state.defaultChannelId;
             }
         }
     },
@@ -72,6 +66,7 @@ const channelsSlice = createSlice ({
               //console.log(state.currentChannelId);
               channelsAdapter.setAll(state, channels);
               state.currentChannelId = state.currentChannelId === undefined ? currentChannelId : state.currentChannelId;
+              state.defaultChannelId = _.first(channels).id;
               //console.log('после ' + state.currentChannelId);
               state.loading = 'succes';
               state.error = null;
