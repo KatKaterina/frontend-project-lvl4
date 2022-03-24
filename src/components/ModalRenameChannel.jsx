@@ -13,7 +13,7 @@ const FormRenameChannel = ({ handleClose }) => {
     const dispatch = useDispatch();
 
     const updateData = useSelector((state) => state.modal.updateData);
-    const { channelId, name } = updateData;
+    const { id, name } = updateData;
     console.log(updateData);
     
 
@@ -26,8 +26,8 @@ const FormRenameChannel = ({ handleClose }) => {
         name,
       },
       validationSchema: schema,
-      onSubmit: ({ name: newName, channelId }) => {
-        const updateChannel =  { name: newName, id: channelId };
+      onSubmit: ({ name: newName }) => {
+        const updateChannel =  { name: newName, id };
         console.log(updateChannel);
         console.log(socket);
         socket.emit('renameChannel', updateChannel, (response) => {
