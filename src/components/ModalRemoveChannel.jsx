@@ -24,7 +24,7 @@ const FormRemoveChannel = ({ handleClose }) => {
         name,
       },
       validationSchema: schema,
-      onSubmit: ({ name: newName }) => {
+      onSubmit: ({ channelId }) => {
         const removeChannel =  { id: channelId };
         console.log(updateChannel);
         socket.emit('removeChannel', updateChannel, (response) => {

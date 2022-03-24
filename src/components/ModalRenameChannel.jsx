@@ -26,7 +26,7 @@ const FormRenameChannel = ({ handleClose }) => {
         name,
       },
       validationSchema: schema,
-      onSubmit: ({ name: newName }) => {
+      onSubmit: ({ name: newName, channelId }) => {
         const updateChannel =  { name: newName, id: channelId };
         console.log(updateChannel);
         console.log(socket);
