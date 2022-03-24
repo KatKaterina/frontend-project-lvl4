@@ -1,6 +1,6 @@
 import * as yup from 'yup';
 import { useSelector } from 'react-redux';
-import { selectorChannels } from '../slices/ChannelsSlice.js';
+import { selectorChannels } from './slices/ChannelsSlice.js';
 
 const channels = useSelector(selectorChannels.selectAll).map((channel) => channel.name);
 
