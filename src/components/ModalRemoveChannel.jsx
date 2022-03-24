@@ -7,13 +7,29 @@ import { closeModal } from '../slices/modalSlice.js';
 import { schemaForChannel as schema } from '../validateSchema';
 import { changeCurrentChannel, renameChannel } from '../slices/ChannelsSlice.js';
 
-const FormRemoveChannel = ({ handleClose }) => {
+const handleRemove = () => {
+  const socket = useContext(socketContext);
+  const updateData = useSelector((state) => state.modal.updateData);
+  const { channelId } = updateData;
+  const removeChannel =  { id: channelId };
+ 
+  socket.emit('removeChannel', removeChannel, (response) => {
+    //console.log(response);
+    const { status } = response;
+    if (status === 'ok') {
+      handleClose();
+    } else {
+      //alert('Ошибка соединения, повторите отправку сообщения.')
+    }
+  });
+}
+
+/*const FormRemoveChannel = ({ handleClose }) => {
     const refName = useRef();
-    const socket = useContext(socketContext);
+
     const dispatch = useDispatch();
 
-    const updateData = useSelector((state) => state.modal.updateData);
-    const { channelId, name } = updateData;
+ 
 
     useEffect(() => {
         refName.current.focus();
@@ -58,7 +74,7 @@ const FormRemoveChannel = ({ handleClose }) => {
           <Button type="submit">Rename</Button>
       </Form>
     );
-};
+};*/
 
 
 const ModalAddChannel = () => {
@@ -69,16 +85,20 @@ const ModalAddChannel = () => {
         dispatch(closeModal());
         //resetForm();
     };
-    console.log("show: "  + show)
+    //console.log("show: "  + show)
     return (
       <Modal show={show} onHide={handleClose} centered>
         <Modal.Header closeButton>
           <Modal.Title>Remove channel</Modal.Title>
         </Modal.Header>
-
         <Modal.Body>
-          <FormRemoveChannel handleClose={handleClose}/>
+          Are you sure?
         </Modal.Body>
+        <Modal.Footer>
+          <Button onClick={handleClose}>Cancel</Button>
+          {' '}
+          <Button onClick={handleRemove}>Remove</Button>
+        </Modal.Footer>
       </Modal>
     )
 };

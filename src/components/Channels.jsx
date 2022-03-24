@@ -44,7 +44,7 @@ const Channels = () => {
   };
 
   const handleRemove = (id) => () => {
-    dispatch(openModal({ type: 'removeChannel', updateData: null }));
+    dispatch(openModal({ type: 'removeChannel', updateData: { id } }));
   };
 
   const handleRename = (id, name) => () => {
