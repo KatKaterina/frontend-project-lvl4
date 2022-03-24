@@ -13,15 +13,16 @@ const Chat = () => {
   const dispatch = useDispatch();
   const [uploaded, setUploaded] = useState(false);
   
-  const channels =  useSelector(selectorChannels.selectAll);
-  const messages = useSelector(selectorMessages.selectAll);
+  //const channels =  useSelector(selectorChannels.selectAll);
+  //const messages = useSelector(selectorMessages.selectAll);
+  const channels = useSelector((state) => state.channels);
   console.log(channels);
   console.log(messages);
 
   useEffect(() => {
       dispatch(fetchData())
       //setUploaded(true);
-  }, [dispatch]);
+  }, [channels]);
   //[channels, messages]
 
   const handleClick = (e) => {
