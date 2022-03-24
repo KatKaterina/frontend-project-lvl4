@@ -41,6 +41,7 @@ const channelsSlice = createSlice ({
         },
         addChannel: (state, { payload }) => {
             const { channel } = payload;
+            console.log(payload);
             channelsAdapter.addOne(state, channel);
         }
     },

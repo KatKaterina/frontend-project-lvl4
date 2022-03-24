@@ -31,7 +31,7 @@ const FormAddChannel = ({ handleClose }) => {
           const { status, id } = response;
           if (status === 'ok') {
             //dispatch(closeModal());
-            dispatch(changeCurrentChannel({ id }));
+            //dispatch(changeCurrentChannel({ id }));
             handleClose();
            
           } else {
