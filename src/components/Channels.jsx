@@ -32,10 +32,10 @@ const Channels = () => {
 
   const dispatch = useDispatch();
 
-  /*useEffect(() => {
-    //dispatch(fetchMessages());
+  useEffect(() => {
+    dispatch(fetchData());
     refInput.current.focus();
-  }, []);*/
+  }, []);
 
 
   //const getButtonVariant = (id) => (id === currentChannelId ? 'primary' : 'light');
@@ -51,7 +51,7 @@ const Channels = () => {
 
   const handleRemove = (id) => () => {
     dispatch(openModal({ type: 'removeChannel', updateData: { id } }));
-    dispatch(fetchData());
+    //dispatch(fetchData());
   };
 
   const handleRename = (id, name) => () => {

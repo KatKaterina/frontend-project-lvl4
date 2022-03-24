@@ -71,9 +71,11 @@ const ModalAddChannel = () => {
         //resetForm();
     };
 
+    const socket = useContext(socketContext);
+    const updateData = useSelector((state) => state.modal.updateData);
+
     const handleRemove = () => {
-      const socket = useContext(socketContext);
-      const updateData = useSelector((state) => state.modal.updateData);
+ 
       const { id } = updateData;
       const removeChannel =  { id };
      
