@@ -30,6 +30,7 @@ const Channels = () => {
   const channels = useSelector(selectorChannels.selectAll);
   const {currentChannelId} = useSelector((state) => state.channels);
   const [updateChannels, setUpdateChannels] = useState(false);
+  console.log(updateChannels);
 
   const dispatch = useDispatch();
 
@@ -50,6 +51,7 @@ const Channels = () => {
     e.preventDefault();
     dispatch(openModal({ type: 'addChannel', updateData: null }));
     setUpdateChannels(true);
+    console.log(updateChannels);
   };
 
   const handleRemove = (id) => () => {
@@ -61,6 +63,7 @@ const Channels = () => {
   const handleRename = (id, name) => () => {
     dispatch(openModal({ type: 'renameChannel', updateData: { id, name } }));
     setUpdateChannels(true);
+    console.log(updateChannels);
   };
 
   //const Channel = removable ? unremovableChannel : fixedChannel;
