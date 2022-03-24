@@ -42,8 +42,10 @@ const FormAddChannel = ({ handleClose }) => {
               className="mb-2"
               onChange={formik.handleChange}
               value={formik.values.name}
+              isInvalid={formik.errors.name}
               ref={refName}
             />
+             {console.log(formik.errors.name)}
              {formik.errors.name && 
              <Form.Control.Feedback type="invalid">{formik.errors.name}</Form.Control.Feedback>}
           </InputGroup>
