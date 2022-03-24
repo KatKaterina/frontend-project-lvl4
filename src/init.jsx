@@ -15,7 +15,8 @@ export default async (socketClient = io()) => {
     store.dispatch(addChannel({ channel }));
   });
   socketClient.on('renameChannel', (channel) => {
-    store.dispatch(renameChannel({ channel }));
+    const { id, name } = channel;
+    store.dispatch(renameChannel({ id, name }));
   });
 
   return (
