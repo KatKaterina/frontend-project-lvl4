@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Col, Nav, Button, Dropdown } from 'react-bootstrap';
+import { Col, Nav, Button, Dropdown, ButtonGroup } from 'react-bootstrap';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectorChannels, changeCurrentChannel } from '../slices/ChannelsSlice.js';
 import { openModal, closeModal } from '../slices/modalSlice.js';
