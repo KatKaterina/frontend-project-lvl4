@@ -5,7 +5,7 @@ import { authorizContext }  from '../contexts/index.js';
 import Channels from './Channels.jsx';
 import Messages from './Messages.jsx';
 import { fetchData, selectorChannels } from '../slices/ChannelsSlice.js';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 const Chat = () => {
   const authorization = useContext(authorizContext);
