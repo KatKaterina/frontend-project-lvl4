@@ -73,6 +73,7 @@ const ModalAddChannel = () => {
 
     const socket = useContext(socketContext);
     const updateData = useSelector((state) => state.modal.updateData);
+    console.log("updateData");
     console.log(updateData);
 
     const handleRemove = () => {
@@ -81,7 +82,8 @@ const ModalAddChannel = () => {
       const removeChannel =  { id };
      
       socket.emit('removeChannel', removeChannel, (response) => {
-        //console.log(response);
+        console.log("response");
+        console.log(response);
         const { status } = response;
         if (status === 'ok') {
           handleClose();
