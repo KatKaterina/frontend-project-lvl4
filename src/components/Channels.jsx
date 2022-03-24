@@ -11,7 +11,7 @@ const fixedChannel = ({ name, buttonVariant, onClick, id }) => (
   );
   //className="mb-2 text-left"
 
- const unremovableChannel = ({ name, buttonVariant, onClick, id }) => (
+ const unremovableChannel = ({ name, buttonVariant, onClick, onRename, onRemove, id }) => (
   <Dropdown as={ButtonGroup} className="d-flex mb-2">
     <Nav.Link key={id}  eventKey={id}  as="button" variant={buttonVariant} className="w-100 rounded text-start" onClick={onClick}>
       {name}
@@ -20,8 +20,8 @@ const fixedChannel = ({ name, buttonVariant, onClick, id }) => (
     <Dropdown.Toggle split variant={buttonVariant} id="dropdown-split-basic" />
 
     <Dropdown.Menu>
-      <Dropdown.Item onClick={}>Rename channel</Dropdown.Item>
-      <Dropdown.Item onClick={}>Remove channel</Dropdown.Item>
+      <Dropdown.Item onClick={onRename}>Rename channel</Dropdown.Item>
+      <Dropdown.Item onClick={onRemove}>Remove channel</Dropdown.Item>
     </Dropdown.Menu>
   </Dropdown>
  );
