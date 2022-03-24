@@ -27,10 +27,10 @@ const messagesSlice = createSlice ({
           })
           .addCase(removeChannel, (state, action) => {
             const { id } = action.payload;
-            const ent = Object.values(state.entities);
+            const ent = Object.values(state.entities).filter((e) => e.channelId !== id);
             console.log("ent: ");
             console.log(ent);
-            
+
             //messagesAdapter.setAll(state, state.messages.filter(({channelId}) => channelId !== id));
           })
           /*.addCase(fetchMessages.fulfilled, (state, action)=> {
