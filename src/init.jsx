@@ -21,6 +21,8 @@ export default async (socketClient = io()) => {
     store.dispatch(renameChannel({ id, changes: { name }, }));
   });
   socketClient.on('removeChannel', ({ id }) => {
+    console.log("init/ id");
+    console.log(id);
     store.dispatch(removeChannel({ id }));
   });
 
