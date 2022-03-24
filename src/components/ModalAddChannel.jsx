@@ -5,11 +5,12 @@ import { useSelector, useDispatch } from 'react-redux';
 import { socketContext }  from '../contexts/index.js';
 import { closeModal } from '../slices/modalSlice.js';
 import { schemaForChannel as schema } from '../validateSchema';
+import { changeCurrentChannel } from '../slices/ChannelsSlice.js';
 
 const FormAddChannel = ({ handleClose }) => {
     const refName = useRef();
     const socket = useContext(socketContext);
-    //const dispatch = useDispatch();
+    const dispatch = useDispatch();
 
     useEffect(() => {
         refName.current.focus();
@@ -22,11 +23,13 @@ const FormAddChannel = ({ handleClose }) => {
       validationSchema: schema,
       onSubmit: ({ name }) => {
         const newChannel =  { name };
-        console.log('channel ' + newChannel);
+        //console.log('channel ' + newChannel);
         socket.emit('newChannel', newChannel, (response) => {
-          if (response.status === 'ok') {
+          const { status, id } = response;
+          if (status === 'ok') {
             //dispatch(closeModal());
             handleClose();
+            dispatch(changeCurrentChannel({ id }));
           } else {
             //alert('Ошибка соединения, повторите отправку сообщения.')
           }
@@ -45,7 +48,6 @@ const FormAddChannel = ({ handleClose }) => {
               isInvalid={formik.errors.name}
               ref={refName}
             />
-             {console.log(formik.errors.name)}
              {formik.errors.name && 
              <Form.Control.Feedback type="invalid">{formik.errors.name}</Form.Control.Feedback>}
           </InputGroup>
