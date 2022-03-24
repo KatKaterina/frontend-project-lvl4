@@ -13,7 +13,7 @@ const FormRenameChannel = ({ handleClose }) => {
     const dispatch = useDispatch();
 
     const updateData = useSelector((state) => state.modal.updateData);
-    const { channelId } = updateData;
+    const { channelId, name } = updateData;
 
     useEffect(() => {
         refName.current.focus();
@@ -21,7 +21,7 @@ const FormRenameChannel = ({ handleClose }) => {
 
     const formik = useFormik({
       initialValues: {
-        name: '',
+        name,
       },
       validationSchema: schema,
       onSubmit: ({ name: newName }) => {
