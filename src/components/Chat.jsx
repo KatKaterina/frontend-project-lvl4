@@ -5,6 +5,7 @@ import { authorizContext }  from '../contexts/index.js';
 import Channels from './Channels.jsx';
 import Messages from './Messages.jsx';
 import { fetchData, selectorChannels } from '../slices/ChannelsSlice.js';
+import { selectorMessages } from '../slices/messagesSlice';
 import { useDispatch, useSelector } from 'react-redux';
 
 const Chat = () => {
@@ -13,11 +14,12 @@ const Chat = () => {
   const [uploaded, setUploaded] = useState(false);
   
   const channels =  useSelector(selectorChannels.selectAll);
+  const messages = useSelector(selectorMessages.selectAll);
 
- /* useEffect(() => {
+  useEffect(() => {
       dispatch(fetchData())
       //setUploaded(true);
-  }, [channels]);*/
+  }, [channels, messages]);
 
 
   const handleClick = (e) => {
