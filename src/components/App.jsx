@@ -12,6 +12,7 @@ import Chat from './Chat.jsx';
 import { authorizContext, socketContext }  from '../contexts/index.js';
 import ModalAddChannel from './ModalAddChannel.jsx';
 import ModalRenameChannel from './ModalRenameChannel.jsx';
+import ModalRemoveChannel from './ModalRemoveChannel.jsx';
 
 const AutorizProvider = ({children}) => {
   //console.log(authorizContext);
@@ -62,7 +63,7 @@ const renderModal = (type) => {
       return <ModalRenameChannel />
     }
     case 'removeChannel': {
-      return <ModalRenameChannel />
+      return <ModalRemoveChannel />
     }
     default: {
       return null;
