@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Col, Nav, Button, Dropdown, ButtonGroup } from 'react-bootstrap';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectorChannels, changeCurrentChannel, fetchData } from '../slices/ChannelsSlice.js';
@@ -29,33 +29,38 @@ const fixedChannel = ({ name, buttonVariant, onClick, id }) => (
 const Channels = () => {
   const channels = useSelector(selectorChannels.selectAll);
   const {currentChannelId} = useSelector((state) => state.channels);
+  const [updateChannels, setUpdateChannels] = useState(false);
 
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchData());
     //refInput.current.focus();
-  }, []);
+  }, [updateChannels]);
 
 
   //const getButtonVariant = (id) => (id === currentChannelId ? 'primary' : 'light');
   
   const handleClick = (id) => () => {
     dispatch(changeCurrentChannel({ id }));
+    setUpdateChannels(true);
   };
 
   const handleAdd = (e) => {
     e.preventDefault();
     dispatch(openModal({ type: 'addChannel', updateData: null }));
+    setUpdateChannels(true);
   };
 
   const handleRemove = (id) => () => {
     dispatch(openModal({ type: 'removeChannel', updateData: { id } }));
+    setUpdateChannels(true);
     //dispatch(fetchData());
   };
 
   const handleRename = (id, name) => () => {
     dispatch(openModal({ type: 'renameChannel', updateData: { id, name } }));
+    setUpdateChannels(true);
   };
 
   //const Channel = removable ? unremovableChannel : fixedChannel;
