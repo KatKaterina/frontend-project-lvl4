@@ -28,7 +28,7 @@ const FormAddChannel = ({ handleClose }) => {
         const newChannel =  { name };
         //console.log('channel ' + newChannel);
         socket.emit('newChannel', newChannel, (response) => {
-          const { status, id } = response;
+          const { status } = response;
           if (status === 'ok') {
             //dispatch(closeModal());
             //dispatch(changeCurrentChannel({ id }));

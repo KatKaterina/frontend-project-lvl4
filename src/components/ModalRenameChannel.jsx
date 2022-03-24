@@ -27,7 +27,8 @@ const FormRenameChannel = ({ handleClose }) => {
       onSubmit: ({ name: newName }) => {
         const updateChannel =  { name: newName, id: channelId };
         socket.emit('renameChannel', updateChannel, (response) => {
-          const { status, id } = response;
+          console.log(response);
+          const { status } = response;
           if (status === 'ok') {
             handleClose();
           } else {
