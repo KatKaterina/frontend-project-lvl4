@@ -11,6 +11,7 @@ import NotFound from './NotFound.jsx';
 import Chat from './Chat.jsx';
 import { authorizContext, socketContext }  from '../contexts/index.js';
 import ModalAddChannel from './ModalAddChannel.jsx';
+import ModalRenameChannel from './ModalRenameChannel.jsx';
 
 const AutorizProvider = ({children}) => {
   //console.log(authorizContext);
@@ -56,6 +57,9 @@ const renderModal = (type) => {
   switch (type) {
     case 'addChannel': {
       return <ModalAddChannel />
+    }
+    case 'renameChannel': {
+      return <ModalRenameChannel />
     }
     default: {
       return null;
