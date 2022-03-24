@@ -35,7 +35,7 @@ const Channels = () => {
   useEffect(() => {
     dispatch(fetchData());
     //refInput.current.focus();
-  }, []);
+  }, [channels]);
 
 
   //const getButtonVariant = (id) => (id === currentChannelId ? 'primary' : 'light');
