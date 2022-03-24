@@ -7,22 +7,7 @@ import { closeModal } from '../slices/modalSlice.js';
 import { schemaForChannel as schema } from '../validateSchema';
 import { changeCurrentChannel, renameChannel } from '../slices/ChannelsSlice.js';
 
-const handleRemove = () => {
-  const socket = useContext(socketContext);
-  const updateData = useSelector((state) => state.modal.updateData);
-  const { id } = updateData;
-  const removeChannel =  { id };
- 
-  socket.emit('removeChannel', removeChannel, (response) => {
-    //console.log(response);
-    const { status } = response;
-    if (status === 'ok') {
-      handleClose();
-    } else {
-      //alert('Ошибка соединения, повторите отправку сообщения.')
-    }
-  });
-}
+
 
 /*const FormRemoveChannel = ({ handleClose }) => {
     const refName = useRef();
@@ -85,6 +70,23 @@ const ModalAddChannel = () => {
         dispatch(closeModal());
         //resetForm();
     };
+
+    const handleRemove = () => {
+      const socket = useContext(socketContext);
+      const updateData = useSelector((state) => state.modal.updateData);
+      const { id } = updateData;
+      const removeChannel =  { id };
+     
+      socket.emit('removeChannel', removeChannel, (response) => {
+        //console.log(response);
+        const { status } = response;
+        if (status === 'ok') {
+          handleClose();
+        } else {
+          //alert('Ошибка соединения, повторите отправку сообщения.')
+        }
+      });
+    }
     //console.log("show: "  + show)
     return (
       <Modal show={show} onHide={handleClose} centered>
