@@ -36,20 +36,19 @@ const Channels = () => {
   
   const handleClick = (id) => () => {
     dispatch(changeCurrentChannel({ id }));
-    //console.log(currentChannelId);
   };
 
   const handleAdd = (e) => {
     e.preventDefault();
-    dispatch(openModal({ type: 'addChannel'}));
+    dispatch(openModal({ type: 'addChannel', updateData: null }));
   };
 
   const handleRemove = (id) => () => {
-  
+    
   };
 
   const handleRename = (id, name) => () => {
-   
+    dispatch(openModal({ type: 'renameChannel', updateData: { id, name } }));
   };
 
   //const Channel = removable ? unremovableChannel : fixedChannel;

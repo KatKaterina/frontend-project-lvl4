@@ -5,12 +5,15 @@ import { useSelector, useDispatch } from 'react-redux';
 import { socketContext }  from '../contexts/index.js';
 import { closeModal } from '../slices/modalSlice.js';
 import { schemaForChannel as schema } from '../validateSchema';
-import { changeCurrentChannel } from '../slices/ChannelsSlice.js';
+import { changeCurrentChannel, renameChannel } from '../slices/ChannelsSlice.js';
 
-const FormAddChannel = ({ handleClose }) => {
+const FormRenameChannel = ({ handleClose }) => {
     const refName = useRef();
     const socket = useContext(socketContext);
     const dispatch = useDispatch();
+
+    const updateData = useSelector((state) => state.modal.updateData);
+    const { channelId } = updateData;
 
     useEffect(() => {
         refName.current.focus();
@@ -18,18 +21,15 @@ const FormAddChannel = ({ handleClose }) => {
 
     const formik = useFormik({
       initialValues: {
-        name:'',
+        name: '',
       },
       validationSchema: schema,
-      onSubmit: ({ name }) => {
-        const newChannel =  { name };
-        //console.log('channel ' + newChannel);
-        socket.emit('newChannel', newChannel, (response) => {
+      onSubmit: ({ name: newName }) => {
+        const updateChannel =  { name: newName, id: channelId };
+        socket.emit('renameChannel', updateChannel, (response) => {
           const { status, id } = response;
           if (status === 'ok') {
-            //dispatch(closeModal());
             handleClose();
-            dispatch(changeCurrentChannel({ id }));
           } else {
             //alert('Ошибка соединения, повторите отправку сообщения.')
           }
