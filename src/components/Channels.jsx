@@ -59,13 +59,13 @@ const Channels = () => {
   };
 
   const handleRemove = (id) => () => {
-    console.log('updateChannels/удалкние1');
-    console.log(updateChannels);
-    setUpdateChannels(true);
+    //console.log('updateChannels/удалкние1');
+    //console.log(updateChannels);
+    //setUpdateChannels(true);
     dispatch(openModal({ type: 'removeChannel', updateData: { id } }));
-    setUpdateChannels(false);
-    console.log('updateChannels/удаление2');
-    console.log(updateChannels);
+    //setUpdateChannels(false);
+    //console.log('updateChannels/удаление2');
+    //console.log(updateChannels);
     //setUpdateChannels(true);
     //dispatch(fetchData());
   };
