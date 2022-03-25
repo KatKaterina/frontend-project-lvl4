@@ -6,6 +6,7 @@ import { socketContext }  from '../contexts/index.js';
 import { closeModal } from '../slices/modalSlice.js';
 import { schemaForChannel as schema } from '../validateSchema';
 import { changeCurrentChannel, renameChannel } from '../slices/ChannelsSlice.js';
+import { fetchData } from '../slices/ChannelsSlice.js';
 
 const FormRenameChannel = ({ handleClose }) => {
     const refName = useRef();
@@ -35,6 +36,7 @@ const FormRenameChannel = ({ handleClose }) => {
           const { status } = response;
           if (status === 'ok') {
             handleClose();
+            dispatch(fetchData());
           } else {
             //alert('Ошибка соединения, повторите отправку сообщения.')
           }
