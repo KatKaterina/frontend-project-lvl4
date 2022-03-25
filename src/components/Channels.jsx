@@ -30,8 +30,8 @@ const Channels = () => {
   const channels = useSelector(selectorChannels.selectAll);
   const {currentChannelId} = useSelector((state) => state.channels);
   const [updateChannels, setUpdateChannels] = useState(false);
-  console.log('updateChannels/ первый');
-  console.log(updateChannels);
+  //console.log('updateChannels/ первый');
+  //console.log(updateChannels);
 
   const dispatch = useDispatch();
 
@@ -47,6 +47,7 @@ const Channels = () => {
   const handleClick = (id) => () => {
     //setUpdateChannels(true);
     dispatch(changeCurrentChannel({ id }));
+    dispatch(fetchData());
   
   };
 
