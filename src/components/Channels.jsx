@@ -37,7 +37,7 @@ const Channels = () => {
 
   useEffect(() => {
     dispatch(fetchData());
-    setUpdateChannels(false);
+    //setUpdateChannels(false);
     //refInput.current.focus();
   }, [updateChannels]);
 
@@ -63,6 +63,7 @@ const Channels = () => {
     console.log(updateChannels);
     setUpdateChannels(true);
     dispatch(openModal({ type: 'removeChannel', updateData: { id } }));
+    setUpdateChannels(false);
     console.log('updateChannels/удаление2');
     console.log(updateChannels);
     //setUpdateChannels(true);
