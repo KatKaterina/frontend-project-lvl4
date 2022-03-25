@@ -79,6 +79,7 @@ const Channels = () => {
   };
 
   //const Channel = removable ? unremovableChannel : fixedChannel;
+  //buttonVariant={id === currentChannelId ? 'primary' : null}
 
   const renderChannels = () => (
     //<div className="border-end pt-5 px-0 bg-light">
@@ -90,8 +91,8 @@ const Channels = () => {
             <Channel
               id={id}
               name={name}
-              buttonVariant={id === currentChannelId ? 'primary' : null}
-              active={id === currentChannelId ? 'true' : ''}
+              buttonVariant={""}
+              active={id === currentChannelId ? "true" : ""}
               onClick={handleClick(id)}
               onRemove={handleRemove(id)}
               onRename={handleRename(id, name)}
