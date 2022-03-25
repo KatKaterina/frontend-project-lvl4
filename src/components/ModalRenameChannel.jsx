@@ -4,14 +4,16 @@ import { Col, Form, Button, InputGroup, Modal } from 'react-bootstrap';
 import { useSelector, useDispatch } from 'react-redux';
 import { socketContext }  from '../contexts/index.js';
 import { closeModal } from '../slices/modalSlice.js';
-import { schemaForChannel as schema } from '../validateSchema';
+import { getSchemaForChannel } from '../validateSchema';
 import { changeCurrentChannel, renameChannel } from '../slices/ChannelsSlice.js';
-import { fetchData } from '../slices/ChannelsSlice.js';
+import { fetchData, selectorChannels } from '../slices/ChannelsSlice.js';
+
 
 const FormRenameChannel = ({ handleClose }) => {
     const refName = useRef();
     const socket = useContext(socketContext);
     const dispatch = useDispatch();
+    const channels = useSelector(selectorChannels.selectAll).map((channel) => channel.name);
 
     const updateData = useSelector((state) => state.modal.updateData);
     const { id, name } = updateData;
@@ -26,7 +28,7 @@ const FormRenameChannel = ({ handleClose }) => {
       initialValues: {
         name,
       },
-      validationSchema: schema,
+      validationSchema: getSchemaForChannel(channels),
       onSubmit: ({ name: newName }) => {
         const updateChannel =  { name: newName, id };
         console.log(updateChannel);
