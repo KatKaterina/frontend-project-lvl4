@@ -4,20 +4,20 @@ import { useSelector, useDispatch } from 'react-redux';
 import { selectorChannels, changeCurrentChannel, fetchData } from '../slices/ChannelsSlice.js';
 import { openModal, closeModal } from '../slices/modalSlice.js';
 //as={Button} variant={buttonVariant} block
-const fixedChannel = ({ name, buttonVariant, onClick, id, active }) => (
-  <Nav.Link key={id}  eventKey={id} active={active}  variant={buttonVariant} className="w-100 rounded text-start" onClick={onClick}>
+const fixedChannel = ({ name, onClick, id, active }) => (
+  <Nav.Link key={id}  eventKey={id} active={active}  className="w-100 rounded text-start" onClick={onClick}>
       {name}
     </Nav.Link>
   );
   //className="mb-2 text-left"
 
- const unremovableChannel = ({ name, buttonVariant, onClick, onRename, onRemove, id, active }) => (
+ const unremovableChannel = ({ name, variant, onClick, onRename, onRemove, id, active }) => (
   <Dropdown as={ButtonGroup} className="d-flex mb-2">
-    <Nav.Link key={id}  eventKey={id} active={active} variant={buttonVariant} className="w-100 rounded text-start" onClick={onClick}>
+    <Nav.Link key={id}  eventKey={id} active={active} className="w-100 rounded text-start" onClick={onClick}>
       {name}
     </Nav.Link>
 
-    <Dropdown.Toggle split variant={buttonVariant} id="dropdown-split-basic" />
+    <Dropdown.Toggle split variant={variant} id="dropdown-split-basic" />
 
     <Dropdown.Menu>
       <Dropdown.Item onClick={onRename}>Rename channel</Dropdown.Item>
@@ -91,7 +91,7 @@ const Channels = () => {
             <Channel
               id={id}
               name={name}
-              buttonVariant={""}
+              variant={id === currentChannelId ? 'primary' : null}
               active={id === currentChannelId ? "true" : ""}
               onClick={handleClick(id)}
               onRemove={handleRemove(id)}
