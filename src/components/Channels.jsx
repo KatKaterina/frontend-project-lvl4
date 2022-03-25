@@ -4,8 +4,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { selectorChannels, changeCurrentChannel, fetchData } from '../slices/ChannelsSlice.js';
 import { openModal, closeModal } from '../slices/modalSlice.js';
 //as={Button} variant={buttonVariant} block
-const fixedChannel = ({ name, buttonVariant, onClick, id }) => (
-  <Nav.Link key={id}  eventKey={id}  as="button" variant={buttonVariant} className="w-100 rounded text-start" onClick={onClick}>
+const fixedChannel = ({ name, buttonVariant, onClick, id, active }) => (
+  <Nav.Link key={id}  eventKey={id} active={active}  variant={buttonVariant} className="w-100 rounded text-start" onClick={onClick}>
       {name}
     </Nav.Link>
   );
