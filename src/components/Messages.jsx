@@ -82,18 +82,18 @@ const FormMessage = ({ currentChannelId }) => {
             value={formik.values.message}
             placeholder="Enter message" 
             ref={refInput}
+            readOnly={formik.isSubmitting}
           />
-          <Button type="submit">
+          <Button type="submit" disabled={formik.isSubmitting}>
             Send
           </Button>
+          {formik.errors.message
+            && <Form.Control.Feedback type="invalid">{formik.errors.message}</Form.Control.Feedback>}
         </InputGroup>
       </Form>
     </div>
   )
 };
-
-//{formik.errors.body
-//&& <Form.Control.Feedback type="invalid">{t(formik.errors.body)}</Form.Control.Feedback>}
 
 
 const Messages = () => {

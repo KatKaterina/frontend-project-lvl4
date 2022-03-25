@@ -24,12 +24,14 @@ const FormAddChannel = ({ handleClose }) => {
         name:'',
       },
       validationSchema: getSchemaForChannel(channels),
-      onSubmit: ({ name }) => {
+      onSubmit: ({ name }, { setSubmitting }) => {
+        setSubmitting(true);
         const newChannel =  { name };
         //console.log('channel ' + newChannel);
         socket.emit('newChannel', newChannel, (response) => {
           const { status } = response;
           if (status === 'ok') {
+            setSubmitting(false);
             //dispatch(closeModal());
             //dispatch(changeCurrentChannel({ id }));
             handleClose();
@@ -51,13 +53,14 @@ const FormAddChannel = ({ handleClose }) => {
               value={formik.values.name}
               isInvalid={formik.errors.name}
               ref={refName}
+              readOnly={formik.isSubmitting}
             />
              {formik.errors.name && 
              <Form.Control.Feedback type="invalid">{formik.errors.name}</Form.Control.Feedback>}
           </InputGroup>
-          <Button onClick={handleClose}>Cancel</Button>
+          <Button onClick={handleClose} disabled={formik.isSubmitting}>Cancel</Button>
           {' '}
-          <Button type="submit">Add</Button>
+          <Button type="submit" disabled={formik.isSubmitting}>Add</Button>
       </Form>
     );
 };

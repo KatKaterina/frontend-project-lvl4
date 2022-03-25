@@ -21,7 +21,7 @@ const FormRenameChannel = ({ handleClose }) => {
     
 
     useEffect(() => {
-        refName.current.focus();
+        refName.current.select();
     }, []);
 
     const formik = useFormik({
@@ -29,7 +29,8 @@ const FormRenameChannel = ({ handleClose }) => {
         name,
       },
       validationSchema: getSchemaForChannel(channels),
-      onSubmit: ({ name: newName }) => {
+      onSubmit: ({ name: newName }, { setSubmitting }) => {
+        setSubmitting(true);
         const updateChannel =  { name: newName, id };
         console.log(updateChannel);
         console.log(socket);
@@ -37,6 +38,7 @@ const FormRenameChannel = ({ handleClose }) => {
           console.log(response);
           const { status } = response;
           if (status === 'ok') {
+            setSubmitting(false);
             handleClose();
             dispatch(fetchData());
           } else {
@@ -60,9 +62,9 @@ const FormRenameChannel = ({ handleClose }) => {
              {formik.errors.name && 
              <Form.Control.Feedback type="invalid">{formik.errors.name}</Form.Control.Feedback>}
           </InputGroup>
-          <Button onClick={handleClose}>Cancel</Button>
+          <Button onClick={handleClose} disabled={formik.isSubmitting}>Cancel</Button>
           {' '}
-          <Button type="submit">Rename</Button>
+          <Button type="submit" disabled={formik.isSubmitting}>Rename</Button>
       </Form>
     );
 };
