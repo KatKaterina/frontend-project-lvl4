@@ -44,26 +44,30 @@ const Channels = () => {
   //const getButtonVariant = (id) => (id === currentChannelId ? 'primary' : 'light');
   
   const handleClick = (id) => () => {
-    dispatch(changeCurrentChannel({ id }));
     setUpdateChannels(true);
+    dispatch(changeCurrentChannel({ id }));
+  
   };
 
   const handleAdd = (e) => {
     e.preventDefault();
-    dispatch(openModal({ type: 'addChannel', updateData: null }));
     setUpdateChannels(true);
+    dispatch(openModal({ type: 'addChannel', updateData: null }));
+    //setUpdateChannels(true);
     console.log(updateChannels);
   };
 
   const handleRemove = (id) => () => {
-    dispatch(openModal({ type: 'removeChannel', updateData: { id } }));
     setUpdateChannels(true);
+    dispatch(openModal({ type: 'removeChannel', updateData: { id } }));
+    //setUpdateChannels(true);
     //dispatch(fetchData());
   };
 
   const handleRename = (id, name) => () => {
-    dispatch(openModal({ type: 'renameChannel', updateData: { id, name } }));
     setUpdateChannels(true);
+    dispatch(openModal({ type: 'renameChannel', updateData: { id, name } }));
+    //setUpdateChannels(true);
     console.log(updateChannels);
   };
 
