@@ -30,6 +30,7 @@ const Channels = () => {
   const channels = useSelector(selectorChannels.selectAll);
   const {currentChannelId} = useSelector((state) => state.channels);
   const [updateChannels, setUpdateChannels] = useState(false);
+  console.log('updateChannels/ первый');
   console.log(updateChannels);
 
   const dispatch = useDispatch();
@@ -44,31 +45,35 @@ const Channels = () => {
   //const getButtonVariant = (id) => (id === currentChannelId ? 'primary' : 'light');
   
   const handleClick = (id) => () => {
-    setUpdateChannels(true);
+    //setUpdateChannels(true);
     dispatch(changeCurrentChannel({ id }));
   
   };
 
   const handleAdd = (e) => {
     e.preventDefault();
-    setUpdateChannels(true);
+    //setUpdateChannels(true);
     dispatch(openModal({ type: 'addChannel', updateData: null }));
     //setUpdateChannels(true);
-    console.log(updateChannels);
+    //console.log(updateChannels);
   };
 
   const handleRemove = (id) => () => {
+    console.log('updateChannels/удалкние1');
+    console.log(updateChannels);
     setUpdateChannels(true);
     dispatch(openModal({ type: 'removeChannel', updateData: { id } }));
+    console.log('updateChannels/удаление2');
+    console.log(updateChannels);
     //setUpdateChannels(true);
     //dispatch(fetchData());
   };
 
   const handleRename = (id, name) => () => {
-    setUpdateChannels(true);
+    //setUpdateChannels(true);
     dispatch(openModal({ type: 'renameChannel', updateData: { id, name } }));
     //setUpdateChannels(true);
-    console.log(updateChannels);
+    //console.log(updateChannels);
   };
 
   //const Channel = removable ? unremovableChannel : fixedChannel;
