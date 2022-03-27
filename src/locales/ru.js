@@ -27,6 +27,7 @@ export default {
       buttonCancel: 'Отменить',
       buttonClose: 'Закрыть',
       buttonSend: 'Отправить',
+      enterMessage: 'Введите сообщение',
     },
   },
 };

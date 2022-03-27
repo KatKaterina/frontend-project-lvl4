@@ -69,7 +69,7 @@ const Login = () => {
           id="username"
           autocomplite="username"
           required
-          placeholder="Enter user name" 
+          placeholder={t('elements.name')} 
           onChange={handleChange}
           value={values.username}
           isInvalid={Boolean(error)}

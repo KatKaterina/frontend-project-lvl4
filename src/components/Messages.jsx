@@ -82,7 +82,7 @@ const FormMessage = ({ currentChannelId }) => {
             className="p-0 ps-2"
             onChange={formik.handleChange}
             value={formik.values.message}
-            placeholder="Enter message" 
+            placeholder={t('elements.enterMessage')} 
             ref={refInput}
             readOnly={formik.isSubmitting}
           />
