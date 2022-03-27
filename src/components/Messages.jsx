@@ -7,6 +7,7 @@ import { socketContext }  from '../contexts/index.js';
 import { selectorMessages, addMessage, fetchMessages } from '../slices/messagesSlice.js';
 import { fetchData, changeCurrentChannel } from '../slices/ChannelsSlice.js';
 import { useTranslation } from 'react-i18next';
+import { toast } from 'react-toastify';
 //import { selectorChannels, changeCurrentChannel } from '../slices/ChannelsSlice.js';
 
 
@@ -51,7 +52,7 @@ const FormMessage = ({ currentChannelId }) => {
         refInput.current.focus();
         dispatch(fetchData());
       } else {
-        alert('Ошибка соединения, повторите отправку сообщения.')
+        toast.error(t('toast.connectError'));
       }
 
     });

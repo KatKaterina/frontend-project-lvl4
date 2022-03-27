@@ -7,6 +7,7 @@ import axios from 'axios';
 import routes from '../routes.js';
 import { useLocation, useNavigate, Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { toast } from 'react-toastify';
 
 const Login = () => {
   const { t } = useTranslation();
@@ -39,10 +40,9 @@ const Login = () => {
     } catch (e) {
         if (e.isAxiosError && e.response && e.response.status === 401) {
           setError('accessDenial');
-          console.log('accessDenial');
         } else {
             setError('networkError');
-            console.log('networkError');
+            toast.error(t('toast.connectError'));
         }
     }
   };

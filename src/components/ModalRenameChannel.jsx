@@ -8,6 +8,7 @@ import { getSchemaForChannel } from '../validateSchema';
 import { changeCurrentChannel, renameChannel } from '../slices/ChannelsSlice.js';
 import { fetchData, selectorChannels } from '../slices/ChannelsSlice.js';
 import { useTranslation } from 'react-i18next';
+import { toast } from 'react-toastify';
 
 
 const FormRenameChannel = ({ handleClose, t }) => {
@@ -42,8 +43,9 @@ const FormRenameChannel = ({ handleClose, t }) => {
             setSubmitting(false);
             handleClose();
             dispatch(fetchData());
+            toast.success(t('toast.renamedChannel'));
           } else {
-            //alert('Ошибка соединения, повторите отправку сообщения.')
+            toast.error(t('toast.connectError'));
           }
         })
       }

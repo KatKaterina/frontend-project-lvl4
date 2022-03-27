@@ -1,5 +1,12 @@
 export default {
   translation: {
+    toast: {
+      addedChannel: 'Канал добавлен',
+      connectError: 'Ошибка соединения',
+      removedChannel: 'Канал удален',
+      renamedChannel: 'Канал переименован',
+
+    },
     errors: {
       wrongLength: 'от 3 до 20 символов',
       wrongLengthPass: 'не менее 6 символов',

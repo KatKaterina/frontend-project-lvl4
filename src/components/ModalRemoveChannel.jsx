@@ -8,61 +8,7 @@ import { schemaForChannel as schema } from '../validateSchema';
 import { changeCurrentChannel, renameChannel } from '../slices/ChannelsSlice.js';
 import { fetchData } from '../slices/ChannelsSlice.js';
 import { useTranslation } from 'react-i18next';
-
-
-
-/*const FormRemoveChannel = ({ handleClose }) => {
-    const refName = useRef();
-
-    const dispatch = useDispatch();
-
- 
-
-    useEffect(() => {
-        refName.current.focus();
-    }, []);
-
-    const formik = useFormik({
-      initialValues: {
-        name,
-      },
-      validationSchema: schema,
-      onSubmit: ({ channelId }) => {
-        const removeChannel =  { id: channelId };
-        console.log(updateChannel);
-        socket.emit('removeChannel', updateChannel, (response) => {
-          console.log(response);
-          const { status } = response;
-          if (status === 'ok') {
-            handleClose();
-          } else {
-            //alert('Ошибка соединения, повторите отправку сообщения.')
-          }
-        })
-      }
-    });
-
-    return (
-      <Form onSubmit={formik.handleSubmit}>
-          <InputGroup>
-            <Form.Control
-              name="name"
-              className="mb-2"
-              onChange={formik.handleChange}
-              value={formik.values.name}
-              isInvalid={formik.errors.name}
-              ref={refName}
-            />
-             {formik.errors.name && 
-             <Form.Control.Feedback type="invalid">{formik.errors.name}</Form.Control.Feedback>}
-          </InputGroup>
-          <Button onClick={handleClose}>Cancel</Button>
-          {' '}
-          <Button type="submit">Rename</Button>
-      </Form>
-    );
-};*/
-
+import { toast } from 'react-toastify';
 
 const ModalAddChannel = () => {
   const { t } = useTranslation();
@@ -91,8 +37,9 @@ const ModalAddChannel = () => {
         if (status === 'ok') {
           handleClose();
           dispatch(fetchData());
+          toast.success(t('toast.removedChannel'));
         } else {
-          //alert('Ошибка соединения, повторите отправку сообщения.')
+          toast.error(t('toast.connectError'));
         }
       });
     }

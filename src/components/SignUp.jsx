@@ -7,6 +7,7 @@ import axios from 'axios';
 import routes from '../routes.js';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { toast } from 'react-toastify';
 
 const SignUp = () => {
   const { t } = useTranslation();
@@ -30,10 +31,9 @@ const SignUp = () => {
       } catch (e) {
           if (e.isAxiosError && e.response && e.response.status === 409) {
             setError('userExists');
-            console.log('userExists');
           } else {
               setError('networkError');
-              console.log('networkError');
+              toast.error(t('toast.connectError'));
           }
 
           setSubmitting(false);

@@ -7,6 +7,7 @@ import { closeModal } from '../slices/modalSlice.js';
 import { getSchemaForChannel } from '../validateSchema';
 import { changeCurrentChannel, selectorChannels } from '../slices/ChannelsSlice.js';
 import { useTranslation } from 'react-i18next';
+import { toast } from 'react-toastify';
 
 import store from '../slices/index.js';
 
@@ -36,9 +37,10 @@ const FormAddChannel = ({ handleClose, t }) => {
             //dispatch(closeModal());
             //dispatch(changeCurrentChannel({ id }));
             handleClose();
+            toast.success(t('toast.addedChannel'));
            
           } else {
-            //alert('Ошибка соединения, повторите отправку сообщения.')
+            toast.error(t('toast.connectError'));
           }
         })
       }
