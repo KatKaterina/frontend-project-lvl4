@@ -8,6 +8,7 @@ import { selectorMessages, addMessage, fetchMessages } from '../slices/messagesS
 import { fetchData, changeCurrentChannel } from '../slices/ChannelsSlice.js';
 import { useTranslation } from 'react-i18next';
 import { toast } from 'react-toastify';
+import filter from 'leo-profanity';
 //import { selectorChannels, changeCurrentChannel } from '../slices/ChannelsSlice.js';
 
 
@@ -41,9 +42,14 @@ const FormMessage = ({ currentChannelId }) => {
   const username = localStorage.getItem('username');
   const dispatch = useDispatch();
 
+  filter.clearList();
+  filter.add(filter.getDictionary('ru'));
+
   const handlerSubmit = ({ message }, { resetForm, setSubmitting }) => {
     setSubmitting(true);
-    const newMessage =  { message, channelId: currentChannelId, username };
+    const filteredMessage = filter.check(message) ? filter.clean(message) : message;
+
+    const newMessage =  { filteredMessage, channelId: currentChannelId, username };
     socket.emit('newMessage', newMessage, (response) => {
 
       if (response.status === 'ok') {
