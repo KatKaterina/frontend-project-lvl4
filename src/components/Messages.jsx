@@ -11,8 +11,6 @@ import { useTranslation } from 'react-i18next';
 //import  filter  from 'leo-profanity';
 import { toast } from 'react-toastify';
 
-//import { selectorChannels, changeCurrentChannel } from '../slices/ChannelsSlice.js';
-
 
 const ChannelMessages = ({ currentChannelId }) => {
   const messages = useSelector(selectorMessages.selectAll);
