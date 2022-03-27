@@ -12,14 +12,14 @@ import resources from './locales/index.js';
 export default async (socketClient = io()) => {
 
   const i18nInstance = i18n.createInstance();
-  const i18nInstance = async () => {
+
     await i18nInstance
       .use(initReactI18next)
       .init({
         lng: 'ru',
         resources,
       });
-  };
+ 
 
   socketClient.on('newMessge', (message) => {
     store.dispatch(addMessage({ message }));
