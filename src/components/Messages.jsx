@@ -1,5 +1,3 @@
-// @ts-check
-
 import { useFormik } from 'formik';
 import React, { useEffect, useContext, useRef, useState } from 'react';
 import { Col, Form, Button, InputGroup } from 'react-bootstrap';
