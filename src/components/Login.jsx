@@ -5,7 +5,7 @@ import schema from '../validateSchema.js';
 import { authorizContext }  from '../contexts/index.js';
 import axios from 'axios';
 import routes from '../routes.js';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate, Link } from 'react-router-dom';
 
 const Login = () => {
   const [error, setError] = useState(null);
