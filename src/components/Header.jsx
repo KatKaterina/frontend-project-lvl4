@@ -13,7 +13,7 @@ const Exit = () => {
     e.preventDefault();
     authorization.logOut();
   };
-
+  console.log(authorization.loggedIn);
     return (
         authorization.loggedIn ? <Link to="/login" onClick={handleClick}>LogOut</Link> : null
     );
@@ -22,7 +22,7 @@ const Exit = () => {
 const Header = () => {
     return (
       <Navbar className="shadow-sm bg-white">
-        <Navbar.Brand as={Link} to="/">Hexlet chat</Navbar.Brand>
+        <Navbar.Brand as={Link} to="/login">Hexlet chat</Navbar.Brand>
         <Nav>
           <Exit />
         </Nav>
