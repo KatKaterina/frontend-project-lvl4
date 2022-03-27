@@ -79,12 +79,11 @@ const renderModal = (type) => {
 const App = ({ socket }) => {
   const { type } = useSelector((state) => state.modal);
   const rollbarConfig = {
-    accessToken: process.env.ROLLBAR_ACCESS_TOCKEN,
-    environment: 'production',
-    enabled: process.env.NODE_ENV === 'production',
+    accessToken: '2b20059e0fbd463abd60f2709b9af524',
     captureUncaught: true,
     captureUnhandledRejections: true,
   };
+
   //console.log('type: ' + type);
     return (
       <ProviderRollbar config={rollbarConfig}>

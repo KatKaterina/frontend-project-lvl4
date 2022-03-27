@@ -4,6 +4,9 @@
   "description": "[![Actions Status](https://github.com/KatKaterina/frontend-project-lvl4/workflows/hexlet-check/badge.svg)](https://github.com/KatKaterina/frontend-project-lvl4/actions)",
   "main": "src/index.js",
   "type": "module",
+  "engines": {
+    "node": "14.x"
+  },
   "scripts": {
     "test": "jest",
     "prebuild": "rm -rf dist",
