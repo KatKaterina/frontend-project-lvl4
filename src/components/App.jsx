@@ -19,13 +19,7 @@ import { Provider as ProviderRollbar, ErrorBoundary, LEVEL_WARN } from '@rollbar
 
 const AutorizProvider = ({children}) => {
   //console.log(authorizContext);
-  const rollbarConfig = {
-    accessToken: process.env.ROLLBAR_ACCESS_TOCKEN,
-    environment: 'production',
-    enabled: process.env.NODE_ENV === 'production',
-    captureUncaught: true,
-    captureUnhandledRejections: true,
-  };
+
   const token = localStorage.getItem('token');
   const [loggedIn, setLoggedIn] = useState(Boolean(token));
   const logIn = ({ username, token }) => {
@@ -84,6 +78,13 @@ const renderModal = (type) => {
 
 const App = ({ socket }) => {
   const { type } = useSelector((state) => state.modal);
+  const rollbarConfig = {
+    accessToken: process.env.ROLLBAR_ACCESS_TOCKEN,
+    environment: 'production',
+    enabled: process.env.NODE_ENV === 'production',
+    captureUncaught: true,
+    captureUnhandledRejections: true,
+  };
   //console.log('type: ' + type);
     return (
       <ProviderRollbar config={rollbarConfig}>
