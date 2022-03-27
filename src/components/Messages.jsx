@@ -41,7 +41,7 @@ const FormMessage = ({ currentChannelId }) => {
   const socket = useContext(socketContext);
   const username = localStorage.getItem('username');
   const dispatch = useDispatch();
-  //const filter = require('leo-profanity');
+  const filter = require('leo-profanity');
   
   filter.clearList();
   filter.add(filter.getDictionary('en'));
