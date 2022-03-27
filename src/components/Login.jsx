@@ -6,8 +6,11 @@ import { authorizContext }  from '../contexts/index.js';
 import axios from 'axios';
 import routes from '../routes.js';
 import { useLocation, useNavigate, Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 const Login = () => {
+  const { t } = useTranslation();
+
   const [error, setError] = useState(null);
   const authorization = useContext(authorizContext);
 
@@ -59,7 +62,7 @@ const Login = () => {
   return (
     <Form onSubmit={handleSubmit}>
       <Form.Group className="mb-3">
-        <Form.Label htmlfor="username">User name</Form.Label>
+        <Form.Label htmlfor="username">{t('elements.name')}</Form.Label>
         <Form.Control
           name="username"
           type="text"
@@ -74,26 +77,26 @@ const Login = () => {
         />
       </Form.Group>
       <Form.Group className="mb-3">
-        <Form.Label htmlfor="password">Password</Form.Label>
+        <Form.Label htmlfor="password">{t('elements.password')}</Form.Label>
         <Form.Control
           name="password"
           type="password"
           id="password"
           autocomplite="current-password"
           required
-          placeholder="Password"
+          placeholder={t('elements.password')}
           onChange={handleChange}
           value={values.password}
           isInvalid={Boolean(error)}
         />
-        {error&&<Form.Control.Feedback type="invalid">Неверные имя пользователя или пароль</Form.Control.Feedback>}
+        {error&&<Form.Control.Feedback type="invalid">{t(`errors.${error}`)}</Form.Control.Feedback>}
       </Form.Group>
     <Button variant="outline-primary" type="submit" className="w-100 mb-3">
-      Submit
+      {t('elements.signIn')}
     </Button>
     <div className="text-center">
      <span>
-      <Link to="/signup">Sign Up</Link>
+      <Link to="/signup">{t('elements.registration')}</Link>
      </span>
     </div>
   </Form>

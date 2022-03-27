@@ -7,8 +7,10 @@ import Messages from './Messages.jsx';
 import { fetchData, selectorChannels } from '../slices/ChannelsSlice.js';
 import { selectorMessages } from '../slices/messagesSlice';
 import { useDispatch, useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 
 const Chat = () => {
+  const { t } = useTranslation();
   const authorization = useContext(authorizContext);
   const dispatch = useDispatch();
   const [uploaded, setUploaded] = useState(false);
@@ -40,7 +42,7 @@ const Chat = () => {
     </div>
    <div className="text-center">
      <span>
-      <Link to="/login" onClick={handleClick}>LogOut</Link>
+      <Link to="/login" onClick={handleClick}>{t('elements.logOut')}</Link>
      </span>
     </div>
   </>

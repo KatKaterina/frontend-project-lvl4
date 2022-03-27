@@ -7,6 +7,7 @@ import { closeModal } from '../slices/modalSlice.js';
 import { schemaForChannel as schema } from '../validateSchema';
 import { changeCurrentChannel, renameChannel } from '../slices/ChannelsSlice.js';
 import { fetchData } from '../slices/ChannelsSlice.js';
+import { useTranslation } from 'react-i18next';
 
 
 
@@ -64,6 +65,7 @@ import { fetchData } from '../slices/ChannelsSlice.js';
 
 
 const ModalAddChannel = () => {
+  const { t } = useTranslation();
     const dispatch = useDispatch();
     const [show, setShow] = useState(true);
     const handleClose = () => {
@@ -98,15 +100,15 @@ const ModalAddChannel = () => {
     return (
       <Modal show={show} onHide={handleClose} centered>
         <Modal.Header closeButton>
-          <Modal.Title>Remove channel</Modal.Title>
+          <Modal.Title>{t('elements.removeChannel')}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          Are you sure?
+          {t('elements.confirmquestion')}
         </Modal.Body>
         <Modal.Footer>
-          <Button onClick={handleClose}>Cancel</Button>
+          <Button onClick={handleClose}>{t('elements.buttonCancel')}</Button>
           {' '}
-          <Button onClick={handleRemove}>Remove</Button>
+          <Button onClick={handleRemove}>{t('elements.buttonRemove')}</Button>
         </Modal.Footer>
       </Modal>
     )

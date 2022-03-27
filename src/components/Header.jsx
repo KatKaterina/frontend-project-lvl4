@@ -6,8 +6,10 @@ import { authorizContext }  from '../contexts/index.js';
 import axios from 'axios';
 import routes from '../routes.js';
 import { useLocation, useNavigate, Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 const Exit = () => {
+  const { t } = useTranslation();
   const authorization = useContext(authorizContext);
   const handleClick = () => {
     e.preventDefault();
@@ -16,13 +18,13 @@ const Exit = () => {
   };
   console.log(authorization.loggedIn);
     return (
-        authorization.loggedIn ? <Link to="/login" onClick={handleClick}>LogOut</Link> : null
+      authorization.loggedIn ? <Link to="/login" onClick={handleClick}>{t('elements.logOut')}</Link> : null
     );
 }
 
 const Header = () => {
     return (
-      <Navbar className="shadow-sm bg-white">
+      <Navbar className="shadow-sm bg-light">
         <Navbar.Brand as={Link} to="/login">Hexlet chat</Navbar.Brand>
         <Nav>
           <Exit />

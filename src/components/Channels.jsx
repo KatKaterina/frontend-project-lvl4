@@ -3,6 +3,8 @@ import { Col, Nav, Button, Dropdown, ButtonGroup } from 'react-bootstrap';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectorChannels, changeCurrentChannel, fetchData } from '../slices/ChannelsSlice.js';
 import { openModal, closeModal } from '../slices/modalSlice.js';
+import { useTranslation } from 'react-i18next';
+
 //as={Button} variant={buttonVariant} block
 const fixedChannel = ({ name, onClick, id, active }) => (
   <Nav.Link key={id}  eventKey={id} active={active}  className="w-100 rounded text-start" onClick={onClick}>
@@ -11,7 +13,7 @@ const fixedChannel = ({ name, onClick, id, active }) => (
   );
   //className="mb-2 text-left"
 
- const unremovableChannel = ({ name, variant, onClick, onRename, onRemove, id, active }) => (
+ const unremovableChannel = ({ name, variant, onClick, onRename, onRemove, id, active, t }) => (
   <Dropdown as={ButtonGroup} className="d-flex mb-2">
     <Nav.Link key={id}  eventKey={id} active={active} className="w-100 rounded text-start" onClick={onClick}>
       {name}
@@ -20,13 +22,14 @@ const fixedChannel = ({ name, onClick, id, active }) => (
     <Dropdown.Toggle split variant={variant} id="dropdown-split-basic" />
 
     <Dropdown.Menu>
-      <Dropdown.Item onClick={onRename}>Rename channel</Dropdown.Item>
-      <Dropdown.Item onClick={onRemove}>Remove channel</Dropdown.Item>
+      <Dropdown.Item onClick={onRename}>{t('elements.renameChannel')}</Dropdown.Item>
+      <Dropdown.Item onClick={onRemove}>{t('elements.removeChannel')}</Dropdown.Item>
     </Dropdown.Menu>
   </Dropdown>
  );
 
 const Channels = () => {
+  const { t } = useTranslation();
   const channels = useSelector(selectorChannels.selectAll);
   const {currentChannelId} = useSelector((state) => state.channels);
   const [updateChannels, setUpdateChannels] = useState(false);
@@ -96,6 +99,7 @@ const Channels = () => {
               onClick={handleClick(id)}
               onRemove={handleRemove(id)}
               onRename={handleRename(id, name)}
+              t={t}
             />
           //</Nav.Item>
         );
@@ -107,7 +111,7 @@ const Channels = () => {
      
         <Col md="auto" className="border-end pt-5 px-0 bg-light h-100">
           <div className="d-flex justify-content-around">
-            <span>Channels: </span>
+            <span>{t('elements.channels')}: </span>
             <Button variant="outline-primary"  size="sm" className="p-0 ml-auto" onClick={handleAdd}>+</Button>
           </div>
           {renderChannels()}

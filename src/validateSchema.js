@@ -8,7 +8,7 @@ const schema = yup.object().shape({
     .min(3, 'errors.wrongLength')
     .max(20, 'errors.wrongLength'),
   password: yup.string()
-    .min(6, 'Too Short! Minimum 6 symbols')
+    .min(6, 'errors.wrongLengthPass')
     .required(),
   confirmPassword: yup.string()
     .oneOf([yup.ref('password')], 'errors.notMatch')

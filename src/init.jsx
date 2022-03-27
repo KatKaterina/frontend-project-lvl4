@@ -5,9 +5,22 @@ import store from './slices/index.js';
 import { io } from "socket.io-client";
 import { addMessage } from './slices/messagesSlice.js';
 import { addChannel, renameChannel, removeChannel } from './slices/ChannelsSlice.js';
+import i18n from 'i18next';
+import { initReactI18next } from 'react-i18next';
+import resources from './locales/index.js';
 
 export default async (socketClient = io()) => {
-//export default async () => {
+
+  const i18nInstance = i18n.createInstance();
+  const i18nInstance = async () => {
+    await i18nInstance
+      .use(initReactI18next)
+      .init({
+        lng: 'ru',
+        resources,
+      });
+  };
+
   socketClient.on('newMessge', (message) => {
     store.dispatch(addMessage({ message }));
   });

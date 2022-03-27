@@ -6,6 +6,7 @@ import { selectorChannels } from '../slices/ChannelsSlice.js';
 import { socketContext }  from '../contexts/index.js';
 import { selectorMessages, addMessage, fetchMessages } from '../slices/messagesSlice.js';
 import { fetchData, changeCurrentChannel } from '../slices/ChannelsSlice.js';
+import { useTranslation } from 'react-i18next';
 //import { selectorChannels, changeCurrentChannel } from '../slices/ChannelsSlice.js';
 
 
@@ -33,6 +34,7 @@ const ChannelMessages = ({ currentChannelId }) => {
 
 
 const FormMessage = ({ currentChannelId }) => {
+  const { t } = useTranslation();
   const refInput = useRef();
   const socket = useContext(socketContext);
   const username = localStorage.getItem('username');
@@ -85,10 +87,10 @@ const FormMessage = ({ currentChannelId }) => {
             readOnly={formik.isSubmitting}
           />
           <Button type="submit" disabled={formik.isSubmitting}>
-            Send
+            {t('elements.buttonSend')}
           </Button>
           {formik.errors.message
-            && <Form.Control.Feedback type="invalid">{formik.errors.message}</Form.Control.Feedback>}
+            && <Form.Control.Feedback type="invalid">{t(formik.errors.message)}</Form.Control.Feedback>}
         </InputGroup>
       </Form>
     </div>

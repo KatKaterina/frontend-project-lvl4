@@ -7,9 +7,10 @@ import { closeModal } from '../slices/modalSlice.js';
 import { getSchemaForChannel } from '../validateSchema';
 import { changeCurrentChannel, renameChannel } from '../slices/ChannelsSlice.js';
 import { fetchData, selectorChannels } from '../slices/ChannelsSlice.js';
+import { useTranslation } from 'react-i18next';
 
 
-const FormRenameChannel = ({ handleClose }) => {
+const FormRenameChannel = ({ handleClose, t }) => {
     const refName = useRef();
     const socket = useContext(socketContext);
     const dispatch = useDispatch();
@@ -60,17 +61,18 @@ const FormRenameChannel = ({ handleClose }) => {
               ref={refName}
             />
              {formik.errors.name && 
-             <Form.Control.Feedback type="invalid">{formik.errors.name}</Form.Control.Feedback>}
+             <Form.Control.Feedback type="invalid">{t(formik.errors.name)}</Form.Control.Feedback>}
           </InputGroup>
-          <Button onClick={handleClose} disabled={formik.isSubmitting}>Cancel</Button>
+          <Button onClick={handleClose} disabled={formik.isSubmitting}>{t('elements.buttonCancel')}</Button>
           {' '}
-          <Button type="submit" disabled={formik.isSubmitting}>Rename</Button>
+          <Button type="submit" disabled={formik.isSubmitting}>{t('elements.renameChannel')}</Button>
       </Form>
     );
 };
 
 
 const ModalAddChannel = () => {
+  const { t } = useTranslation();
     const dispatch = useDispatch();
     const [show, setShow] = useState(true);
     const handleClose = () => {
@@ -83,11 +85,11 @@ const ModalAddChannel = () => {
     return (
       <Modal show={show} onHide={handleClose} centered>
         <Modal.Header closeButton>
-          <Modal.Title>New name channel</Modal.Title>
+          <Modal.Title>{t('elements.renameChannel')}</Modal.Title>
         </Modal.Header>
 
         <Modal.Body>
-          <FormRenameChannel handleClose={handleClose}/>
+          <FormRenameChannel handleClose={handleClose} t={t}/>
         </Modal.Body>
       </Modal>
     )
