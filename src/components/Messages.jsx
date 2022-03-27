@@ -1,6 +1,7 @@
 import { useFormik } from 'formik';
 import React, { useEffect, useContext, useRef, useState } from 'react';
 import { Col, Form, Button, InputGroup } from 'react-bootstrap';
+import  filter from 'leo-profanity';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectorChannels } from '../slices/ChannelsSlice.js';
 import { socketContext }  from '../contexts/index.js';
@@ -40,7 +41,7 @@ const FormMessage = ({ currentChannelId }) => {
   const socket = useContext(socketContext);
   const username = localStorage.getItem('username');
   const dispatch = useDispatch();
-  const filter = require('leo-profanity');
+  //const filter = require('leo-profanity');
   
   filter.clearList();
   filter.add(filter.getDictionary('en'));
