@@ -84,10 +84,11 @@ const App = ({ socket }) => {
     captureUnhandledRejections: true,
   };
 
+  //<ProviderRollbar config={rollbarConfig}>
+  //<ErrorBoundary level={LEVEL_WARN}>
   //console.log('type: ' + type);
     return (
-      <ProviderRollbar config={rollbarConfig}>
-      <ErrorBoundary level={LEVEL_WARN}>
+
       <AutorizProvider>
         <socketContext.Provider value={socket}>
         <Router>
@@ -104,8 +105,6 @@ const App = ({ socket }) => {
         {renderModal(type)}
         </socketContext.Provider>
       </AutorizProvider>
-      </ErrorBoundary>
-      </ProviderRollbar>
       
     );
 };
