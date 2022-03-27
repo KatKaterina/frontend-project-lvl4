@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext, useEffect, useRef } from 'react';
 import { useFormik } from 'formik';
 import { Form, Button } from 'react-bootstrap';
 import schema from '../validateSchema.js';
@@ -16,6 +16,12 @@ const Login = () => {
 
   const location = useLocation();
   const navigate = useNavigate();
+
+  const refInput = useRef();
+
+  useEffect(() => {
+    refInput.current.focus();
+  }, []);
 
   const handlerSubmit = async ({ username, password }) => {
     const pathLogin = routes.loginPath();
@@ -64,6 +70,7 @@ const Login = () => {
           onChange={handleChange}
           value={values.username}
           isInvalid={Boolean(error)}
+          ref={refInput}
         />
       </Form.Group>
       <Form.Group className="mb-3">
