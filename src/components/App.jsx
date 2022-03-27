@@ -78,11 +78,11 @@ const renderModal = (type) => {
 
 const App = ({ socket }) => {
   const { type } = useSelector((state) => state.modal);
-  const rollbarConfig = {
+  /* const rollbarConfig = {
     accessToken: '2b20059e0fbd463abd60f2709b9af524',
     captureUncaught: true,
     captureUnhandledRejections: true,
-  };
+  }; */
 
   //<ProviderRollbar config={rollbarConfig}>
   //<ErrorBoundary level={LEVEL_WARN}>
