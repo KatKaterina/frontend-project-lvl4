@@ -40,18 +40,18 @@ const FormMessage = ({ currentChannelId }) => {
   const socket = useContext(socketContext);
   const username = localStorage.getItem('username');
   const dispatch = useDispatch();
-  /*const filter = require('leo-profanity');
+  const filter = require('leo-profanity');
   
   filter.clearList();
-  filter.add(filter.loadDictionary('en'));
-  filter.add(filter.loadDictionary('fr'));
-  filter.add(filter.loadDictionary('ru'));
-  console.log(filter);*/
+  filter.add(filter.getDictionary('en'));
+  filter.add(filter.getDictionary('fr'));
+  filter.add(filter.getDictionary('ru'));
+  console.log(filter);
 
   const handlerSubmit = ({ message }, { resetForm, setSubmitting }) => {
     setSubmitting(true);
-    //const filteredMessage = filter.check(message) ? filter.clean(message) : message;
-    //console.log(filteredMessage);
+    const filteredMessage = filter.check(message) ? filter.clean(message) : message;
+    console.log(filteredMessage);
     const newMessage =  { message, channelId: currentChannelId, username };
     //const newMessage =  { filteredMessage, channelId: currentChannelId, username };
     socket.emit('newMessage', newMessage, (response) => {
