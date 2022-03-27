@@ -23,7 +23,7 @@ const SignUp = () => {
           //const { username, password } = values;
           const {data} =  await axios.post(signUpPath, { username, password });
           authorization.logIn(data);
-          //console.log(data);
+          console.log(data);
           navigate('/');
       } catch (e) {
           if (e.isAxiosError && e.response && e.response.status === 409) {
@@ -63,9 +63,11 @@ const SignUp = () => {
             placeholder="Enter user name" 
             onChange={formik.handleChange}
             value={formik.values.username}
-            isInvalid={Boolean(error)}
+            isInvalid={Boolean(formik.errors.username)}
             readOnly={formik.isSubmitting}
           />
+            {formik.errors.username
+              && <Form.Control.Feedback type="invalid">{formik.errors.username}</Form.Control.Feedback>}
         </Form.Group>
         <Form.Group className="mb-3">
           <Form.Label htmlfor="password">Password</Form.Label>
@@ -78,10 +80,11 @@ const SignUp = () => {
             placeholder="Password"
             onChange={formik.handleChange}
             value={formik.values.password}
-            isInvalid={Boolean(error)}
+            isInvalid={Boolean(formik.errors.password)}
             readOnly={formik.isSubmitting}
           />
-          {error&&<Form.Control.Feedback type="invalid">Неверные имя пользователя или пароль</Form.Control.Feedback>}
+            {formik.errors.password
+              && <Form.Control.Feedback type="invalid">{formik.errors.password}</Form.Control.Feedback>}
         </Form.Group>
         <Form.Group className="mb-3">
           <Form.Label htmlfor="confirmPassword">Password</Form.Label>
@@ -93,11 +96,12 @@ const SignUp = () => {
             required
             placeholder="confirm password"
             onChange={formik.handleChange}
-            value={formik.values.password}
-            isInvalid={Boolean(error)}
+            value={formik.values.confirmPassword}
+            isInvalid={Boolean(formik.errors.confirmPassword)}
             readOnly={formik.isSubmitting}
           />
-          {error&&<Form.Control.Feedback type="invalid">Неверные имя пользователя или пароль</Form.Control.Feedback>}
+            {formik.errors.confirmPassword
+              && <Form.Control.Feedback type="invalid">{formik.errors.confirmPassword}</Form.Control.Feedback>}
         </Form.Group>
       <Button variant="outline-primary" type="submit" disabled={formik.isSubmitting} className="w-100 mb-3">
         Submit
