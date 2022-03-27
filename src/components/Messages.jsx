@@ -53,8 +53,8 @@ const FormMessage = ({ currentChannelId }) => {
     setSubmitting(true);
     const filteredMessage = filter.check(message) ? filter.clean(message) : message;
     console.log(filteredMessage);
-    const newMessage =  { message, channelId: currentChannelId, username };
-    //const newMessage =  { filteredMessage, channelId: currentChannelId, username };
+    //const newMessage =  { message, channelId: currentChannelId, username };
+    const newMessage =  { filteredMessage, channelId: currentChannelId, username };
     socket.emit('newMessage', newMessage, (response) => {
 
       if (response.status === 'ok') {
