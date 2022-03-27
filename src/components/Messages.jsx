@@ -47,14 +47,14 @@ const FormMessage = ({ currentChannelId }) => {
   filter.add(filter.getDictionary('en'));
   filter.add(filter.getDictionary('fr'));
   filter.add(filter.getDictionary('ru'));
-  console.log(filter);
+  //console.log(filter);
 
   const handlerSubmit = ({ message }, { resetForm, setSubmitting }) => {
     setSubmitting(true);
     const filteredMessage = filter.check(message) ? filter.clean(message) : message;
     console.log(filteredMessage);
     //const newMessage =  { message, channelId: currentChannelId, username };
-    const newMessage =  { filteredMessage, channelId: currentChannelId, username };
+    const newMessage =  { message: filteredMessage, channelId: currentChannelId, username };
     socket.emit('newMessage', newMessage, (response) => {
 
       if (response.status === 'ok') {
