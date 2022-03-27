@@ -14,6 +14,7 @@ import ModalAddChannel from './ModalAddChannel.jsx';
 import ModalRenameChannel from './ModalRenameChannel.jsx';
 import ModalRemoveChannel from './ModalRemoveChannel.jsx';
 import SignUp from './SignUp.jsx';
+import Header from './Header.jsx';
 
 const AutorizProvider = ({children}) => {
   //console.log(authorizContext);
@@ -81,6 +82,7 @@ const App = ({ socket }) => {
         <socketContext.Provider value={socket}>
         <Router>
           <div className="d-flex flex-column h-100">
+            <Header />
             <Routes>
               <Route exact path="/" element={<UserRoute><Chat /></UserRoute>} />
               <Route path="/login" element={<Login />} />
