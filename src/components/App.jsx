@@ -13,6 +13,7 @@ import { authorizContext, socketContext }  from '../contexts/index.js';
 import ModalAddChannel from './ModalAddChannel.jsx';
 import ModalRenameChannel from './ModalRenameChannel.jsx';
 import ModalRemoveChannel from './ModalRemoveChannel.jsx';
+import SignUp from './SignUp.jsx';
 
 const AutorizProvider = ({children}) => {
   //console.log(authorizContext);
@@ -83,7 +84,7 @@ const App = ({ socket }) => {
             <Routes>
               <Route exact path="/" element={<UserRoute><Chat /></UserRoute>} />
               <Route path="/login" element={<Login />} />
-              <Route path="/signup" element={<Login />} />
+              <Route path="/signup" element={<SignUp />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </div>

@@ -84,7 +84,13 @@ const Login = () => {
     <Button variant="outline-primary" type="submit" className="w-100 mb-3">
       Submit
     </Button>
+    <div className="text-center">
+     <span>
+      <Link to="/signup">Sign Up</Link>
+     </span>
+    </div>
   </Form>
+  
   )
 }
 

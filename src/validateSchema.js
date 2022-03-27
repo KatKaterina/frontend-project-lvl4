@@ -3,10 +3,15 @@ import store from './slices/index.js';
 
 const schema = yup.object().shape({
   userName: yup.string()
-    .required(),
+    .trim()
+    .required()
+    .min(3, 'errors.wrongLength')
+    .max(20, 'errors.wrongLength'),
   password: yup.string()
     .min(6, 'Too Short! Minimum 6 symbols')
     .required(),
+  confirmPassword: yup.string()
+    .oneOf([yup.ref('password')], 'errors.notMatch')
 });
 
 export const getSchemaForChannel = (channels) => {
