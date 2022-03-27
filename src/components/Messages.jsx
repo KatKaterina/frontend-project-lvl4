@@ -1,4 +1,5 @@
-// @ts-ignore
+// @ts-check
+
 import { useFormik } from 'formik';
 import React, { useEffect, useContext, useRef, useState } from 'react';
 import { Col, Form, Button, InputGroup } from 'react-bootstrap';
@@ -44,13 +45,15 @@ const FormMessage = ({ currentChannelId }) => {
   const filter = require('leo-profanity');
   
   filter.clearList();
-  filter.add(filter.getDictionary('en'));
-  filter.add(filter.getDictionary('fr'));
-  filter.add(filter.getDictionary('ru'));
+  filter.add(filter.loadDictionary('en'));
+  filter.add(filter.loadDictionary('fr'));
+  filter.add(filter.loadDictionary('ru'));
+  console.log(filter);
 
   const handlerSubmit = ({ message }, { resetForm, setSubmitting }) => {
     setSubmitting(true);
     const filteredMessage = filter.check(message) ? filter.clean(message) : message;
+    console.log(filteredMessage);
 
     const newMessage =  { filteredMessage, channelId: currentChannelId, username };
     socket.emit('newMessage', newMessage, (response) => {
