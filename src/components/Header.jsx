@@ -12,6 +12,7 @@ const Exit = () => {
   const handleClick = () => {
     e.preventDefault();
     authorization.logOut();
+    navigate('/');
   };
   console.log(authorization.loggedIn);
     return (
