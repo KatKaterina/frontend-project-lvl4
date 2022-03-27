@@ -2,7 +2,7 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import App from './components/App.jsx';
 import store from './slices/index.js';
-import { io } from "socket.io-client";
+import { io } from 'socket.io-client';
 import { addMessage } from './slices/messagesSlice.js';
 import { addChannel, renameChannel, removeChannel } from './slices/ChannelsSlice.js';
 import i18n from 'i18next';
