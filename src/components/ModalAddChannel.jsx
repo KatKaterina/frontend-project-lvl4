@@ -37,7 +37,7 @@ const FormAddChannel = ({ handleClose, t }) => {
             //dispatch(closeModal());
             //dispatch(changeCurrentChannel({ id }));
             handleClose();
-            toast.success(t('toast.addedChannel'),  {
+            toast(t('toast.addedChannel'),  {
               position: "top-right",
               autoClose: 5000,
               hideProgressBar: false,
