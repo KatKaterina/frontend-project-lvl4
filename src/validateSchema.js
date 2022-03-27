@@ -2,7 +2,7 @@ import * as yup from 'yup';
 import store from './slices/index.js';
 
 const schema = yup.object().shape({
-  userName: yup.string()
+  username: yup.string()
     .trim()
     .required()
     .min(3, 'errors.wrongLength')
