@@ -15,9 +15,17 @@ import ModalRenameChannel from './ModalRenameChannel.jsx';
 import ModalRemoveChannel from './ModalRemoveChannel.jsx';
 import SignUp from './SignUp.jsx';
 import Header from './Header.jsx';
+import { Provider as ProviderRollbar, ErrorBoundary, LEVEL_WARN } from '@rollbar/react';
 
 const AutorizProvider = ({children}) => {
   //console.log(authorizContext);
+  const rollbarConfig = {
+    accessToken: process.env.ROLLBAR_ACCESS_TOCKEN,
+    environment: 'production',
+    enabled: process.env.NODE_ENV === 'production',
+    captureUncaught: true,
+    captureUnhandledRejections: true,
+  };
   const token = localStorage.getItem('token');
   const [loggedIn, setLoggedIn] = useState(Boolean(token));
   const logIn = ({ username, token }) => {
@@ -78,6 +86,8 @@ const App = ({ socket }) => {
   const { type } = useSelector((state) => state.modal);
   //console.log('type: ' + type);
     return (
+      <ProviderRollbar config={rollbarConfig}>
+      <ErrorBoundary level={LEVEL_WARN}>
       <AutorizProvider>
         <socketContext.Provider value={socket}>
         <Router>
@@ -94,6 +104,9 @@ const App = ({ socket }) => {
         {renderModal(type)}
         </socketContext.Provider>
       </AutorizProvider>
+      </ErrorBoundary>
+      </ProviderRollbar>
+      
     );
 };
 

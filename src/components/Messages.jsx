@@ -7,8 +7,9 @@ import { socketContext }  from '../contexts/index.js';
 import { selectorMessages, addMessage, fetchMessages } from '../slices/messagesSlice.js';
 import { fetchData, changeCurrentChannel } from '../slices/ChannelsSlice.js';
 import { useTranslation } from 'react-i18next';
+import  filter  from 'leo-profanity';
 import { toast } from 'react-toastify';
-import filter from 'leo-profanity';
+
 //import { selectorChannels, changeCurrentChannel } from '../slices/ChannelsSlice.js';
 
 
@@ -41,8 +42,11 @@ const FormMessage = ({ currentChannelId }) => {
   const socket = useContext(socketContext);
   const username = localStorage.getItem('username');
   const dispatch = useDispatch();
-
+  const filter = require("leo-profanity");
+  
   filter.clearList();
+  filter.add(filter.getDictionary('en'));
+  filter.add(filter.getDictionary('fr'));
   filter.add(filter.getDictionary('ru'));
 
   const handlerSubmit = ({ message }, { resetForm, setSubmitting }) => {
