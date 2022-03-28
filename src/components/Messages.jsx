@@ -91,7 +91,7 @@ const FormMessage = ({ currentChannelId, t }) => {
             type="text"
             aria-label={t('elements.message')}
             className="p-0 ps-2"
-            autocomplete="message"
+            autoСomplete="message"
             onChange={formik.handleChange}
             value={formik.values.message}
             placeholder={t('elements.enterMessage')} 
@@ -120,8 +120,7 @@ const Messages = () => {
       <div className="d-flex flex-column h-100">
         <div className="bg-light mb-4 p-3 shadow-sm small">
           <p className="m-0">{currentChannelName}</p>
-          <span>{t('elements.hello')}</span>
-          <span>you have nice \*\*\*\*\*</span>
+
         </div>
         <ChannelMessages currentChannelId={currentChannelId} />
         <FormMessage currentChannelId={currentChannelId} t={t} />
@@ -129,5 +128,8 @@ const Messages = () => {
     </Col>
   );
 };
+
+//<span>{t('elements.hello')}</span>
+//<span>you have nice \*\*\*\*\*</span>
 
 export default Messages;
