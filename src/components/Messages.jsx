@@ -1,39 +1,34 @@
 import { useFormik } from 'formik';
-import React, { useEffect, useContext, useRef, useState } from 'react';
+import React, { useEffect, useContext, useRef } from 'react';
 import { Col, Form, Button, InputGroup } from 'react-bootstrap';
-import  filter from 'leo-profanity';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectorChannels } from '../slices/ChannelsSlice.js';
 import { socketContext }  from '../contexts/index.js';
-import { selectorMessages, addMessage, fetchMessages } from '../slices/messagesSlice.js';
-import { fetchData, changeCurrentChannel } from '../slices/ChannelsSlice.js';
+import { selectorMessages } from '../slices/messagesSlice.js';
+import { fetchData } from '../slices/ChannelsSlice.js';
 import { useTranslation } from 'react-i18next';
-//import  filter  from 'leo-profanity';
 import { toast } from 'react-toastify';
-
 
 const ChannelMessages = ({ currentChannelId }) => {
   const messages = useSelector(selectorMessages.selectAll);
   const refChat = useRef();
-  const dispatch = useDispatch();
   
   useEffect(()=> {
     refChat.current.scrollTop = refChat.current.scrollHeight
   }, [messages]);
   
-    return (
-        <div className="chat-messages overflow-auto px-5" ref={refChat}>
-          {messages.filter(({channelId}) => Number(channelId) === currentChannelId)
-            .map(({ id, username, message }) => (
-              <div className="text-break mb-2">
-                <b>{username}</b>: {message}
-              </div> 
-            ))
-          }
-        </div>
-    )
+  return (
+    <div className="chat-messages overflow-auto px-5" ref={refChat}>
+      {messages.filter(({ channelId }) => Number(channelId) === currentChannelId)
+        .map(({ username, message }) => (
+          <div className="text-break mb-2">
+            <b>{username}</b>: {message}
+          </div> 
+        ))
+      }
+    </div>
+  );
 };
-
 
 const FormMessage = ({ currentChannelId }) => {
   const { t } = useTranslation();
@@ -45,18 +40,14 @@ const FormMessage = ({ currentChannelId }) => {
   
   filter.clearList();
   filter.add(filter.getDictionary('en'));
-  filter.add(filter.getDictionary('fr'));
   filter.add(filter.getDictionary('ru'));
-  //console.log(filter);
 
   const handlerSubmit = ({ message }, { resetForm, setSubmitting }) => {
     setSubmitting(true);
     const filteredMessage = filter.check(message) ? filter.clean(message) : message;
-    console.log(filteredMessage);
-    //const newMessage =  { message, channelId: currentChannelId, username };
     const newMessage =  { message: filteredMessage, channelId: currentChannelId, username };
-    socket.emit('newMessage', newMessage, (response) => {
 
+    socket.emit('newMessage', newMessage, (response) => {
       if (response.status === 'ok') {
         setSubmitting(false);
         resetForm();
@@ -65,20 +56,18 @@ const FormMessage = ({ currentChannelId }) => {
       } else {
         toast.error(t('toast.connectError'));
       }
-
     });
   };
 
- /* useEffect(() => {
-    dispatch(fetchMessages());
+  useEffect(() => {
     refInput.current.focus();
-  }, []);*/
+  }, []);
 
   const formik = useFormik({
     initialValues: {
       message: '',
     },
-    /*validationSchema: schema,*/
+    /* validationSchema: schema, */
     onSubmit: handlerSubmit,
   });
 
@@ -106,9 +95,8 @@ const FormMessage = ({ currentChannelId }) => {
         </InputGroup>
       </Form>
     </div>
-  )
+  );
 };
-
 
 const Messages = () => {
   const channels = useSelector(selectorChannels.selectAll);
@@ -116,7 +104,7 @@ const Messages = () => {
 
   const currentChannelName = channels.filter(({id}) => id === currentChannelId).map((channel) => channel.name);
   return (
-  <Col className="h-100 p-0">
+    <Col className="h-100 p-0">
       <div className="d-flex flex-column h-100">
         <div className="bg-light mb-4 p-3 shadow-sm small">
           <p className="m-0">{currentChannelName}</p>
@@ -124,8 +112,8 @@ const Messages = () => {
         <ChannelMessages currentChannelId={currentChannelId} />
         <FormMessage currentChannelId={currentChannelId} />
       </div>
-  </Col>
+    </Col>
   );
-}
+};
 
 export default Messages;

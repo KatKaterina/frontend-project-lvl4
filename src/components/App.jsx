@@ -17,9 +17,7 @@ import SignUp from './SignUp.jsx';
 import Header from './Header.jsx';
 import { Provider as ProviderRollbar, ErrorBoundary, LEVEL_WARN } from '@rollbar/react';
 
-const AutorizProvider = ({children}) => {
-  //console.log(authorizContext);
-
+const AutorizProvider = ({ children }) => {
   const token = localStorage.getItem('token');
   const [loggedIn, setLoggedIn] = useState(Boolean(token));
   const logIn = ({ username, token }) => {
@@ -31,34 +29,24 @@ const AutorizProvider = ({children}) => {
     localStorage.removeItem('username');
     localStorage.removeItem('token');
     setLoggedIn(false);
-  }
-  //console.log(token);
-  //console.log(loggedIn);
+  };
+
   return (
-      <authorizContext.Provider value={{ loggedIn, logIn, logOut }}>
-          {children}
-      </authorizContext.Provider>
-  )
+    <authorizContext.Provider value={{ loggedIn, logIn, logOut }}>
+      {children}
+    </authorizContext.Provider>
+  );
 }
 
 const UserRoute = ({ children }) => {
-  //console.log(children);
   const { loggedIn } = useContext(authorizContext);
-  //console.log("logedIn " + loggedIn);
 
   return (
     loggedIn ? children : <Navigate to="/login"/>
   );
-  
-  /*return (
-    <Route exact={exact} path={path}>
-      {loggedIn ? children : <Navigate to="/login"/>}
-    </Route>
-  )*/
 };
 
 const renderModal = (type) => {
-  //console.log("type2: " + type);
   switch (type) {
     case 'addChannel': {
       return <ModalAddChannel />
@@ -72,9 +60,8 @@ const renderModal = (type) => {
     default: {
       return null;
     }
-  }
-  //return null;
-}
+  };
+};
 
 const App = ({ socket }) => {
   const { type } = useSelector((state) => state.modal);
@@ -84,9 +71,9 @@ const App = ({ socket }) => {
     captureUnhandledRejections: true,
   };
 
-  //<ProviderRollbar config={rollbarConfig}>
-  //<ErrorBoundary level={LEVEL_WARN}>
-  //console.log('type: ' + type);
+  // <ProviderRollbar config={rollbarConfig}>
+  // <ErrorBoundary level={LEVEL_WARN}>
+  // console.log('type: ' + type);
     return (
 
       <AutorizProvider>

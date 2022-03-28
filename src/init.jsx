@@ -12,14 +12,12 @@ import resources from './locales/index.js';
 export default async (socketClient = io()) => {
 
   const i18nInstance = i18n.createInstance();
-
-    await i18nInstance
-      .use(initReactI18next)
-      .init({
-        lng: 'ru',
-        resources,
-      });
- 
+  await i18nInstance
+    .use(initReactI18next)
+    .init({
+      lng: 'ru',
+      resources,
+    });
 
   socketClient.on('newMessge', (message) => {
     store.dispatch(addMessage({ message }));
@@ -28,22 +26,16 @@ export default async (socketClient = io()) => {
     store.dispatch(addChannel({ channel }));
   });
   socketClient.on('renameChannel', (channel) => {
-    console.log("init/ channel");
-    console.log(channel);
     const { id, name } = channel;
     store.dispatch(renameChannel({ id, changes: { name }, }));
   });
   socketClient.on('removeChannel', ({ id }) => {
-    console.log("init/ id");
-    console.log(id);
     store.dispatch(removeChannel({ id }));
   });
 
   return (
-      <Provider store={store}>
-        <App socket={socketClient}/>
-      </Provider>
+    <Provider store={store}>
+      <App socket={socketClient}/>
+    </Provider>
   );
 };
-
-//<App socket={socketClient}/>
