@@ -28,11 +28,11 @@ const FormRenameChannel = ({ handleClose, t }) => {
       name,
     },
     validationSchema: getSchemaForChannel(channels),
-    onSubmit: async ({ name: newName }, { setSubmitting, isSubmitting }) => {
+    onSubmit: ({ name: newName }, { setSubmitting, isSubmitting }) => {
       setSubmitting(true);
       const updateChannel =  { name: newName, id };
       
-      await socket.emit('renameChannel', updateChannel, (response) => {
+       socket.emit('renameChannel', updateChannel, (response) => {
         const { status } = response;
         if (status === 'ok') {
           dispatch(fetchData());
