@@ -43,9 +43,6 @@ const FormRenameChannel = ({ handleClose, t }) => {
           toast.error(t('toast.connectError'));
         }
       })
-      if (!isSubmitting) {
-        toast(t('toast.renamedChannel'));
-      } 
     }
   });
 
