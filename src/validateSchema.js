@@ -1,5 +1,4 @@
 import * as yup from 'yup';
-import store from './slices/index.js';
 
 const schema = yup.object().shape({
   username: yup.string()
@@ -25,5 +24,11 @@ export const getSchemaForChannel = (channels) => {
   });
   return schemaForChannel;
 }
+
+export const schemaForMessage = yup.object().shape({
+  message: yup.string()
+    .trim()
+    .required(),
+});
 
 export default schema;

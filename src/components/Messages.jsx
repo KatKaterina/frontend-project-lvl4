@@ -8,6 +8,7 @@ import { selectorMessages } from '../slices/messagesSlice.js';
 import { fetchData } from '../slices/ChannelsSlice.js';
 import { useTranslation } from 'react-i18next';
 import { toast } from 'react-toastify';
+import { schemaForMessage } from '../validateSchema.js';
 
 const ChannelMessages = ({ currentChannelId }) => {
   const filter = require('leo-profanity');
@@ -77,14 +78,14 @@ const FormMessage = ({ currentChannelId, t }) => {
     initialValues: {
       message: '',
     },
-    /* validationSchema: schema, */
+    validationSchema: schemaForMessage,
     onSubmit: handlerSubmit,
   });
 
   return (
     <div className="mt-auto px-5 py-3">
-      <Form onSubmit={formik.handleSubmit} className="py-1">
-        <InputGroup className="mb-3">
+      <Form noValidate onSubmit={formik.handleSubmit} className="py-1">
+        <InputGroup className="mb-3 has-validation">
           <Form.Control 
             name="message"
             id="message"
