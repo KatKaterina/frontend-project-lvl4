@@ -30,8 +30,7 @@ const ChannelMessages = ({ currentChannelId }) => {
   );
 };
 
-const FormMessage = ({ currentChannelId }) => {
-  const { t } = useTranslation();
+const FormMessage = ({ currentChannelId, t }) => {
   const refInput = useRef();
   const socket = useContext(socketContext);
   const username = localStorage.getItem('username');
@@ -101,6 +100,7 @@ const FormMessage = ({ currentChannelId }) => {
 const Messages = () => {
   const channels = useSelector(selectorChannels.selectAll);
   const {currentChannelId} = useSelector((state) => state.channels);
+  const { t } = useTranslation();
 
   const currentChannelName = channels.filter(({id}) => id === currentChannelId).map((channel) => channel.name);
   return (
@@ -111,7 +111,7 @@ const Messages = () => {
           <span>{t('elements.hello')}</span>
         </div>
         <ChannelMessages currentChannelId={currentChannelId} />
-        <FormMessage currentChannelId={currentChannelId} />
+        <FormMessage currentChannelId={currentChannelId} t={t} />
       </div>
     </Col>
   );
