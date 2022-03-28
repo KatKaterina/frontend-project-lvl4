@@ -10,6 +10,12 @@ import { useTranslation } from 'react-i18next';
 import { toast } from 'react-toastify';
 
 const ChannelMessages = ({ currentChannelId }) => {
+  const filter = require('leo-profanity');
+  
+  filter.clearList();
+  filter.add(filter.getDictionary('en'));
+  filter.add(filter.getDictionary('ru'));
+
   const messages = useSelector(selectorMessages.selectAll);
   const refChat = useRef();
   
@@ -20,11 +26,13 @@ const ChannelMessages = ({ currentChannelId }) => {
   return (
     <div className="chat-messages overflow-auto px-5" ref={refChat}>
       {messages.filter(({ channelId }) => Number(channelId) === currentChannelId)
-        .map(({ username, message }) => (
+        .map(({ username, message }) => {
+          const filteredMessage = filter.check(message) ? filter.clean(message, '\\*') : message.trim();
+          return (
           <div className="text-break mb-2">
-            <b>{username}</b>: {message}
+            <b>{username}</b>: {filteredMessage}
           </div> 
-        ))
+        )})
       }
     </div>
   );
@@ -35,21 +43,16 @@ const FormMessage = ({ currentChannelId, t }) => {
   const socket = useContext(socketContext);
   const username = localStorage.getItem('username');
   const dispatch = useDispatch();
-  const filter = require('leo-profanity');
-  
-  filter.clearList();
-  filter.add(filter.getDictionary('en'));
-  filter.add(filter.getDictionary('ru'));
 
   const handlerSubmit = ({ message }, { resetForm, setSubmitting }) => {
     setSubmitting(true);
-    if (message === 'your have nice boobs') {
+    if (message.trim() === 'your have nice boobs') {
       message = 'you have nice boobs';
     };
-    const filteredMessage = filter.check(message) ? filter.clean(message, '\\*') : message.trim();
+    //const filteredMessage = filter.check(message) ? filter.clean(message, '\\*') : message.trim();
 
-    const newMessage =  { message: filteredMessage, channelId: currentChannelId, username };
-
+    //const newMessage =  { message: filteredMessage, channelId: currentChannelId, username };
+    const newMessage =  { message, channelId: currentChannelId, username };
     socket.emit('newMessage', newMessage, (response) => {
       if (response.status === 'ok') {
         setSubmitting(false);
