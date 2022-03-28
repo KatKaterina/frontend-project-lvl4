@@ -24,14 +24,14 @@ const ChannelMessages = ({ currentChannelId }) => {
   }, [messages]);
   
   return (
-    <div className="chat-messages overflow-auto px-5" ref={refChat}>
+    <div id="messages-box" className="chat-messages overflow-auto px-5" ref={refChat}>
       {messages.filter(({ channelId }) => Number(channelId) === currentChannelId)
-        .map(({ username, message }) => {
+        .map(({ username, message, id }) => {
           const filteredMessage = filter.check(message) ? filter.clean(message, '*') : message.trim();
           return (
-          <div className="text-break mb-2">
+          <div key={id} className="text-break mb-2">
             <p>
-              <strong className="text-danger">{`${username}: `}</strong>
+              <strong>{`${username}: `}</strong>
               {filteredMessage}
             </p>
           </div> 
@@ -91,7 +91,6 @@ const FormMessage = ({ currentChannelId, t }) => {
             type="text"
             aria-label={t('elements.message')}
             className="p-0 ps-2"
-            autoСomplete="message"
             onChange={formik.handleChange}
             value={formik.values.message}
             placeholder={t('elements.enterMessage')} 
