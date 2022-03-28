@@ -8,6 +8,6 @@ const NotFound = () => {
       <h1>{t('elements.NotFound')}</h1>
     </div>
   );
-  };
+};
 
 export default NotFound;

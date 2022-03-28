@@ -34,6 +34,7 @@ export default {
       buttonCancel: 'Отменить',
       buttonClose: 'Закрыть',
       buttonSend: 'Отправить',
+      buttonRegistration: 'Зарегистрироваться',
       enterMessage: 'Введите сообщение',
     },
   },
