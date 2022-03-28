@@ -19,7 +19,7 @@ export default async (socketClient = io()) => {
       resources,
     });
 
-  socketClient.on('newMessge', (message) => {
+  socketClient.on('newMessage', (message) => {
     store.dispatch(addMessage({ message }));
   });
   socketClient.on('newChannel', (channel) => {

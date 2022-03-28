@@ -61,7 +61,7 @@ const FormMessage = ({ currentChannelId, t }) => {
       if (response.status === 'ok') {
         dispatch(fetchData());
         setSubmitting(false);
-        resetForm();
+        //resetForm();
         refInput.current.focus();
       } else {
         toast.error(t('toast.connectError'));

@@ -15,7 +15,8 @@ const messagesSlice = createSlice ({
     initialState,
     reducers: {
         addMessage: (state, { payload }) => {
-            const {message} = payload;
+            console.log()
+            const { message } = payload;
             messagesAdapter.addOne(state, message);
         },
     },
@@ -28,8 +29,8 @@ const messagesSlice = createSlice ({
           .addCase(removeChannel, (state, action) => {
             const { id } = action.payload;
             const rest = Object.values(state.entities).filter((e) => e.channelId !== id);
-            console.log("ent: ");
-            console.log(rest);
+            //console.log("ent: ");
+            //console.log(rest);
             messagesAdapter.setAll(state, rest);
             //messagesAdapter.setAll(state, state.messages.filter(({channelId}) => channelId !== id));
           })
