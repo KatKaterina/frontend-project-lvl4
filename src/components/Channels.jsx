@@ -21,8 +21,8 @@ const fixedChannel = ({ name, onClick, id, active }) => (
       <span className="visually-hidden">{t('elements.controlChannel')}</span>
     </Dropdown.Toggle>
     <Dropdown.Menu>
-      <Dropdown.Item onClick={onRename}>{t('elements.renameChannel')}</Dropdown.Item>
-      <Dropdown.Item onClick={onRemove}>{t('elements.removeChannel')}</Dropdown.Item>
+      <Dropdown.Item onClick={onRename} role="button">{t('elements.renameChannel')}</Dropdown.Item>
+      <Dropdown.Item onClick={onRemove} role="button">{t('elements.removeChannel')}</Dropdown.Item>
     </Dropdown.Menu>
   </Dropdown>
  );
