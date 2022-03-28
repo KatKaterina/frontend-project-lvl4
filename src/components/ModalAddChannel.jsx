@@ -30,13 +30,8 @@ const FormAddChannel = ({ handleClose, t }) => {
         const { status } = response;
         if (status === 'ok') {
           setSubmitting(false);
+          toast(t('toast.addedChannel'));
           handleClose();
-          toast(t('toast.addedChannel'),  {
-              position: "top-right",
-              autoClose: 5000,
-              hideProgressBar: false,
-              closeOnClick: true,
-              pauseOnHover: true,});
         } else {
           toast.error(t('toast.connectError'));
         }
