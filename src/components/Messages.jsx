@@ -59,10 +59,10 @@ const FormMessage = ({ currentChannelId, t }) => {
     const newMessage =  { message, channelId: currentChannelId, username };
     socket.emit('newMessage', newMessage, (response) => {
       if (response.status === 'ok') {
+        dispatch(fetchData());
         setSubmitting(false);
         resetForm();
         refInput.current.focus();
-        dispatch(fetchData());
       } else {
         toast.error(t('toast.connectError'));
       }
@@ -90,6 +90,7 @@ const FormMessage = ({ currentChannelId, t }) => {
             id="message"
             type="text"
             aria-label={t('elements.message')}
+            data-testid="new-message"
             className="p-0 ps-2"
             onChange={formik.handleChange}
             value={formik.values.message}
