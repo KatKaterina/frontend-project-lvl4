@@ -116,6 +116,7 @@ const Messages = () => {
         <div className="bg-light mb-4 p-3 shadow-sm small">
           <p className="m-0">{currentChannelName}</p>
           <span>{t('elements.hello')}</span>
+          <span>you have nice \*\*\*\*\*</span>
         </div>
         <ChannelMessages currentChannelId={currentChannelId} />
         <FormMessage currentChannelId={currentChannelId} t={t} />
