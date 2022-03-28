@@ -38,7 +38,7 @@ const FormRenameChannel = ({ handleClose, t }) => {
           toast(t('toast.renamedChannel'));
           setSubmitting(false);
           handleClose();
-          dispatch(fetchData());
+          //dispatch(fetchData());
         } else {
           toast.error(t('toast.connectError'));
         }
