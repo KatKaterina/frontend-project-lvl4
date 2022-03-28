@@ -8,7 +8,7 @@ import { useTranslation } from 'react-i18next';
 const fixedChannel = ({ name, onClick, id, active }) => (
   <Nav.Link key={id}  eventKey={id} active={active}  className="w-100 rounded text-start" onClick={onClick}>
       {name}
-    </Nav.Link>
+  </Nav.Link>
   );
 
  const unremovableChannel = ({ name, variant, onClick, onRename, onRemove, id, active, t }) => (
