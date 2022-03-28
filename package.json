@@ -2,7 +2,7 @@
   "name": "@hexlet/code",
   "version": "1.0.0",
   "description": "[![Actions Status](https://github.com/KatKaterina/frontend-project-lvl4/workflows/hexlet-check/badge.svg)](https://github.com/KatKaterina/frontend-project-lvl4/actions)",
-  "main": "src/index.js",
+  "main": "src/init.jsx",
   "type": "module",
   "scripts": {
     "test": "jest",
