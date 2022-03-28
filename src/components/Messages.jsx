@@ -29,7 +29,7 @@ const ChannelMessages = ({ currentChannelId }) => {
     <div id="messages-box" className="chat-messages overflow-auto px-5" ref={refChat}>
       {messages.filter(({ channelId }) => Number(channelId) === currentChannelId)
         .map(({ username, message, id }) => {
-          const filteredMessage = filter.check(message) ? filter.clean(message, '*') : message.trim();
+          const filteredMessage = filter.check(message) ? filter.clean(message, '\\*') : message.trim();
           return (
           <div key={id} className="text-break mb-2">
             <p>
