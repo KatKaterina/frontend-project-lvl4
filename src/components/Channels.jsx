@@ -17,7 +17,7 @@ const fixedChannel = ({ name, onClick, id, active }) => (
     <Nav.Link key={id} role="button" eventKey={id} active={active} className="w-100 rounded text-start" onClick={onClick}>
       {name}
     </Nav.Link>
-    <Dropdown.Toggle split variant={variant} id="dropdown-split-basic">
+    <Dropdown.Toggle role="button" split variant={variant} id="dropdown-split-basic">
       <span className="visually-hidden">{t('elements.controlChannel')}</span>
     </Dropdown.Toggle>
     <Dropdown.Menu>
