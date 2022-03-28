@@ -14,6 +14,11 @@ const SignUp = () => {
   const [error, setError] = useState(null);
   const authorization = useContext(authorizContext);
   const navigate = useNavigate();
+  const refInput = useRef();
+  
+  useEffect(() => {
+    refInput.current.focus();
+  }, []);
   
   const handlerSubmit = async ({ username, password }, { setSubmitting }) => {
     setSubmitting(true);
@@ -21,7 +26,6 @@ const SignUp = () => {
       try {
         const {data} =  await axios.post(signUpPath, { username, password });
         authorization.logIn(data);
-        console.log(data);
         navigate('/');
       } catch (e) {
         if (e.isAxiosError && e.response && e.response.status === 409) {
@@ -59,6 +63,7 @@ const SignUp = () => {
           value={formik.values.username}
           isInvalid={Boolean(formik.errors.username)}
           readOnly={formik.isSubmitting}
+          ref={refInput}
         />
         {formik.errors.username
           && <Form.Control.Feedback type="invalid">{t(formik.errors.username)}</Form.Control.Feedback>}

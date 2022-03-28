@@ -38,6 +38,7 @@ export default {
       buttonRegistration: 'Зарегистрироваться',
       enterMessage: 'Введите сообщение',
       message: 'Новое сообщение',
+      hello: 'hello',
     },
   },
 };
