@@ -43,7 +43,7 @@ const FormMessage = ({ currentChannelId, t }) => {
 
   const handlerSubmit = ({ message }, { resetForm, setSubmitting }) => {
     setSubmitting(true);
-    const filteredMessage = filter.check(message) ? filter.clean(message, '+') : message.trim();
+    const filteredMessage = filter.check(message) ? filter.clean(message, '\\*') : message.trim();
     const newMessage =  { message: filteredMessage, channelId: currentChannelId, username };
 
     socket.emit('newMessage', newMessage, (response) => {
