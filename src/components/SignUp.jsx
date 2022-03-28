@@ -47,7 +47,7 @@ const SignUp = () => {
   return (
     <Form onSubmit={formik.handleSubmit}>
       <Form.Group className="mb-3">
-        <Form.Label htmlfor="username">{t('elements.name')}</Form.Label>
+        <Form.Label htmlFor="username">{t('elements.name')}</Form.Label>
         <Form.Control
           name="username"
           type="text"
@@ -64,7 +64,7 @@ const SignUp = () => {
           && <Form.Control.Feedback type="invalid">{t(formik.errors.username)}</Form.Control.Feedback>}
       </Form.Group>
       <Form.Group className="mb-3">
-        <Form.Label htmlfor="password">{t('elements.password')}</Form.Label>
+        <Form.Label htmlFor="password">{t('elements.password')}</Form.Label>
         <Form.Control
           name="password"
           type="password"
@@ -81,7 +81,7 @@ const SignUp = () => {
           && <Form.Control.Feedback type="invalid">{t(formik.errors.password)}</Form.Control.Feedback>}
         </Form.Group>
         <Form.Group className="mb-3">
-          <Form.Label htmlfor="confirmPassword">{t('elements.confirmPassword')}</Form.Label>
+          <Form.Label htmlFor="confirmPassword">{t('elements.confirmPassword')}</Form.Label>
           <Form.Control
             name="confirmPassword"
             type="password"

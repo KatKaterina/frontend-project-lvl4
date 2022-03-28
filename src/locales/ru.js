@@ -18,7 +18,7 @@ export default {
       NotFound: '404! Не найдено.',
     },
     elements: {
-      name: 'Имя пользователя',
+      name: 'Ваш ник',
       password: 'Пароль',
       confirmPassword: 'Подтвердить пароль',
       registration: 'Регистрация',

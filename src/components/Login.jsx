@@ -50,7 +50,7 @@ const Login = () => {
   return (
     <Form onSubmit={handleSubmit}>
       <Form.Group className="mb-3">
-        <Form.Label htmlfor="username">{t('elements.name')}</Form.Label>
+        <Form.Label htmlFor="username">{t('elements.name')}</Form.Label>
         <Form.Control
           name="username"
           type="text"
@@ -65,7 +65,7 @@ const Login = () => {
         />
       </Form.Group>
       <Form.Group className="mb-3">
-        <Form.Label htmlfor="password">{t('elements.password')}</Form.Label>
+        <Form.Label htmlFor="password">{t('elements.password')}</Form.Label>
         <Form.Control
           name="password"
           type="password"
