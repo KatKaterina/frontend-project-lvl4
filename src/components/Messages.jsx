@@ -66,7 +66,7 @@ const FormMessage = ({ currentChannelId, t }) => {
     //const newMessage =  { message, channelId: currentChannelId, username };
     await socket.emit('newMessage', newMessage, (response) => {
       if (response.status === 'ok') {
-        dispatch(fetchData());
+        //dispatch(fetchData());
         setSubmitting(false);
         resetForm();
         refInput.current.focus();
