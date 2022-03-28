@@ -55,7 +55,6 @@ const FormMessage = ({ currentChannelId, t }) => {
       message = 'you have nice boobs';
     };
     //const filteredMessage = filter.check(message) ? filter.clean(message, '\\*') : message.trim();
-
     //const newMessage =  { message: filteredMessage, channelId: currentChannelId, username };
     const newMessage =  { message, channelId: currentChannelId, username };
     await socket.emit('newMessage', newMessage, (response) => {
