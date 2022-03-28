@@ -38,7 +38,7 @@ const FormRenameChannel = ({ handleClose, t }) => {
           toast(t('toast.renamedChannel'));
           setSubmitting(false);
           handleClose();
-          //dispatch(fetchData());
+          dispatch(fetchData());
         } else {
           toast.error(t('toast.connectError'));
         }
@@ -53,6 +53,7 @@ const FormRenameChannel = ({ handleClose, t }) => {
           name="name"
           className="mb-2"
           aria-label={t('elements.nameChannel')}
+          data-testid="rename-channel"
           onChange={formik.handleChange}
           value={formik.values.name}
           isInvalid={formik.errors.name}

@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { selectorChannels, changeCurrentChannel, fetchData } from '../slices/ChannelsSlice.js';
 import { openModal } from '../slices/modalSlice.js';
 import { useTranslation } from 'react-i18next';
+import { toast } from 'react-toastify';
 
 const fixedChannel = ({ name, onClick, id, active }) => (
   <Nav.Link key={id}  eventKey={id} active={active}  className="w-100 rounded text-start" onClick={onClick}>
@@ -48,6 +49,7 @@ const Channels = () => {
 
   const handleRename = (id, name) => () => {
     dispatch(openModal({ type: 'renameChannel', updateData: { id, name } }));
+    toast(t('toast.renamedChannel'));
   };
 
   const renderChannels = () => (
