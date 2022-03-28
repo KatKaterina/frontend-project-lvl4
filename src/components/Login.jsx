@@ -50,14 +50,14 @@ const Login = () => {
   return (
     <Form onSubmit={handleSubmit}>
       <Form.Group className="mb-3">
-        <Form.Label htmlFor="username">{t('elements.name')}</Form.Label>
+        <Form.Label htmlFor="username">{t('elements.nameLogin')}</Form.Label>
         <Form.Control
           name="username"
           type="text"
           id="username"
           autocomplite="username"
           required
-          placeholder={t('elements.name')} 
+          placeholder={t('elements.nameLogin')} 
           onChange={handleChange}
           value={values.username}
           isInvalid={Boolean(error)}

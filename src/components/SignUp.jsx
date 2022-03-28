@@ -47,14 +47,14 @@ const SignUp = () => {
   return (
     <Form onSubmit={formik.handleSubmit}>
       <Form.Group className="mb-3">
-        <Form.Label htmlFor="username">{t('elements.name')}</Form.Label>
+        <Form.Label htmlFor="username">{t('elements.nameRegistration')}</Form.Label>
         <Form.Control
           name="username"
           type="text"
           id="username"
           autocomplite="username"
           required
-          placeholder={t('elements.name')} 
+          placeholder={t('elements.nameRegistration')} 
           onChange={formik.handleChange}
           value={formik.values.username}
           isInvalid={Boolean(formik.errors.username)}
