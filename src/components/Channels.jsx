@@ -14,7 +14,7 @@ const fixedChannel = ({ name, onClick, id, active }) => (
 
  const unremovableChannel = ({ name, variant, onClick, onRename, onRemove, id, active, t }) => (
   <Dropdown as={ButtonGroup} className="d-flex mb-2">
-    <Nav.Link key={id}  eventKey={id} active={active} className="w-100 rounded text-start" onClick={onClick}>
+    <Nav.Link key={id} role="button" eventKey={id} active={active} className="w-100 rounded text-start" onClick={onClick}>
       {name}
     </Nav.Link>
     <Dropdown.Toggle split variant={variant} id="dropdown-split-basic">
@@ -49,7 +49,7 @@ const Channels = () => {
 
   const handleRename = (id, name) => () => {
     dispatch(openModal({ type: 'renameChannel', updateData: { id, name } }));
-    toast(t('toast.renamedChannel'));
+    //toast(t('toast.renamedChannel'));
   };
 
   const renderChannels = () => (
