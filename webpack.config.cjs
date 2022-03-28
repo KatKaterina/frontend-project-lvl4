@@ -2,6 +2,8 @@
 
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const Dotenv = require('dotenv-webpack');
+
 
 const mode = process.env.NODE_ENV || 'development';
 
@@ -23,6 +25,7 @@ module.exports = {
   },
   plugins: [
     new MiniCssExtractPlugin(),
+    new Dotenv(),
   ],
   module: {
     rules: [
@@ -30,6 +33,10 @@ module.exports = {
         test: /\.jsx?$/,
         exclude: /node_modules/,
         use: 'babel-loader',
+      },
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader', 'postcss-loader'],
       },
       {
         test: /\.s[ac]ss$/i,
