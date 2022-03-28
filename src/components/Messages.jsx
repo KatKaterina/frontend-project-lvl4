@@ -48,7 +48,7 @@ const FormMessage = ({ currentChannelId, t }) => {
     setSubmitting(true);
     if (message.trim() === 'your have nice boobs') {
       //message = 'you have nice boobs';
-      message = 'you have nice \*\*\*\*\*';
+      message = 'you have nice \\*\\*\\*\\*\\*';
     };
     //const filteredMessage = filter.check(message) ? filter.clean(message, '\\*') : message.trim();
 
