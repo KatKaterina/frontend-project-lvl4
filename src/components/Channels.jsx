@@ -55,6 +55,7 @@ const Channels = () => {
         return (
           <Channel
             id={id}
+            key={id}
             name={name}
             variant={id === currentChannelId ? 'primary' : null}
             active={id === currentChannelId ? "true" : ""}
