@@ -42,7 +42,6 @@ const ChannelMessages = ({ currentChannelId }) => {
     </div>
   );
 };
-//b>{username}</b>: {filteredMessage}
 
 const FormMessage = ({ currentChannelId, t }) => {
   const refInput = useRef();
@@ -50,20 +49,11 @@ const FormMessage = ({ currentChannelId, t }) => {
   const username = localStorage.getItem('username');
   const dispatch = useDispatch();
 
-  /*const filter = require('leo-profanity');
-  
-  filter.clearList();
-  filter.add(filter.getDictionary('en'));
-  filter.add(filter.getDictionary('ru'));*/
-
   const handlerSubmit =  async ({ message }, { resetForm, setSubmitting }) => {
     setSubmitting(true);
-    /* if (message.trim() === 'your have nice boobs') {
-      message = 'you have nice boobs';
-    };*/
-    const filteredMessage = filter.check(message) ? filter.clean(message, '*') : message;
-    const newMessage =  { message: filteredMessage, channelId: currentChannelId, username };
-    //const newMessage =  { message, channelId: currentChannelId, username };
+    //const filteredMessage = filter.check(message) ? filter.clean(message, '*') : message;
+    //const newMessage =  { message: filteredMessage, channelId: currentChannelId, username };
+    const newMessage =  { message, channelId: currentChannelId, username };
     await socket.emit('newMessage', newMessage, (response) => {
       if (response.status === 'ok') {
         //dispatch(fetchData());
@@ -127,7 +117,6 @@ const Messages = () => {
       <div className="d-flex flex-column h-100">
         <div className="bg-light mb-4 p-3 shadow-sm small">
           <p className="m-0">{currentChannelName}</p>
-
         </div>
         <ChannelMessages currentChannelId={currentChannelId} />
         <FormMessage currentChannelId={currentChannelId} t={t} />
@@ -135,8 +124,5 @@ const Messages = () => {
     </Col>
   );
 };
-
-//<span>{t('elements.hello')}</span>
-//<span>you have nice \*\*\*\*\*</span>
 
 export default Messages;

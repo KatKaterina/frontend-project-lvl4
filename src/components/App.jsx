@@ -15,6 +15,8 @@ import ModalRenameChannel from './ModalRenameChannel.jsx';
 import ModalRemoveChannel from './ModalRemoveChannel.jsx';
 import SignUp from './SignUp.jsx';
 import Header from './Header.jsx';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { Provider as ProviderRollbar, ErrorBoundary, LEVEL_WARN } from '@rollbar/react';
 
 const AutorizProvider = ({ children }) => {
@@ -81,6 +83,7 @@ const App = ({ socket }) => {
         <Router>
           <div className="d-flex flex-column h-100">
             <Header />
+            <ToastContainer autoClose={5000} />
             <Routes>
               <Route exact path="/" element={<UserRoute><Chat /></UserRoute>} />
               <Route path="/login" element={<Login />} />
