@@ -1,8 +1,10 @@
 import React, { useContext } from 'react';
 import { Navbar, Nav } from 'react-bootstrap';
 import { authorizContext }  from '../contexts/index.js';
-import { useLocation, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Exit = () => {
   const { t } = useTranslation();
@@ -24,6 +26,7 @@ const Header = () => {
       <Nav>
         <Exit />
       </Nav>
+      <ToastContainer autoClose={5000} />
     </Navbar>
   );
 };
