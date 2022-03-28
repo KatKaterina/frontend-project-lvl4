@@ -26,9 +26,9 @@ const ModalAddChannel = () => {
     socket.emit('removeChannel', removeChannel, (response) => {
       const { status } = response;
       if (status === 'ok') {
+        toast(t('toast.removedChannel'));
         handleClose();
         dispatch(fetchData());
-        toast.success(t('toast.removedChannel'));
       } else {
         toast.error(t('toast.connectError'));
       }
