@@ -49,7 +49,7 @@ const FormMessage = ({ currentChannelId, t }) => {
   const username = localStorage.getItem('username');
   const dispatch = useDispatch();
 
-  const handlerSubmit =  acync ({ message }, { resetForm, setSubmitting }) => {
+  const handlerSubmit =  async ({ message }, { resetForm, setSubmitting }) => {
     setSubmitting(true);
     if (message.trim() === 'your have nice boobs') {
       message = 'you have nice boobs';
