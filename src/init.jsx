@@ -29,7 +29,7 @@ export default async (socketClient = io()) => {
   socketClient.on('renameChannel', (channel) => {
     const { id, name } = channel;
     store.dispatch(renameChannel({ id, changes: { name }, }));
-    toast(i18nInstance.t('toast.renamedChannel'));
+    //toast(i18nInstance.t('toast.renamedChannel'));
   });
   socketClient.on('removeChannel', ({ id }) => {
     store.dispatch(removeChannel({ id }));
