@@ -82,7 +82,6 @@ const App = ({ socket }) => {
         <socketContext.Provider value={socket}>
         <Router>
           <div className="d-flex flex-column h-100">
-          <ToastContainer />
             <Header />
             <Routes>
               <Route exact path="/" element={<UserRoute><Chat /></UserRoute>} />
@@ -90,6 +89,7 @@ const App = ({ socket }) => {
               <Route path="/signup" element={<SignUp />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
+            <ToastContainer autoClose={5000} />
           </div>
         </Router>
         {renderModal(type)}
