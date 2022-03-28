@@ -28,15 +28,15 @@ const FormRenameChannel = ({ handleClose, t }) => {
       name,
     },
     validationSchema: getSchemaForChannel(channels),
-    onSubmit: ({ name: newName }, { setSubmitting }) => {
+    onSubmit: async ({ name: newName }, { setSubmitting }) => {
       setSubmitting(true);
       const updateChannel =  { name: newName, id };
       
-      socket.emit('renameChannel', updateChannel, (response) => {
+      await socket.emit('renameChannel', updateChannel, (response) => {
         const { status } = response;
         if (status === 'ok') {
-          setSubmitting(false);
           toast(t('toast.renamedChannel'));
+          setSubmitting(false);
           handleClose();
           dispatch(fetchData());
         } else {
