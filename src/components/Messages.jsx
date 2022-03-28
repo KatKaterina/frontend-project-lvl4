@@ -49,7 +49,7 @@ const FormMessage = ({ currentChannelId, t }) => {
   const username = localStorage.getItem('username');
   const dispatch = useDispatch();
 
-  const handlerSubmit = ({ message }, { resetForm, setSubmitting }) => {
+  const handlerSubmit =  acync ({ message }, { resetForm, setSubmitting }) => {
     setSubmitting(true);
     if (message.trim() === 'your have nice boobs') {
       message = 'you have nice boobs';
@@ -58,7 +58,7 @@ const FormMessage = ({ currentChannelId, t }) => {
 
     //const newMessage =  { message: filteredMessage, channelId: currentChannelId, username };
     const newMessage =  { message, channelId: currentChannelId, username };
-    socket.emit('newMessage', newMessage, (response) => {
+    await socket.emit('newMessage', newMessage, (response) => {
       if (response.status === 'ok') {
         dispatch(fetchData());
         setSubmitting(false);
@@ -99,7 +99,7 @@ const FormMessage = ({ currentChannelId, t }) => {
             ref={refInput}
             readOnly={formik.isSubmitting}
           />
-          <Button type="submit" disabled={formik.isSubmitting}>
+          <Button type="submit" disabled={formik.isSubmitting || !formik.isValid}>
             {t('elements.buttonSend')}
           </Button>
           {formik.errors.message
