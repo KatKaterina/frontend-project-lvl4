@@ -20,7 +20,7 @@ const Exit = () => {
 const Header = () => {
   return (
     <Navbar className="shadow-sm bg-light">
-      <Navbar.Brand as={Link} to="/login">Hexlet Chat</Navbar.Brand>
+      <Navbar.Brand as={Link} to="/">Hexlet Chat</Navbar.Brand>
       <Nav>
         <Exit />
       </Nav>
