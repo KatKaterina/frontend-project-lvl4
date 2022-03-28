@@ -52,6 +52,7 @@ const FormRenameChannel = ({ handleClose, t }) => {
         <Form.Control
           name="name"
           className="mb-2"
+          aria-label={t('elements.nameChannel')}
           onChange={formik.handleChange}
           value={formik.values.name}
           isInvalid={formik.errors.name}

@@ -1,7 +1,7 @@
 export default {
   translation: {
     toast: {
-      addedChannel: 'Канал добавлен',
+      addedChannel: 'Канал создан',
       connectError: 'Ошибка соединения',
       removedChannel: 'Канал удален',
       renamedChannel: 'Канал переименован',
@@ -38,7 +38,8 @@ export default {
       buttonRegistration: 'Зарегистрироваться',
       enterMessage: 'Введите сообщение',
       message: 'Новое сообщение',
-      hello: 'hello',
+      nameChannel: 'Имя канала',
+      controlChannel: 'Управление каналом',
     },
   },
 };
