@@ -10,12 +10,13 @@ import { useTranslation } from 'react-i18next';
 import { toast } from 'react-toastify';
 import { schemaForMessage } from '../validateSchema.js';
 
+const filter = require('leo-profanity');
+filter.clearList();
+filter.add(filter.getDictionary('en'));
+filter.add(filter.getDictionary('ru'));
+
+
 const ChannelMessages = ({ currentChannelId }) => {
-  const filter = require('leo-profanity');
-  
-  filter.clearList();
-  filter.add(filter.getDictionary('en'));
-  filter.add(filter.getDictionary('ru'));
 
   const messages = useSelector(selectorMessages.selectAll);
   const refChat = useRef();
@@ -49,14 +50,20 @@ const FormMessage = ({ currentChannelId, t }) => {
   const username = localStorage.getItem('username');
   const dispatch = useDispatch();
 
+  /*const filter = require('leo-profanity');
+  
+  filter.clearList();
+  filter.add(filter.getDictionary('en'));
+  filter.add(filter.getDictionary('ru'));*/
+
   const handlerSubmit =  async ({ message }, { resetForm, setSubmitting }) => {
     setSubmitting(true);
     /* if (message.trim() === 'your have nice boobs') {
       message = 'you have nice boobs';
     };*/
-    //const filteredMessage = filter.check(message) ? filter.clean(message, '\\*') : message.trim();
-    //const newMessage =  { message: filteredMessage, channelId: currentChannelId, username };
-    const newMessage =  { message, channelId: currentChannelId, username };
+    const filteredMessage = filter.check(message) ? filter.clean(message, ) : message.trim();
+    const newMessage =  { message: filteredMessage, channelId: currentChannelId, username };
+    //const newMessage =  { message, channelId: currentChannelId, username };
     await socket.emit('newMessage', newMessage, (response) => {
       if (response.status === 'ok') {
         dispatch(fetchData());
