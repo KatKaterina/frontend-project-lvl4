@@ -27,10 +27,10 @@ const ChannelMessages = ({ currentChannelId }) => {
     <div className="chat-messages overflow-auto px-5" ref={refChat}>
       {messages.filter(({ channelId }) => Number(channelId) === currentChannelId)
         .map(({ username, message }) => {
-          const filteredMessage = filter.check(message) ? filter.clean(message, '\\*') : message.trim();
+          const profanityText = filter.check(message) ? filter.clean(message, '\\*') : message.trim();
           return (
           <div className="text-break mb-2">
-            <b>{username}</b>: {filteredMessage}
+            <b>{username}</b>: {profanityText}
           </div> 
         )})
       }
