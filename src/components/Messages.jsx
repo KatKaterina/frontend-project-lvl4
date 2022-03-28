@@ -27,16 +27,20 @@ const ChannelMessages = ({ currentChannelId }) => {
     <div className="chat-messages overflow-auto px-5" ref={refChat}>
       {messages.filter(({ channelId }) => Number(channelId) === currentChannelId)
         .map(({ username, message }) => {
-          const profanityText = filter.check(message) ? filter.clean(message, '\\*') : message.trim();
+          const filteredMessage = filter.check(message) ? filter.clean(message, '\\*') : message.trim();
           return (
           <div className="text-break mb-2">
-            <b>{username}</b>: {profanityText}
+            <p>
+              <strong className="text-danger">{`${username}: `}</strong>
+              {filteredMessage}
+            </p>
           </div> 
         )})
       }
     </div>
   );
 };
+//b>{username}</b>: {filteredMessage}
 
 const FormMessage = ({ currentChannelId, t }) => {
   const refInput = useRef();
@@ -87,6 +91,7 @@ const FormMessage = ({ currentChannelId, t }) => {
             type="text"
             aria-label={t('elements.message')}
             className="p-0 ps-2"
+            autocomplete="message"
             onChange={formik.handleChange}
             value={formik.values.message}
             placeholder={t('elements.enterMessage')} 
