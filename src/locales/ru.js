@@ -37,6 +37,7 @@ export default {
       buttonSend: 'Отправить',
       buttonRegistration: 'Зарегистрироваться',
       enterMessage: 'Введите сообщение',
+      message: 'Новое сообщение',
     },
   },
 };

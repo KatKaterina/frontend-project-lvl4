@@ -79,7 +79,7 @@ const FormMessage = ({ currentChannelId }) => {
             name="message"
             id="message"
             type="text"
-            aria-label="message"
+            aria-label={t('elements.message')}
             className="p-0 ps-2"
             onChange={formik.handleChange}
             value={formik.values.message}
