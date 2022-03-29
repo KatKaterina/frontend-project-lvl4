@@ -81,7 +81,9 @@ export default (app, defaultState = {}) => {
       const channel = state.channels.find((c) => c.id === channelId);
       if (!channel) return;
       channel.name = name;
-
+      console.log("RENAME");
+      console.log(channel);
+      console.log(channel.name);
       acknowledge({ status: 'ok', nameNew: channel.name });
       app.io.emit('renameChannel', channel);
     });
