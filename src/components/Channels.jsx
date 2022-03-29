@@ -6,13 +6,13 @@ import { openModal } from '../slices/modalSlice.js';
 import { useTranslation } from 'react-i18next';
 import { toast } from 'react-toastify';
 
-const fixedChannel = ({ name, onClick, id, active }) => (
+const FixedChannel = ({ name, onClick, id, active }) => (
   <Nav.Link key={id}  eventKey={id} active={active}  className="w-100 rounded text-start" onClick={onClick}>
       {name}
   </Nav.Link>
   );
 
- const unremovableChannel = ({ name, variant, onClick, onRename, onRemove, id, active, t }) => (
+ const UnremovableChannel = ({ name, variant, onClick, onRename, onRemove, id, active, t }) => (
   <Dropdown as={ButtonGroup} key={id} className="d-flex mb-2">
     <Nav.Link as={Button} name={name} role="button" active={active} className="w-100 rounded text-start" onClick={onClick}>
       {name}
@@ -55,7 +55,7 @@ const Channels = () => {
   const renderChannels = () => (
     <Nav variant="pills" fill className="flex-column">
       {channels.map(({ id, name, removable }) => {
-        const Channel = removable ? unremovableChannel : fixedChannel;
+        const Channel = removable ? UnremovableChannel : FixedChannel;
         return (
           <Channel
             id={id}
