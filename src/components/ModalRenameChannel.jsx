@@ -30,7 +30,7 @@ const FormRenameChannel = ({ handleClose, t }) => {
     validationSchema: getSchemaForChannel(channels),
     onSubmit: ({ name: newName }, { setSubmitting, isSubmitting }) => {
       setSubmitting(true);
-      const updateChannel =  { name: newName, id, removable };
+      const updateChannel =  { name: newName, id, removable: true };
       
        socket.emit('renameChannel', updateChannel, (response) => {
         const { status } = response;
