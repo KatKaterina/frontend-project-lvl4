@@ -18,8 +18,8 @@ const FixedChannel = ({ name, onClick, id, active }) => (
 </Button>*/
 
  const UnremovableChannel = ({ name, variant, onClick, onRename, onRemove, id, active, t }) => (
-  <Dropdown as={ButtonGroup} key={id} eventKey={id} className="d-flex mb-2">
-    <Nav.Link as={Button} aria-label={name} role="button" active={active} className="w-100 rounded text-start" onClick={onClick}>
+  <Dropdown as={ButtonGroup} key={id} className="d-flex mb-2">
+    <Nav.Link as={Button} aria-label={name} eventKey={id} role="button" active={active} className="w-100 rounded text-start" onClick={onClick}>
       <p>{name}</p>
     </Nav.Link>
 

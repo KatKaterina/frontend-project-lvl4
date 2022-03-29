@@ -77,8 +77,8 @@ const ModalRenameChannel = ({ onExited }) => {
   const dispatch = useDispatch();
   const [show, setShow] = useState(true);
   const handleClose = () => {
-    setShow(false);
     dispatch(fetchData());
+    setShow(false);
     //dispatch(closeModal());
   };
 
