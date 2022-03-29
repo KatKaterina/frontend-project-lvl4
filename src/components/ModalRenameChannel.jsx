@@ -33,10 +33,9 @@ const FormRenameChannel = ({ handleClose, t }) => {
       const updateChannel =  { name: newName, id, removable: true };
       
        socket.emit('renameChannel', updateChannel, (response) => {
-        const { status, log } = response;
+        const { status } = response;
         //console.log("emit " + nameNew);
         if (status === 'ok') {
-          console.log("emit " + log);
           //dispatch(fetchData());
           setSubmitting(false);
           toast(t('toast.renamedChannel'));
