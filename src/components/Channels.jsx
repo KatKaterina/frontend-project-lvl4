@@ -7,9 +7,12 @@ import { useTranslation } from 'react-i18next';
 import { toast } from 'react-toastify';
 
 const FixedChannel = ({ name, onClick, id, active }) => (
-  <Nav.Link key={id}  eventKey={id} active={active}  className="w-100 rounded text-start" onClick={onClick}>
+  /*<Nav.Link key={id}  eventKey={id} active={active}  className="w-100 rounded text-start" onClick={onClick}>
       {name}
-  </Nav.Link>
+  </Nav.Link>*/
+  <Button active={active} key={id} eventKey={id} className="w-100 rounded text-start" onClick={onClick}>
+  {name}
+</Button>
   );
 
   /*<Nav.Link as={Button} name={name} role="button" active={active} className="w-100 rounded text-start" onClick={onClick}>
@@ -17,7 +20,7 @@ const FixedChannel = ({ name, onClick, id, active }) => (
 </Nav.Link>*/
 
  const UnremovableChannel = ({ name, variant, onClick, onRename, onRemove, id, active, t }) => (
-  <Dropdown as={ButtonGroup} key={id} className="d-flex mb-2">
+  <Dropdown as={ButtonGroup} key={id} eventKey={id} className="d-flex mb-2">
     <Button active={active} className="w-100 rounded text-start" onClick={onClick}>
       {name}
     </Button>
