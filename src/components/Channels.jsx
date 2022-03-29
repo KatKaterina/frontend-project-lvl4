@@ -23,12 +23,12 @@ const FixedChannel = ({ name, onClick, id, active }) => (
       {name}
     </Nav.Link>
 
-    <Dropdown.Toggle role="button" split variant={variant} data-testid="channel-dropdown" id="dropdown-split-basic">
+    <Dropdown.Toggle role="button" split variant={variant} data-testid="channel-dropdown" id="dropdown-button-drop-end">
       <span className="visually-hidden">{t('elements.controlChannel')}</span>
     </Dropdown.Toggle>
     <Dropdown.Menu>
-      <Dropdown.Item onClick={onRename} role="button">{t('elements.renameChannel')}</Dropdown.Item>
-      <Dropdown.Item onClick={onRemove} role="button">{t('elements.removeChannel')}</Dropdown.Item>
+      <Dropdown.Item onClick={onRename} role="button" href="#">{t('elements.renameChannel')}</Dropdown.Item>
+      <Dropdown.Item onClick={onRemove} role="button" href="#">{t('elements.removeChannel')}</Dropdown.Item>
     </Dropdown.Menu>
   </Dropdown>
  );
