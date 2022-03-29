@@ -19,7 +19,6 @@ const FixedChannel = ({ name, onClick, id, active }) => (
 
  const RemovableChannel = ({ name, variant, onClick, onRename, onRemove, id, active, t }) => (
   <Dropdown as={ButtonGroup} key={id} className="d-flex mb-2" aria-label={name}>
-    {console.log(name)}
     <Nav.Link as={Button} aria-label={name} eventKey={id} role="button" active={active} className="w-100 rounded text-start" onClick={onClick}>
       {name}
     </Nav.Link>
@@ -67,6 +66,7 @@ const Channels = () => {
   const renderChannels = () => (
     <Nav variant="pills" fill className="flex-column">
       {channels.map(({ id, name, removable }) => {
+        console.log('render ' + name);
         return (!removable ? (
           <FixedChannel
           id={id}
