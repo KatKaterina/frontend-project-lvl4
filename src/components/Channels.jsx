@@ -17,10 +17,11 @@ const FixedChannel = ({ name, onClick, id, active }) => (
   {name}
 </Button>*/
 
- const UnremovableChannel = ({ name, variant, onClick, onRename, onRemove, id, active, t }) => (
-  <Dropdown as={ButtonGroup} key={id} className="d-flex mb-2">
+ const RemovableChannel = ({ name, variant, onClick, onRename, onRemove, id, active, t }) => (
+  <Dropdown as={ButtonGroup} key={id} className="d-flex mb-2" aria-label={name}>
+    {console.log(name)}
     <Nav.Link as={Button} aria-label={name} eventKey={id} role="button" active={active} className="w-100 rounded text-start" onClick={onClick}>
-      <p>{name}</p>
+      {name}
     </Nav.Link>
 
     <Dropdown.Toggle role="button" split variant={variant} data-testid="channel-dropdown" id="dropdown-split-basic">
@@ -62,7 +63,7 @@ const Channels = () => {
     <Nav variant="pills" fill className="flex-column">
       {channels.map(({ id, name, removable }) => {
         return (removable ? (
-          <UnremovableChannel 
+          <RemovableChannel 
           id={id}
           key={id}
           name={name}
@@ -103,7 +104,7 @@ const Channels = () => {
 export default Channels;
 
       /*{
-        const Channel = removable ? UnremovableChannel : FixedChannel;
+        const Channel = removable ? RemovableChannel : FixedChannel;
         return (
           <Channel
             id={id}
