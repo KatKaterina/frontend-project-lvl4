@@ -68,7 +68,7 @@ const FormRenameChannel = ({ handleClose, t }) => {
       </InputGroup>
       <Button onClick={handleClose} disabled={formik.isSubmitting}>{t('elements.buttonCancel')}</Button>
       {' '}
-      <Button type="submit" disabled={formik.isSubmitting}>{t('elements.buttonSAdd')}</Button>
+      <Button type="submit" disabled={formik.isSubmitting}>{t('elements.buttonAdd')}</Button>
     </Form>
   );
 };
