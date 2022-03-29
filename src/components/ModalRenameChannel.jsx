@@ -17,7 +17,7 @@ const FormRenameChannel = ({ handleClose, t }) => {
   const channels = useSelector(selectorChannels.selectAll).map((channel) => channel.name);
 
   const updateData = useSelector((state) => state.modal.updateData);
-  const { id, name } = updateData;
+  const { id, name, removable } = updateData;
 
   useEffect(() => {
     refName.current.select();
@@ -30,7 +30,7 @@ const FormRenameChannel = ({ handleClose, t }) => {
     validationSchema: getSchemaForChannel(channels),
     onSubmit: ({ name: newName }, { setSubmitting, isSubmitting }) => {
       setSubmitting(true);
-      const updateChannel =  { name: newName, id };
+      const updateChannel =  { name: newName, id, removable };
       
        socket.emit('renameChannel', updateChannel, (response) => {
         const { status } = response;
