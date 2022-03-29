@@ -35,10 +35,11 @@ const FormRenameChannel = ({ handleClose, t }) => {
        socket.emit('renameChannel', updateChannel, (response) => {
         const { status } = response;
         if (status === 'ok') {
-          dispatch(fetchData());
+          //dispatch(fetchData());
           toast(t('toast.renamedChannel'));
           setSubmitting(false);
           handleClose();
+          dispatch(fetchData());
         } else {
           toast.error(t('toast.connectError'));
         }
@@ -69,17 +70,17 @@ const FormRenameChannel = ({ handleClose, t }) => {
   );
 };
 
-const ModalAddChannel = () => {
+const ModalRenameChannel = ({ onExited }) => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const [show, setShow] = useState(true);
   const handleClose = () => {
     setShow(false);
-    dispatch(closeModal());
+    //dispatch(closeModal());
   };
 
   return (
-    <Modal show={show} onHide={handleClose} centered>
+    <Modal show={show} onHide={handleClose} centered onExited={onExited}>
       <Modal.Header closeButton>
         <Modal.Title>{t('elements.renameChannel')}</Modal.Title>
       </Modal.Header>
@@ -91,4 +92,4 @@ const ModalAddChannel = () => {
   );
 };
 
-export default ModalAddChannel;
+export default ModalRenameChannel;

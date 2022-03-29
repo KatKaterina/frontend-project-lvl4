@@ -15,6 +15,7 @@ import ModalRenameChannel from './ModalRenameChannel.jsx';
 import ModalRemoveChannel from './ModalRemoveChannel.jsx';
 import SignUp from './SignUp.jsx';
 import Header from './Header.jsx';
+import { closeModal } from '../slices/modalSlice.js';
 //import 'react-toastify/dist/ReactToastify.css';
 import 'react-toastify/dist/ReactToastify.min.css'
 import { ToastContainer } from 'react-toastify';
@@ -49,16 +50,16 @@ const UserRoute = ({ children }) => {
   );
 };
 
-const renderModal = (type) => {
+const renderModal = (type, onExited) => {
   switch (type) {
     case 'addChannel': {
-      return <ModalAddChannel />
+      return <ModalAddChannel onExited={onExited}/>
     }
     case 'renameChannel': {
-      return <ModalRenameChannel />
+      return <ModalRenameChannel onExited={onExited}/>
     }
     case 'removeChannel': {
-      return <ModalRemoveChannel />
+      return <ModalRemoveChannel onExited={onExited}/>
     }
     default: {
       return null;
@@ -72,6 +73,12 @@ const App = ({ socket }) => {
     accessToken: '0c63dc2b0eb345e1b54abaa5c326902e',
     captureUncaught: true,
     captureUnhandledRejections: true,
+  };
+
+  const dispatch = useDispatch();
+
+  const ModalExited = () => {
+    dispatch(closeModal());
   };
 
   // <ProviderRollbar config={rollbarConfig}>
@@ -93,7 +100,7 @@ const App = ({ socket }) => {
             <ToastContainer autoClose={5000} />
           </div>
         </Router>
-        {renderModal(type)}
+        {renderModal(type, ModalExited)}
         </socketContext.Provider>
       </AutorizProvider>
       

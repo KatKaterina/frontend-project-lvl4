@@ -62,17 +62,17 @@ const FormAddChannel = ({ handleClose, t }) => {
   );
 };
 
-const ModalAddChannel = () => {
+const ModalAddChannel = ({ onExited }) => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const [show, setShow] = useState(true);
   const handleClose = () => {
     setShow(false);
-    dispatch(closeModal());
+    //dispatch(closeModal());
   };
  
   return (
-    <Modal show={show} onHide={handleClose} centered>
+    <Modal show={show} onHide={handleClose} centered onExited={onExited}>
       <Modal.Header closeButton>
         <Modal.Title>{t('elements.addChannel')}</Modal.Title>
       </Modal.Header>

@@ -7,13 +7,13 @@ import { fetchData } from '../slices/ChannelsSlice.js';
 import { useTranslation } from 'react-i18next';
 import { toast } from 'react-toastify';
 
-const ModalAddChannel = () => {
+const ModalRemoveChannel = ({ onExited }) => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const [show, setShow] = useState(true);
   const handleClose = () => {
     setShow(false);
-    dispatch(closeModal());
+    //dispatch(closeModal());
   };
 
   const socket = useContext(socketContext);
@@ -36,7 +36,7 @@ const ModalAddChannel = () => {
   };
 
   return (
-    <Modal show={show} onHide={handleClose} centered>
+    <Modal show={show} onHide={handleClose} centered onExited={onExited}>
       <Modal.Header closeButton>
         <Modal.Title>{t('elements.removeChannel')}</Modal.Title>
       </Modal.Header>
@@ -52,4 +52,4 @@ const ModalAddChannel = () => {
   );
 };
 
-export default ModalAddChannel;
+export default ModalRemoveChannel;
