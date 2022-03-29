@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Col, Nav, Button, Dropdown, ButtonGroup } from 'react-bootstrap';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectorChannels, changeCurrentChannel, fetchData } from '../slices/ChannelsSlice.js';
@@ -59,6 +59,10 @@ const Channels = () => {
     dispatch(fetchData());
     //toast(t('toast.renamedChannel'));
   };
+
+  useEffect(() => {
+    dispatch(fetchData())
+  }, [dispatch]);
 
   const renderChannels = () => (
     <Nav variant="pills" fill className="flex-column">
