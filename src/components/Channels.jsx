@@ -54,7 +54,7 @@ const Channels = () => {
     dispatch(openModal({ type: 'removeChannel', updateData: { id } }));
   };
 
-  const handleRename = (id, name) => () => {
+  const handleRename = (id, name, removable) => () => {
     dispatch(openModal({ type: 'renameChannel', updateData: { id, name, removable } }));
     dispatch(fetchData());
     //toast(t('toast.renamedChannel'));
@@ -87,7 +87,7 @@ const Channels = () => {
           active={id === currentChannelId ? "true" : ""}
           onClick={handleClick(id)}
           onRemove={handleRemove(id)}
-          onRename={handleRename(id, name)}
+          onRename={handleRename(id, name, removable)}
           t={t}
           />
         ))
