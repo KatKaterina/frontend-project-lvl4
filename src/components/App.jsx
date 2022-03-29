@@ -98,9 +98,10 @@ const App = ({ socket }) => {
               <Route path="/signup" element={<SignUp />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
-            <ToastContainer autoClose={5000} />
+            
           </div>
           {renderModal(type, ModalExited)}
+          <ToastContainer autoClose={5000} />
         </Router>
         </socketContext.Provider>
       </AutorizProvider>
