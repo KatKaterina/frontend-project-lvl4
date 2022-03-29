@@ -29,13 +29,14 @@ const Chat = () => {
           <Messages />
         </Row>
       </div>
-      <div className="text-center">
-        <span>
-          <Link to="/login" onClick={handleClick}>{t('elements.logOut')}</Link>
-        </span>
-      </div>
    </>
  );
 }
 
 export default Chat;
+
+/*<div className="text-center">
+<span>
+  <Link to="/login" onClick={handleClick}>{t('elements.logOut')}</Link>
+</span>
+</div>*/

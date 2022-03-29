@@ -100,8 +100,8 @@ const App = ({ socket }) => {
             </Routes>
             <ToastContainer autoClose={5000} />
           </div>
+          {renderModal(type, ModalExited)}
         </Router>
-        {renderModal(type, ModalExited)}
         </socketContext.Provider>
       </AutorizProvider>
       
