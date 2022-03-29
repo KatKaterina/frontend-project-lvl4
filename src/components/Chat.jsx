@@ -5,7 +5,7 @@ import { authorizContext }  from '../contexts/index.js';
 import Channels from './Channels.jsx';
 import Messages from './Messages.jsx';
 import { fetchData } from '../slices/ChannelsSlice.js';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import ModalAddChannel from './ModalAddChannel.jsx';
 import ModalRenameChannel from './ModalRenameChannel.jsx';
@@ -33,6 +33,7 @@ const renderModal = (type, onExited) => {
 const Chat = () => {
   const { t } = useTranslation();
   const authorization = useContext(authorizContext);
+  const { type } = useSelector((state) => state.modal);
   const dispatch = useDispatch();
 
   useEffect(() => {

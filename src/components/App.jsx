@@ -69,7 +69,7 @@ const UserRoute = ({ children }) => {
 };*/
 
 const App = ({ socket }) => {
-  const { type } = useSelector((state) => state.modal);
+  //const { type } = useSelector((state) => state.modal);
    const rollbarConfig = {
     accessToken: '0c63dc2b0eb345e1b54abaa5c326902e',
     captureUncaught: true,
