@@ -82,7 +82,7 @@ export default (app, defaultState = {}) => {
       if (!channel) return;
       channel.name = name;
 
-      acknowledge({ status: 'ok', channel: channel });
+      acknowledge({ status: 'ok', nameNew: channel.name });
       app.io.emit('renameChannel', channel);
     });
   });
