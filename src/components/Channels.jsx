@@ -12,11 +12,17 @@ const FixedChannel = ({ name, onClick, id, active }) => (
   </Nav.Link>
   );
 
+  /*<Nav.Link as={Button} name={name} role="button" active={active} className="w-100 rounded text-start" onClick={onClick}>
+  {name}
+</Nav.Link>*/
+
  const UnremovableChannel = ({ name, variant, onClick, onRename, onRemove, id, active, t }) => (
   <Dropdown as={ButtonGroup} key={id} className="d-flex mb-2">
-    <Nav.Link as={Button} name={name} role="button" active={active} className="w-100 rounded text-start" onClick={onClick}>
+
+    <Button active={active} className="w-100 rounded text-start" onClick={onClick}>
+      <span className="me-1">#</span>
       {name}
-    </Nav.Link>
+    </Button>
     <Dropdown.Toggle role="button" split variant={variant} data-testid="channel-dropdown" id="dropdown-split-basic">
       <span className="visually-hidden">{t('elements.controlChannel')}</span>
     </Dropdown.Toggle>
