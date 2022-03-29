@@ -52,6 +52,7 @@ const FormAddChannel = ({ handleClose, t }) => {
           ref={refName}
           readOnly={formik.isSubmitting}
         />
+        <Form.Label visuallyHidden>{t('elements.nameChannel')}</Form.Label>
         {formik.errors.name && 
           <Form.Control.Feedback type="invalid">{t(formik.errors.name)}</Form.Control.Feedback>}
       </InputGroup>
