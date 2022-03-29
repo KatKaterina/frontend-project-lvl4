@@ -67,18 +67,7 @@ const Channels = () => {
   const renderChannels = () => (
     <Nav variant="pills" fill className="flex-column">
       {channels.map(({ id, name, removable }) => {
-        return (removable ? (
-          <RemovableChannel 
-          id={id}
-          key={id}
-          name={name}
-          variant={id === currentChannelId ? 'primary' : null}
-          active={id === currentChannelId ? "true" : ""}
-          onClick={handleClick(id)}
-          onRemove={handleRemove(id)}
-          onRename={handleRename(id, name)}
-          t={t}/>
-        ) : (
+        return (!removable ? (
           <FixedChannel
           id={id}
           key={id}
@@ -88,6 +77,17 @@ const Channels = () => {
           onClick={handleClick(id)}
           onRemove={handleRemove(id)}
           onRename={handleRename(id, name, removable)}
+          t={t}/>
+        ) : (
+          <RemovableChannel 
+          id={id}
+          key={id}
+          name={name}
+          variant={id === currentChannelId ? 'primary' : null}
+          active={id === currentChannelId ? "true" : ""}
+          onClick={handleClick(id)}
+          onRemove={handleRemove(id)}
+          onRename={handleRename(id, name)}
           t={t}
           />
         ))
