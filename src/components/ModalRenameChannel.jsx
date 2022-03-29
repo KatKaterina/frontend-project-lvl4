@@ -37,7 +37,7 @@ const FormRenameChannel = ({ handleClose, t }) => {
         if (status === 'ok') {
           //dispatch(fetchData());
           toast(t('toast.renamedChannel'));
-          dispatch(fetchData());
+          //dispatch(fetchData());
           setSubmitting(false);
           handleClose();
           //dispatch(fetchData());
@@ -78,6 +78,7 @@ const ModalRenameChannel = ({ onExited }) => {
   const [show, setShow] = useState(true);
   const handleClose = () => {
     setShow(false);
+    dispatch(fetchData());
     //dispatch(closeModal());
   };
 
