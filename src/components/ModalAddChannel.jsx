@@ -55,9 +55,9 @@ const FormAddChannel = ({ handleClose, t }) => {
         {formik.errors.name && 
           <Form.Control.Feedback type="invalid">{t(formik.errors.name)}</Form.Control.Feedback>}
       </InputGroup>
-        <Button onClick={handleClose} disabled={formik.isSubmitting}>{t('elements.buttonCancel')}</Button>
-        {' '}
-        <Button type="submit" disabled={formik.isSubmitting}>{t('elements.buttonAdd')}</Button>
+      <Button onClick={handleClose} disabled={formik.isSubmitting}>{t('elements.buttonCancel')}</Button>
+      {' '}
+      <Button type="submit" disabled={formik.isSubmitting}>{t('elements.buttonAdd')}</Button>
     </Form>
   );
 };

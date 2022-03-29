@@ -36,9 +36,10 @@ const FormRenameChannel = ({ handleClose, t }) => {
         const { status } = response;
         if (status === 'ok') {
           //dispatch(fetchData());
+          setSubmitting(false);
           toast(t('toast.renamedChannel'));
           //dispatch(fetchData());
-          setSubmitting(false);
+          
           handleClose();
           //dispatch(fetchData());
         } else {
@@ -67,7 +68,7 @@ const FormRenameChannel = ({ handleClose, t }) => {
       </InputGroup>
       <Button onClick={handleClose} disabled={formik.isSubmitting}>{t('elements.buttonCancel')}</Button>
       {' '}
-      <Button type="submit" disabled={formik.isSubmitting}>{t('elements.buttonSend')}</Button>
+      <Button type="submit" disabled={formik.isSubmitting}>{t('elements.buttonSAdd')}</Button>
     </Form>
   );
 };
@@ -77,7 +78,7 @@ const ModalRenameChannel = ({ onExited }) => {
   const dispatch = useDispatch();
   const [show, setShow] = useState(true);
   const handleClose = () => {
-    dispatch(fetchData());
+    //dispatch(fetchData());
     setShow(false);
     //dispatch(closeModal());
   };
