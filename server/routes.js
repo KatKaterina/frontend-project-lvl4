@@ -77,16 +77,16 @@ export default (app, defaultState = {}) => {
     });
 
     socket.on('renameChannel', ({ id, name }, acknowledge = _.noop) => {
-      let log = 'SRV Rename ' + name +' ';
+      /* let log = 'SRV Rename ' + name +' ';
       const channelId = Number(id);
       const channel = state.channels.find((c) => c.id === channelId);
       log = log + (channel !== undefined ? channel.name: 'channel undefined ');
       if (!channel) return;
       channel.name = name;
-      log = log + " new name " + channel.name;
+      log = log + " new name " + channel.name;*/
 
-      acknowledge({ status: 'ok', log });
-      app.io.emit('renameChannel', channel);
+      acknowledge({ status: 'ok' });
+      //app.io.emit('renameChannel', channel);
     });
   });
 
