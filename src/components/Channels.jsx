@@ -56,6 +56,7 @@ const Channels = () => {
 
   const handleRename = (id, name) => () => {
     dispatch(openModal({ type: 'renameChannel', updateData: { id, name } }));
+    dispatch(fetchData());
     //toast(t('toast.renamedChannel'));
   };
 
