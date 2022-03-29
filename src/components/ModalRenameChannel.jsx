@@ -39,7 +39,7 @@ const FormRenameChannel = ({ handleClose, t }) => {
           setSubmitting(false);
           toast(t('toast.renamedChannel'));
           //dispatch(fetchData());
-          
+          console.log('новое имя ' + newName);
           handleClose();
           //dispatch(fetchData());
         } else {
