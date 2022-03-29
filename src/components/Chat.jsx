@@ -7,6 +7,28 @@ import Messages from './Messages.jsx';
 import { fetchData } from '../slices/ChannelsSlice.js';
 import { useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
+import ModalAddChannel from './ModalAddChannel.jsx';
+import ModalRenameChannel from './ModalRenameChannel.jsx';
+import ModalRemoveChannel from './ModalRemoveChannel.jsx';
+import { closeModal } from '../slices/modalSlice.js';
+
+
+const renderModal = (type, onExited) => {
+  switch (type) {
+    case 'addChannel': {
+      return <ModalAddChannel onExited={onExited}/>
+    }
+    case 'renameChannel': {
+      return <ModalRenameChannel onExited={onExited}/>
+    }
+    case 'removeChannel': {
+      return <ModalRemoveChannel onExited={onExited}/>
+    }
+    default: {
+      return null;
+    }
+  };
+};
 
 const Chat = () => {
   const { t } = useTranslation();
@@ -21,12 +43,19 @@ const Chat = () => {
     e.preventDefault();
     authorization.logOut();
   }
+
+  const ModalExited = () => {
+    dispatch(closeModal());
+  };
+
+
   return (
   
       <div className = "container h-100 my-4 overflow-hidden rounded shadow">
         <Row className="h-100 bg-white flex-md-row">
           <Channels />
           <Messages />
+          {renderModal(type, ModalExited)}
         </Row>
       </div>
 

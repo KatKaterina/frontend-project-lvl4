@@ -51,7 +51,7 @@ const UserRoute = ({ children }) => {
   );
 };
 
-const renderModal = (type, onExited) => {
+/*const renderModal = (type, onExited) => {
   switch (type) {
     case 'addChannel': {
       return <ModalAddChannel onExited={onExited}/>
@@ -66,7 +66,7 @@ const renderModal = (type, onExited) => {
       return null;
     }
   };
-};
+};*/
 
 const App = ({ socket }) => {
   const { type } = useSelector((state) => state.modal);
@@ -76,11 +76,11 @@ const App = ({ socket }) => {
     captureUnhandledRejections: true,
   };
 
-  const dispatch = useDispatch();
+  /*const dispatch = useDispatch();
 
   const ModalExited = () => {
     dispatch(closeModal());
-  };
+  };*/
 
   // <ProviderRollbar config={rollbarConfig}>
   // <ErrorBoundary level={LEVEL_WARN}>
@@ -98,9 +98,8 @@ const App = ({ socket }) => {
               <Route path="/signup" element={<SignUp />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
-            {renderModal(type, ModalExited)}
-          </div>
-          
+
+          </div> 
           <ToastContainer autoClose={2000} />
         </Router>
         </socketContext.Provider>
@@ -110,3 +109,5 @@ const App = ({ socket }) => {
 };
 
 export default App;
+
+// {renderModal(type, ModalExited)}
