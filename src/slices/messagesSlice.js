@@ -3,7 +3,9 @@ import { fetch, fetchData, removeChannel } from './ChannelsSlice.js';
 
 const messagesAdapter = createEntityAdapter();
 
-const initialState = messagesAdapter.getInitialState();
+const initialState = messagesAdapter.getInitialState({
+    messages: [],
+});
 
 export const fetchMessages = createAsyncThunk(
     'messages/fetchMessages',
@@ -16,19 +18,22 @@ const messagesSlice = createSlice ({
     reducers: {
         addMessage: (state, { payload }) => {
             const { message } = payload;
-            messagesAdapter.addOne(state, message);
+            state.messages = [...state.messages, message];
+            //messagesAdapter.addOne(state, message);
         },
     },
     extraReducers: (builder) => {
         builder
           .addCase(fetchData.fulfilled, (state, action)=> {
               const { messages } = action.payload;
-              messagesAdapter.setAll(state, messages);
+              state.messages = [...messages];
+              //messagesAdapter.setAll(state, messages);
           })
           .addCase(removeChannel, (state, action) => {
             const { id } = action.payload;
             const rest = Object.values(state.entities).filter((e) => e.channelId !== id);
-            messagesAdapter.setAll(state, rest);
+            //messagesAdapter.setAll(state, rest);
+            state.messages = state.messages.filter((message) => message.channelId !== id);
           })
     },
 });

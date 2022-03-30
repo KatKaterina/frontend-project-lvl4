@@ -18,7 +18,8 @@ filter.add(filter.getDictionary('ru'));
 
 const ChannelMessages = ({ currentChannelId }) => {
 
-  const messages = useSelector(selectorMessages.selectAll);
+  //const messages = useSelector(selectorMessages.selectAll);
+  const messages = useSelector((state) => state.messages);
   const refChat = useRef();
   
   useEffect(()=> {
@@ -107,7 +108,8 @@ const FormMessage = ({ currentChannelId, t }) => {
 };
 
 const Messages = () => {
-  const channels = useSelector(selectorChannels.selectAll);
+  //const channels = useSelector(selectorChannels.selectAll);
+  const channels = useSelector((state) => state.channels);
   const {currentChannelId} = useSelector((state) => state.channels);
   const { t } = useTranslation();
 

@@ -14,7 +14,9 @@ const FormRenameChannel = ({ handleClose, t }) => {
   const refName = useRef();
   const socket = useContext(socketContext);
   const dispatch = useDispatch();
-  const channels = useSelector(selectorChannels.selectAll).map((channel) => channel.name);
+  //const channels = useSelector(selectorChannels.selectAll).map((channel) => channel.name);
+  const channels = useSelector((state) => state.channels).map((channel) => channel.name);
+
 
   const updateData = useSelector((state) => state.modal.updateData);
   const { id, name, removable } = updateData;

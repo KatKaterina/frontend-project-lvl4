@@ -7,6 +7,7 @@ import { addMessage } from './messagesSlice.js';
 const channelsAdapter = createEntityAdapter();
 
 const initialState = channelsAdapter.getInitialState({
+    channels: [],
     defaultChannelId: '',
     loading: '',
     error: null,
@@ -42,17 +43,20 @@ const channelsSlice = createSlice ({
         },
         addChannel: (state, { payload }) => {
             const { channel } = payload;
-            channelsAdapter.addOne(state, channel);
+            //channelsAdapter.addOne(state, channel);
+            state.channels = [...state.channels, channel];
             state.currentChannelId = channel.id;
         },
         renameChannel: (state, { payload }) => {
-            const { id } = payload;
-            channelsAdapter.updateOne;
-            //state.currentChannelId = id;
+            const { id, name } = payload;
+            //channelsAdapter.updateOne;
+            const channel = state.channels.find((cnannel) => channel.id === id);
+            channel.name = name;
         },
         removeChannel: (state, { payload }) => {
             const { id } = payload;
-            channelsAdapter.removeOne;
+            //channelsAdapter.removeOne;
+            state.channels = state.channels.filter((channel) => channel.id !== id);
             if (id === state.currentChannelId) {
                 state.currentChannelId = state.defaultChannelId;
             }
@@ -64,7 +68,8 @@ const channelsSlice = createSlice ({
               const { channels, currentChannelId } = action.payload;
               //console.log('до ' + state.currentChannelId);
               //console.log(state.currentChannelId);
-              channelsAdapter.setAll(state, channels);
+              //channelsAdapter.setAll(state, channels);
+              state.channels = [...channels];
               state.currentChannelId = state.currentChannelId === undefined ? currentChannelId : state.currentChannelId;
               state.defaultChannelId = _.first(channels).id;
               //console.log('после ' + state.currentChannelId);
