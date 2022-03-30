@@ -50,7 +50,7 @@ const channelsSlice = createSlice ({
         renameChannel: (state, { payload }) => {
             const { id, name } = payload;
             //channelsAdapter.updateOne;
-            const channel = state.channels.find((cnannel) => channel.id === id);
+            const channel = state.channels.find((channel) => channel.id === id);
             channel.name = name;
         },
         removeChannel: (state, { payload }) => {
