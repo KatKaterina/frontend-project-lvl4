@@ -7,18 +7,17 @@ import { fetchData } from '../slices/ChannelsSlice.js';
 import ModalAddChannel from './ModalAddChannel.jsx';
 import ModalRenameChannel from './ModalRenameChannel.jsx';
 import ModalRemoveChannel from './ModalRemoveChannel.jsx';
-import { closeModal } from '../slices/modalSlice.js';
 
-const renderModal = (type, onExited) => {
+const renderModal = (type) => {
   switch (type) {
     case 'addChannel': {
-      return <ModalAddChannel onExited={onExited} />;
+      return <ModalAddChannel />;
     }
     case 'renameChannel': {
-      return <ModalRenameChannel onExited={onExited} />;
+      return <ModalRenameChannel />;
     }
     case 'removeChannel': {
-      return <ModalRemoveChannel onExited={onExited} />;
+      return <ModalRemoveChannel />;
     }
     default: {
       return null;
@@ -34,25 +33,15 @@ const Chat = () => {
     dispatch(fetchData());
   }, [dispatch]);
 
-  const ModalExited = () => {
-    dispatch(closeModal());
-  };
-
   return (
     <div className="container h-100 my-4 overflow-hidden rounded shadow">
       <Row className="h-100 bg-white flex-md-row">
         <Channels />
         <Messages />
-        {renderModal(type, ModalExited)}
+        {renderModal(type)}
       </Row>
     </div>
   );
 };
 
 export default Chat;
-
-/* <div className="text-center">
-<span>
-  <Link to="/login" onClick={handleClick}>{t('elements.logOut')}</Link>
-</span>
-</div> */
