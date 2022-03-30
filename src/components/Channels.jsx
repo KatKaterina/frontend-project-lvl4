@@ -7,27 +7,37 @@ import { useSelector, useDispatch } from 'react-redux';
 import { changeCurrentChannel, fetchData } from '../slices/ChannelsSlice.js';
 import { openModal } from '../slices/modalSlice.js';
 
-const FixedChannel = ({ name, onClick, id, active }) => (
-  <Nav.Link key={id} eventKey={id} active={active} className="w-100 rounded text-start" onClick={onClick}>
-    {name}
-  </Nav.Link>
-);
-
-const RemovableChannel = ({ name, variant, onClick, onRename, onRemove, id, active, t }) => (
-  <Dropdown as={ButtonGroup} key={id} className="d-flex mb-2" aria-label={name}>
-    <Nav.Link as={Button} aria-label={name} eventKey={id} role="button" active={active} className="w-100 rounded text-start" onClick={onClick}>
+const FixedChannel = (props) => {
+  const {
+    name, onClick, id, active,
+  } = props;
+  return (
+    <Nav.Link key={id} eventKey={id} active={active} className="w-100 rounded text-start" onClick={onClick}>
       {name}
     </Nav.Link>
+  );
+};
 
-    <Dropdown.Toggle role="button" split variant={variant} data-testid="channel-dropdown" id="dropdown-button-drop-end">
-      <span className="visually-hidden">{t('elements.controlChannel')}</span>
-    </Dropdown.Toggle>
-    <Dropdown.Menu>
-      <Dropdown.Item onClick={onRename} role="button" href="#">{t('elements.renameChannel')}</Dropdown.Item>
-      <Dropdown.Item onClick={onRemove} role="button" href="#">{t('elements.removeChannel')}</Dropdown.Item>
-    </Dropdown.Menu>
-  </Dropdown>
-);
+const RemovableChannel = (props) => {
+  const {
+    name, variant, onClick, onRename, onRemove, id, active, t,
+  } = props;
+  return (
+    <Dropdown as={ButtonGroup} key={id} className="d-flex mb-2" aria-label={name}>
+      <Nav.Link as={Button} aria-label={name} eventKey={id} role="button" active={active} className="w-100 rounded text-start" onClick={onClick}>
+        {name}
+      </Nav.Link>
+
+      <Dropdown.Toggle role="button" split variant={variant} data-testid="channel-dropdown" id="dropdown-button-drop-end">
+        <span className="visually-hidden">{t('elements.controlChannel')}</span>
+      </Dropdown.Toggle>
+      <Dropdown.Menu>
+        <Dropdown.Item onClick={onRename} role="button" href="#">{t('elements.renameChannel')}</Dropdown.Item>
+        <Dropdown.Item onClick={onRemove} role="button" href="#">{t('elements.removeChannel')}</Dropdown.Item>
+      </Dropdown.Menu>
+    </Dropdown>
+  );
+};
 
 const Channels = () => {
   const { t } = useTranslation();

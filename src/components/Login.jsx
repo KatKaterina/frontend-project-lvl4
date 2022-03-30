@@ -1,12 +1,14 @@
-import React, { useState, useContext, useEffect, useRef } from 'react';
-import { useFormik } from 'formik';
-import { Form, Button } from 'react-bootstrap';
-import { authorizContext }  from '../contexts/index.js';
 import axios from 'axios';
-import routes from '../routes.js';
-import { useNavigate, Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { toast } from 'react-toastify';
+import React, {
+  useState, useContext, useEffect, useRef,
+} from 'react';
+import { useFormik } from 'formik';
+import { Form, Button } from 'react-bootstrap';
+import { useNavigate, Link } from 'react-router-dom';
+import routes from '../routes.js';
+import { authorizContext } from '../contexts/index.js';
 
 const Login = () => {
   const { t } = useTranslation();
@@ -24,19 +26,19 @@ const Login = () => {
     const pathLogin = routes.loginPath();
     setError(null);
     try {
-      const {data} =  await axios.post(pathLogin, { username, password });
+      const { data } = await axios.post(pathLogin, { username, password });
       authorization.logIn(data);
       navigate('/');
     } catch (e) {
-        if (e.isAxiosError && e.response && e.response.status === 401) {
-          setError('accessDenial');
-        } else {
-            setError('networkError');
-            toast.error(t('toast.connectError'));
-        }
+      if (e.isAxiosError && e.response && e.response.status === 401) {
+        setError('accessDenial');
+      } else {
+        setError('networkError');
+        toast.error(t('toast.connectError'));
+      }
     }
   };
-    
+
   const formik = useFormik({
     initialValues: {
       username: '',
@@ -57,7 +59,7 @@ const Login = () => {
           id="username"
           autocomplite="username"
           required
-          placeholder={t('elements.nameLogin')} 
+          placeholder={t('elements.nameLogin')}
           onChange={handleChange}
           value={values.username}
           isInvalid={Boolean(error)}
@@ -77,17 +79,17 @@ const Login = () => {
           value={values.password}
           isInvalid={Boolean(error)}
         />
-        {error&&<Form.Control.Feedback type="invalid">{t(`errors.${error}`)}</Form.Control.Feedback>}
+        {error && <Form.Control.Feedback type="invalid">{t(`errors.${error}`)}</Form.Control.Feedback>}
       </Form.Group>
-    <Button variant="outline-primary" type="submit" className="w-100 mb-3">
-      {t('elements.signIn')}
-    </Button>
-    <div className="text-center">
-     <span>
-      <Link to="/signup">{t('elements.registration')}</Link>
-     </span>
-    </div>
-  </Form>
+      <Button variant="outline-primary" type="submit" className="w-100 mb-3">
+        {t('elements.signIn')}
+      </Button>
+      <div className="text-center">
+        <span>
+          <Link to="/signup">{t('elements.registration')}</Link>
+        </span>
+      </div>
+    </Form>
   );
 };
 

@@ -1,18 +1,20 @@
 import { useFormik } from 'formik';
-import React, { useEffect, useContext, useRef, useState } from 'react';
-import { Form, Button, InputGroup, Modal } from 'react-bootstrap';
-import { useSelector, useDispatch } from 'react-redux';
-import { socketContext }  from '../contexts/index.js';
-import { closeModal } from '../slices/modalSlice.js';
-import { getSchemaForChannel } from '../validateSchema';
-import { selectorChannels } from '../slices/ChannelsSlice.js';
 import { useTranslation } from 'react-i18next';
 import { toast } from 'react-toastify';
+import React, {
+  useEffect, useContext, useRef, useState,
+} from 'react';
+import {
+  Form, Button, InputGroup, Modal,
+} from 'react-bootstrap';
+import { useSelector, useDispatch } from 'react-redux';
+import { socketContext } from '../contexts/index.js';
+import { closeModal } from '../slices/modalSlice.js';
+import { getSchemaForChannel } from '../validateSchema';
 
 const FormAddChannel = ({ handleClose, t }) => {
   const refName = useRef();
   const socket = useContext(socketContext);
-  //const channels = useSelector(selectorChannels.selectAll).map((channel) => channel.name);
   const channels = useSelector((state) => state.channels).channels.map((channel) => channel.name);
 
   useEffect(() => {
@@ -21,12 +23,12 @@ const FormAddChannel = ({ handleClose, t }) => {
 
   const formik = useFormik({
     initialValues: {
-      name:'',
+      name: '',
     },
     validationSchema: getSchemaForChannel(channels),
     onSubmit: ({ name }, { setSubmitting }) => {
       setSubmitting(true);
-      const newChannel =  { name };
+      const newChannel = { name };
       socket.emit('newChannel', newChannel, (response) => {
         const { status } = response;
         if (status === 'ok') {
@@ -36,8 +38,8 @@ const FormAddChannel = ({ handleClose, t }) => {
         } else {
           toast.error(t('toast.connectError'));
         }
-      })
-    }
+      });
+    },
   });
 
   return (
@@ -54,8 +56,8 @@ const FormAddChannel = ({ handleClose, t }) => {
           readOnly={formik.isSubmitting}
         />
         <Form.Label visuallyHidden>{t('elements.nameChannel')}</Form.Label>
-        {formik.errors.name && 
-          <Form.Control.Feedback type="invalid">{t(formik.errors.name)}</Form.Control.Feedback>}
+        {formik.errors.name
+          && <Form.Control.Feedback type="invalid">{t(formik.errors.name)}</Form.Control.Feedback>}
       </InputGroup>
       <Button onClick={handleClose} disabled={formik.isSubmitting}>{t('elements.buttonCancel')}</Button>
       {' '}
@@ -64,23 +66,23 @@ const FormAddChannel = ({ handleClose, t }) => {
   );
 };
 
-const ModalAddChannel = ({ onExited }) => {
+const ModalAddChannel = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const [show, setShow] = useState(true);
   const handleClose = () => {
     setShow(false);
-    //dispatch(closeModal());
+    dispatch(closeModal());
   };
- 
+
   return (
-    <Modal show={show} onHide={handleClose} centered onExited={onExited}>
+    <Modal show={show} onHide={handleClose} centered>
       <Modal.Header closeButton>
         <Modal.Title>{t('elements.addChannel')}</Modal.Title>
       </Modal.Header>
 
       <Modal.Body>
-        <FormAddChannel handleClose={handleClose} t={t}/>
+        <FormAddChannel handleClose={handleClose} t={t} />
       </Modal.Body>
     </Modal>
   );
