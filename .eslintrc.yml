@@ -8,7 +8,7 @@ extends:
   - "plugin:functional/external-recommended"
   - "plugin:functional/recommended"
   - 'plugin:react-hooks/recommended'
-parser: @babel/eslint-parser
+parser: "@babel/eslint-parser"
 env:
   browser: true
   es2021: true
@@ -33,3 +33,6 @@ rules:
   functional/functional-parameters: 0
   functional/no-try-statement: 0
   functional/no-throw-statement: 0
+  # TODO: cause an error
+  import/no-unresolved: 0
+  # react/jsx-filename-extension: 0
