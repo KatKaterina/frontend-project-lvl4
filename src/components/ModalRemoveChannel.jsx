@@ -1,19 +1,18 @@
+import { useTranslation } from 'react-i18next';
+import { toast } from 'react-toastify';
 import React, { useContext, useState } from 'react';
 import { Button, Modal } from 'react-bootstrap';
 import { useSelector, useDispatch } from 'react-redux';
-import { socketContext }  from '../contexts/index.js';
+import { socketContext } from '../contexts/index.js';
 import { closeModal } from '../slices/modalSlice.js';
-import { fetchData } from '../slices/ChannelsSlice.js';
-import { useTranslation } from 'react-i18next';
-import { toast } from 'react-toastify';
 
-const ModalRemoveChannel = ({ onExited }) => {
+const ModalRemoveChannel = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const [show, setShow] = useState(true);
   const handleClose = () => {
     setShow(false);
-    //dispatch(closeModal());
+    dispatch(closeModal());
   };
 
   const socket = useContext(socketContext);
@@ -21,14 +20,14 @@ const ModalRemoveChannel = ({ onExited }) => {
 
   const handleRemove = () => {
     const { id } = updateData;
-    const removeChannel =  { id };
-    
+    const removeChannel = { id };
+
     socket.emit('removeChannel', removeChannel, (response) => {
       const { status } = response;
       if (status === 'ok') {
         toast(t('toast.removedChannel'));
         handleClose();
-        //dispatch(fetchData());
+        // dispatch(fetchData());
       } else {
         toast.error(t('toast.connectError'));
       }
@@ -36,7 +35,7 @@ const ModalRemoveChannel = ({ onExited }) => {
   };
 
   return (
-    <Modal show={show} onHide={handleClose} centered onExited={onExited}>
+    <Modal show={show} onHide={handleClose} centered>
       <Modal.Header closeButton>
         <Modal.Title>{t('elements.removeChannel')}</Modal.Title>
       </Modal.Header>

@@ -1,25 +1,24 @@
-import { useFormik } from 'formik';
-import React, { useEffect, useContext, useRef, useState } from 'react';
-import { Form, Button, InputGroup, Modal } from 'react-bootstrap';
-import { useSelector, useDispatch } from 'react-redux';
-import { socketContext }  from '../contexts/index.js';
-import { closeModal } from '../slices/modalSlice.js';
-import { getSchemaForChannel } from '../validateSchema';
-import { fetchData, selectorChannels } from '../slices/ChannelsSlice.js';
 import { useTranslation } from 'react-i18next';
 import { toast } from 'react-toastify';
-
+import { useFormik } from 'formik';
+import React, {
+  useEffect, useContext, useRef, useState,
+} from 'react';
+import {
+  Form, Button, InputGroup, Modal,
+} from 'react-bootstrap';
+import { useSelector, useDispatch } from 'react-redux';
+import { socketContext } from '../contexts/index.js';
+import { closeModal } from '../slices/modalSlice.js';
+import { getSchemaForChannel } from '../validateSchema';
 
 const FormRenameChannel = ({ handleClose, t }) => {
   const refName = useRef();
   const socket = useContext(socketContext);
-  const dispatch = useDispatch();
-  //const channels = useSelector(selectorChannels.selectAll).map((channel) => channel.name);
   const channels = useSelector((state) => state.channels).channels.map((channel) => channel.name);
 
-
   const updateData = useSelector((state) => state.modal.updateData);
-  const { id, name, removable } = updateData;
+  const { id, name } = updateData;
 
   useEffect(() => {
     refName.current.select();
@@ -30,27 +29,23 @@ const FormRenameChannel = ({ handleClose, t }) => {
       name,
     },
     validationSchema: getSchemaForChannel(channels),
-    onSubmit: ({ name: newName }, { setSubmitting, isSubmitting }) => {
+    onSubmit: ({ name: newName }, { setSubmitting }) => {
       setSubmitting(true);
       console.log(id);
-      const updateChannel =  { name: newName, id, removable: true };
-      
-       socket.emit('renameChannel', updateChannel, (response) => {
+      const updateChannel = { name: newName, id, removable: true };
+
+      socket.emit('renameChannel', updateChannel, (response) => {
         const { status } = response;
-        //console.log("emit " + nameNew);
         if (status === 'ok') {
-          //dispatch(fetchData());
+          // dispatch(fetchData());
           setSubmitting(false);
           toast(t('toast.renamedChannel'));
-          //dispatch(fetchData());
-          console.log('новое имя ' + newName);
           handleClose();
-          //dispatch(fetchData());
         } else {
           toast.error(t('toast.connectError'));
         }
-      })
-    }
+      });
+    },
   });
 
   return (
@@ -68,8 +63,8 @@ const FormRenameChannel = ({ handleClose, t }) => {
           ref={refName}
         />
         <Form.Label visuallyHidden>{t('elements.nameChannel')}</Form.Label>
-        {formik.errors.name && 
-          <Form.Control.Feedback type="invalid">{t(formik.errors.name)}</Form.Control.Feedback>}
+        {formik.errors.name
+          && <Form.Control.Feedback type="invalid">{t(formik.errors.name)}</Form.Control.Feedback>}
       </InputGroup>
       <Button onClick={handleClose} disabled={formik.isSubmitting}>{t('elements.buttonCancel')}</Button>
       {' '}
@@ -78,24 +73,23 @@ const FormRenameChannel = ({ handleClose, t }) => {
   );
 };
 
-const ModalRenameChannel = ({ onExited }) => {
+const ModalRenameChannel = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const [show, setShow] = useState(true);
   const handleClose = () => {
-    //dispatch(fetchData());
     setShow(false);
-    //dispatch(closeModal());
+    dispatch(closeModal());
   };
 
   return (
-    <Modal show={show} onHide={handleClose} centered onExited={onExited}>
+    <Modal show={show} onHide={handleClose} centered>
       <Modal.Header closeButton>
         <Modal.Title>{t('elements.renameChannel')}</Modal.Title>
       </Modal.Header>
 
       <Modal.Body>
-        <FormRenameChannel handleClose={handleClose} t={t}/>
+        <FormRenameChannel handleClose={handleClose} t={t} />
       </Modal.Body>
     </Modal>
   );
