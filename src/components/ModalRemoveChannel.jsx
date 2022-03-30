@@ -28,7 +28,7 @@ const ModalRemoveChannel = ({ onExited }) => {
       if (status === 'ok') {
         toast(t('toast.removedChannel'));
         handleClose();
-        dispatch(fetchData());
+        //dispatch(fetchData());
       } else {
         toast.error(t('toast.connectError'));
       }
