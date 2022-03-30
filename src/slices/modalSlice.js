@@ -21,7 +21,7 @@ const modalSlice = createSlice ({
         },
         closeModal: (state) => {
             console.log('закрыли ' + state.type);
-            console.log(state.updateData === null ? null: state.updateData.name);
+            //console.log(state.updateData === null ? null: state.updateData.name);
             state.isOpen = false;
             state.type = '';
             state.updateData = null;
