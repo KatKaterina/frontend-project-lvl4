@@ -10,20 +10,20 @@ const schema = yup.object().shape({
     .min(6, 'errors.wrongLengthPass')
     .required(),
   confirmPassword: yup.string()
-    .oneOf([yup.ref('password')], 'errors.notMatch')
+    .oneOf([yup.ref('password')], 'errors.notMatch'),
 });
 
 export const getSchemaForChannel = (channels) => {
   const schemaForChannel = yup.object().shape({
     name: yup.string()
-    .trim()
-    .notOneOf(channels, 'errors.notUnique')
-    .required('errors.fieldEmpty')
-    .min(3, 'errors.wrongLength')
-    .max(20, 'errors.wrongLength'),
+      .trim()
+      .notOneOf(channels, 'errors.notUnique')
+      .required('errors.fieldEmpty')
+      .min(3, 'errors.wrongLength')
+      .max(20, 'errors.wrongLength'),
   });
   return schemaForChannel;
-}
+};
 
 export const schemaForMessage = yup.object().shape({
   message: yup.string()

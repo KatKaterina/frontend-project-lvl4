@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 import axios from 'axios';
 import _ from 'lodash';
 import { createSlice, createAsyncThunk, createEntityAdapter } from '@reduxjs/toolkit';
