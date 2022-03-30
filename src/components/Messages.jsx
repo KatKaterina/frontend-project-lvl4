@@ -19,7 +19,7 @@ filter.add(filter.getDictionary('ru'));
 const ChannelMessages = ({ currentChannelId }) => {
 
   //const messages = useSelector(selectorMessages.selectAll);
-  const messages = useSelector((state) => state.messages);
+  const { messages } = useSelector((state) => state.messages);
   const refChat = useRef();
   
   useEffect(()=> {
@@ -109,8 +109,8 @@ const FormMessage = ({ currentChannelId, t }) => {
 
 const Messages = () => {
   //const channels = useSelector(selectorChannels.selectAll);
-  const channels = useSelector((state) => state.channels);
-  const {currentChannelId} = useSelector((state) => state.channels);
+  //const { channels }  = useSelector((state) => state.channels);
+  const {currentChannelId, channels} = useSelector((state) => state.channels);
   const { t } = useTranslation();
 
   const currentChannelName = channels.filter(({id}) => id === currentChannelId).map((channel) => channel.name);

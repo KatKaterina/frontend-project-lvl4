@@ -36,9 +36,9 @@ const FixedChannel = ({ name, onClick, id, active }) => (
 const Channels = () => {
   const { t } = useTranslation();
   //const channels = useSelector(selectorChannels.selectAll);
-  const channels = useSelector((state) => state.channels);
+  //const channels = useSelector((state) => state.channels);
 
-  const {currentChannelId} = useSelector((state) => state.channels);
+  const {channels, currentChannelId} = useSelector((state) => state.channels);
   const dispatch = useDispatch();
   
   const handleClick = (id) => () => {

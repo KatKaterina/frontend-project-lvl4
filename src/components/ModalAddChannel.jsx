@@ -13,7 +13,7 @@ const FormAddChannel = ({ handleClose, t }) => {
   const refName = useRef();
   const socket = useContext(socketContext);
   //const channels = useSelector(selectorChannels.selectAll).map((channel) => channel.name);
-  const channels = useSelector((state) => state.channels).map((channel) => channel.name);
+  const channels = useSelector((state) => state.channels).channels.map((channel) => channel.name);
 
   useEffect(() => {
     refName.current.focus();
