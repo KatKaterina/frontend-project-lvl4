@@ -23,7 +23,7 @@ export default {
       password: 'Пароль',
       confirmPassword: 'Подтвердите пароль',
       registration: 'Регистрация',
-      channels: 'Каналы',
+      channels: 'Каналы: ',
       signIn: 'Войти',
       logOut: 'Выйти',
       addChannel: 'Добавить канал',

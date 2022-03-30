@@ -8,7 +8,6 @@ import { addChannel, renameChannel, removeChannel } from './slices/ChannelsSlice
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import resources from './locales/index.js';
-import { toast } from 'react-toastify';
 
 export default async (socketClient = io()) => {
 
@@ -28,7 +27,6 @@ export default async (socketClient = io()) => {
   });
   socketClient.on('renameChannel', (channel) => {
     const { id, name, removable } = channel;
-    console.log('init ' + name);
     //store.dispatch(renameChannel({ id, changes: { name, removable }, }));
     store.dispatch(renameChannel({ id, name, removable }));
   });
