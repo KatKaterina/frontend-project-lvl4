@@ -26,7 +26,7 @@ const Lang = () => {
   return (
     <>
       <Nav.Link onClick={changeLang('ru')}>Рус</Nav.Link>
-      {' // '}
+      {' '}
       <Nav.Link onClick={changeLang('en')}>Eng</Nav.Link>
     </>
   );
