@@ -17,11 +17,26 @@ const Exit = () => {
   );
 };
 
+const Lang = () => {
+  const { i18n } = useTranslation();
+  const changeLang = (lng) => {
+    i18n.changeLanguage(lng);
+  };
+  return (
+    <>
+      <Nav.Link onClick={changeLang('ru')}>Рус</Nav.Link>
+      {' '}
+      <Nav.Link onClick={changeLang('en')}>Eng</Nav.Link>
+    </>
+  );
+};
+
 const Header = () => (
   <Navbar className="shadow-sm bg-light">
     <Navbar.Brand as={Link} to="/">Hexlet Chat</Navbar.Brand>
     <Nav>
       <Exit />
+      <Lang />
     </Nav>
   </Navbar>
 );
