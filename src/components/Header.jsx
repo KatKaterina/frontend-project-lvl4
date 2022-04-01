@@ -26,14 +26,14 @@ const Lang = () => {
   return (
     <>
       <Nav.Link onClick={changeLang('ru')}>Рус</Nav.Link>
-      {' '}
+      {' // '}
       <Nav.Link onClick={changeLang('en')}>Eng</Nav.Link>
     </>
   );
 };
 
 const Header = () => (
-  <Navbar className="shadow-sm bg-light">
+  <Navbar className="shadow-sm bg-light d-flex justify-content-between">
     <Navbar.Brand as={Link} to="/">Hexlet Chat</Navbar.Brand>
     <Nav>
       <Exit />
