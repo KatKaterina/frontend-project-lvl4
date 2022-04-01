@@ -19,9 +19,10 @@ const Exit = () => {
 
 const Lang = () => {
   const { i18n } = useTranslation();
-  const changeLang = (lng) => {
+  const changeLang = (lng) => () => {
     i18n.changeLanguage(lng);
   };
+
   return (
     <>
       <Nav.Link onClick={changeLang('ru')}>Рус</Nav.Link>
@@ -36,6 +37,8 @@ const Header = () => (
     <Navbar.Brand as={Link} to="/">Hexlet Chat</Navbar.Brand>
     <Nav>
       <Exit />
+    </Nav>
+    <Nav className="mr-auto">
       <Lang />
     </Nav>
   </Navbar>

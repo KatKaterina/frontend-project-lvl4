@@ -5,7 +5,6 @@ export default {
       connectError: 'Ошибка соединения',
       removedChannel: 'Канал удалён',
       renamedChannel: 'Канал переименован',
-
     },
     errors: {
       wrongLength: 'От 3 до 20 символов',

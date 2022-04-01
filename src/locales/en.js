@@ -1,5 +1,11 @@
 export default {
   translation: {
+    toast: {
+      addedChannel: 'Channel created',
+      connectError: 'Connection error',
+      removedChannel: 'Channel deleted',
+      renamedChannel: 'The channel has been renamed',
+    },
     errors: {
       wrongLength: 'from 3 to 20 characters',
       wrongLengthPass: 'at least 6 characters',
@@ -11,7 +17,8 @@ export default {
       NotFound: '404! Not found.',
     },
     elements: {
-      name: 'User name',
+      nameLogin: 'User name',
+      nameRegistration: 'User name',
       password: 'Password',
       confirmPassword: 'Confirm Password',
       registration: 'Registration',
